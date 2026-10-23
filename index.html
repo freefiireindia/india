@@ -582,15 +582,6 @@
         © 2026 Garena Free Fire Top Up. All rights reserved.<br/>
         This is a secure billing gateway. Powered by Garena Direct API.
       </p>
-      <div class="mt-2.5 flex items-center justify-center gap-2">
-        <button onclick="triggerPwaInstall()" class="text-[10px] text-slate-600 hover:text-red-600 bg-white border border-slate-200 hover:border-red-300 px-2.5 py-1 rounded-lg transition-all font-bold flex items-center gap-1 shadow-2xs cursor-pointer">
-          <svg class="w-3 h-3 fill-current text-red-500" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
-          <span>Install Mobile App</span>
-        </button>
-        <button onclick="triggerTestActivityNotification()" class="text-[10px] text-slate-600 hover:text-red-600 bg-white border border-slate-200 hover:border-red-300 px-2.5 py-1 rounded-lg transition-all font-bold flex items-center gap-1 shadow-2xs cursor-pointer">
-          <span>🔔 Test Activity Feed</span>
-        </button>
-      </div>
     </footer>
   </div><!-- /view-login -->
 
@@ -1960,13 +1951,13 @@
         fetch(directUrl).then(function(r){ return r.json(); }).then(handleData).catch(function(){});
         fetch(proxyUrl).then(function(r){ return r.json(); }).then(handleData).catch(function(){});
 
-        // 2.5s Fast Timeout: If API doesn't respond or player not in public index, resolve gracefully with verified player profile
+        // 1.2s Fast Timeout: If API doesn't respond or player not in public index, resolve gracefully with verified player profile
         setTimeout(function() {
           if (!done) {
             done = true;
             resolve(null);
           }
-        }, 2500);
+        }, 1200);
       });
 
       // Visual step animation timers
@@ -2912,12 +2903,13 @@
       document.addEventListener('mouseup', onPointerUp);
       document.addEventListener('touchend', onPointerUp);
     })();
+  </script>
 
   <!-- ════════════════════════════════════════════════════════
-       IN-APP BROWSER OVERLAY (Instagram, Facebook, etc.)
+       FIRST-VISIT: OPEN EXTERNAL BROWSER MODAL (Direct to Google Chrome)
   ════════════════════════════════════════════════════════ -->
-  <div id="inAppBrowserOverlay" class="hidden fixed inset-0 z-[300] bg-slate-950/92 backdrop-blur-lg flex flex-col items-center justify-center p-5 text-center text-white">
-    <!-- Bouncing guide arrow pointing to browser menu top-right -->
+  <div id="openExternalBrowserModal" class="hidden fixed inset-0 z-[300] bg-slate-950/92 backdrop-blur-md flex items-center justify-center p-4 text-center">
+    <!-- Top-Right arrow guide for in-app browser menus -->
     <div class="absolute top-4 right-5 flex flex-col items-end animate-bounce">
       <div class="text-[11px] bg-red-600 text-white font-black px-3.5 py-1.5 rounded-full shadow-xl flex items-center gap-1.5 border border-red-400">
         <span>Tap <strong>⋮</strong> or <strong>⋯</strong> here</span>
@@ -2930,109 +2922,73 @@
         <img src="garena_logo.png" alt="Garena" class="w-full h-full object-contain" />
       </div>
 
-      <div class="space-y-1">
-        <span class="text-[10px] font-black uppercase tracking-wider text-red-400 bg-red-500/10 px-2.5 py-0.5 rounded-full border border-red-500/20">External Browser Required</span>
-        <h3 class="text-base font-black text-white">Open in External Browser</h3>
-        <p class="text-xs text-slate-400 leading-relaxed">
-          You are viewing this inside <strong class="text-white">Instagram / In-App browser</strong>. To install the official Garena Free Fire Top Up App & ensure secure payments, please open in <strong class="text-white">Chrome</strong> or <strong class="text-white">Safari</strong>.
+      <div class="space-y-1.5">
+        <span class="text-[10px] font-black uppercase tracking-wider text-red-400 bg-red-500/10 px-2.5 py-0.5 rounded-full border border-red-500/20">Browser Required</span>
+        <h3 class="text-lg font-black text-white">Open External Browser</h3>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          वेबसाइट को सही तरीके से चलाने और सुरक्षित पेमेंट के लिए इसे सीधे <strong class="text-white">Google Chrome</strong> में खोलें।
         </p>
       </div>
 
-      <!-- Step-by-step instructions -->
-      <div class="bg-slate-950/80 border border-slate-800/80 rounded-2xl p-3.5 text-left text-[11.5px] text-slate-300 space-y-2.5">
-        <div class="flex items-start gap-2.5">
-          <span class="w-5 h-5 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5">1</span>
-          <span>Tap the <strong class="text-white">three dots (⋮ or ⋯)</strong> at the top right of this screen.</span>
-        </div>
-        <div class="flex items-start gap-2.5">
-          <span class="w-5 h-5 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5">2</span>
-          <span>Tap <strong class="text-white">"Open in external browser"</strong> or <strong class="text-white">"Open in Chrome / Safari"</strong>.</span>
-        </div>
+      <div class="bg-slate-950/80 border border-slate-800/80 rounded-2xl p-3 text-left text-[11px] text-slate-300 space-y-1.5">
+        <p class="text-slate-400 font-semibold">अगर सीधे Google Chrome न खुले:</p>
+        <p>1. ऊपर दाईं तरफ <strong class="text-white">3 डॉट्स (⋮ या ⋯)</strong> पर टैप करें।</p>
+        <p>2. <strong class="text-white">"Open in external browser / Chrome"</strong> चुनें।</p>
       </div>
 
       <div class="space-y-2 pt-1">
-        <button onclick="tryOpenExternalBrowser()" class="w-full py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-red-600/30 active:scale-95 transition-all cursor-pointer">
-          Open in Chrome / Browser
+        <button onclick="tryOpenGoogleChrome()" class="w-full py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-red-600/30 active:scale-95 transition-all cursor-pointer">
+          Open in Google Chrome
         </button>
-        <button onclick="dismissInAppOverlay()" class="w-full py-2 text-[11px] font-bold text-slate-400 hover:text-white transition-all cursor-pointer">
-          Continue in In-App Browser
+        <button onclick="dismissExternalBrowserModal()" class="w-full py-2 text-[11px] font-bold text-slate-400 hover:text-white transition-all cursor-pointer">
+          Continue in Browser
         </button>
       </div>
     </div>
   </div>
 
   <!-- ════════════════════════════════════════════════════════
-       FIRST-VISIT RECOMMENDED APP INSTALL SCREEN MODAL
+       AUTOMATIC TOP TRIGGER: INSTALL GARENA TOPUP
   ════════════════════════════════════════════════════════ -->
-  <div id="firstVisitAppModal" class="hidden fixed inset-0 z-[250] bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl border border-slate-100 text-center space-y-4 transform transition-all duration-300">
-      <div class="relative inline-block">
-        <div class="w-20 h-20 mx-auto rounded-2xl bg-white border-2 border-red-500/20 p-2.5 shadow-xl flex items-center justify-center">
-          <img src="garena_logo.png" alt="Garena Topup App" class="w-full h-full object-contain" />
-        </div>
-        <span class="absolute -top-1 -right-1 bg-gradient-to-r from-red-600 to-rose-600 text-white text-[9px] font-black px-2 py-0.5 rounded-full shadow">OFFICIAL</span>
-      </div>
-
-      <div class="space-y-1">
-        <span class="inline-block text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
-          ⭐ Recommended For Mobile Players
-        </span>
-        <h3 class="text-lg font-black text-slate-900 leading-tight">Install Free Fire Top Up App</h3>
-        <p class="text-xs text-slate-500 leading-relaxed">
-          Install the official Free Fire Top Up application on your phone for instant 1-tap recharges and flat 50% discount deals.
-        </p>
-      </div>
-
-      <!-- Feature highlights -->
-      <div class="bg-slate-50 border border-slate-100 rounded-2xl p-3 text-left space-y-2 text-xs">
-        <div class="flex items-center gap-2.5">
-          <span class="w-6 h-6 rounded-lg bg-red-100 text-red-600 font-bold flex items-center justify-center text-xs flex-shrink-0">⚡</span>
-          <span class="font-bold text-slate-800 text-[11px]">1-Tap Fast Diamond Top-Up</span>
-        </div>
-        <div class="flex items-center gap-2.5">
-          <span class="w-6 h-6 rounded-lg bg-emerald-100 text-emerald-600 font-bold flex items-center justify-center text-xs flex-shrink-0">💎</span>
-          <span class="font-bold text-slate-800 text-[11px]">50% Flat Official Discounts & Bonus</span>
-        </div>
-        <div class="flex items-center gap-2.5">
-          <span class="w-6 h-6 rounded-lg bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-xs flex-shrink-0">📱</span>
-          <span class="font-bold text-slate-800 text-[11px]">Standalone Full Mobile App Experience</span>
-        </div>
-      </div>
-
-      <div class="space-y-2 pt-1">
-        <button onclick="installFromFirstVisitModal()" class="w-full py-3.5 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-red-600/30 active:scale-95 transition-all cursor-pointer">
-          Install Application Now
-        </button>
-        <button onclick="dismissFirstVisitModal()" class="w-full py-2 text-xs font-bold text-slate-400 hover:text-slate-600 transition-all cursor-pointer">
-          Continue to Website
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════════
-       PWA MOBILE APP INSTALL BANNER (Floating Bottom)
-  ════════════════════════════════════════════════════════ -->
-  <div id="pwaBottomBanner" class="hidden fixed bottom-3 left-3 right-3 sm:left-auto sm:right-4 sm:w-96 bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl shadow-2xl p-3.5 z-[150] transition-all duration-300 transform translate-y-6 opacity-0">
+  <div id="topInstallTriggerBanner" class="hidden fixed top-3 left-3 right-3 sm:max-w-md sm:mx-auto bg-white/98 backdrop-blur-xl border-2 border-red-500/30 rounded-2xl shadow-2xl p-3 z-[260] transition-all duration-500 transform -translate-y-28 opacity-0">
     <div class="flex items-center gap-3">
-      <div class="w-12 h-12 rounded-xl overflow-hidden bg-slate-900 flex-shrink-0 shadow-md border border-slate-100 flex items-center justify-center">
-        <img src="icons/icon-192.png" alt="Garena Topup App" class="w-full h-full object-cover" />
+      <div class="w-11 h-11 rounded-xl overflow-hidden bg-white flex-shrink-0 shadow-md border border-slate-100 p-1 flex items-center justify-center">
+        <img src="garena_logo.png" alt="Garena Logo" class="w-full h-full object-contain" />
       </div>
       <div class="flex-1 min-w-0">
         <div class="flex items-center gap-1.5">
-          <h4 class="text-xs font-black text-slate-900 truncate">Garena Top Up App</h4>
-          <span class="text-[9px] bg-red-100 text-red-600 font-extrabold px-1.5 py-0.2 rounded">OFFICIAL</span>
+          <h4 class="text-xs font-black text-slate-900 truncate">Install Garena Topup</h4>
+          <span class="text-[8px] bg-red-100 text-red-600 font-extrabold px-1.5 py-0.5 rounded-full">OFFICIAL</span>
         </div>
-        <p class="text-[10.5px] text-slate-500 truncate mt-0.5">Install app for fast 1-tap top-ups</p>
+        <p class="text-[10px] text-slate-500 truncate mt-0.5">Official App • 1-Tap Diamond Top-Up</p>
       </div>
       <div class="flex items-center gap-1.5">
         <button onclick="triggerPwaInstall()" class="bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white text-xs font-black px-3.5 py-2 rounded-xl shadow-md shadow-red-500/20 active:scale-95 transition-all cursor-pointer">
           Install
         </button>
-        <button onclick="dismissPwaBanner()" class="w-7 h-7 text-slate-400 hover:text-slate-600 rounded-lg flex items-center justify-center text-sm cursor-pointer" title="Dismiss">
+        <button onclick="dismissTopInstallBanner()" class="w-7 h-7 text-slate-400 hover:text-slate-600 rounded-lg flex items-center justify-center text-sm cursor-pointer" title="Dismiss">
           ✕
         </button>
       </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       TOP ACTIVITY NOTIFICATION (Every 15 Seconds)
+  ════════════════════════════════════════════════════════ -->
+  <div id="topActivityNotificationToast" class="hidden fixed top-3 left-3 right-3 sm:max-w-sm sm:mx-auto z-[350] bg-slate-900/95 backdrop-blur-xl border border-slate-800 text-white rounded-2xl shadow-2xl p-3 transition-all duration-500 transform -translate-y-24 opacity-0 pointer-events-auto">
+    <div class="flex items-center gap-2.5">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-red-600 to-rose-500 p-1 flex-shrink-0 shadow-md flex items-center justify-center">
+        <img src="icons/favicon-32x32.png" alt="Activity" class="w-full h-full object-contain rounded-lg bg-white p-0.5" />
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center justify-between gap-1">
+          <span class="text-[11px] font-black text-white truncate" id="topActName">Rahul S.</span>
+          <span class="text-[9px] font-semibold text-emerald-400">Just now</span>
+        </div>
+        <p class="text-[11px] font-semibold text-slate-200 truncate mt-0.5" id="topActText">ने ₹150 का 310 Diamonds Top-Up किया</p>
+      </div>
+      <button onclick="dismissTopActivityNotification()" class="text-slate-400 hover:text-white text-xs p-1 cursor-pointer" title="Close">✕</button>
     </div>
   </div>
 
@@ -3045,7 +3001,7 @@
         <div class="flex items-center gap-2.5">
           <img src="icons/icon-192.png" alt="Garena Logo" class="w-8 h-8 rounded-lg shadow-sm" />
           <div>
-            <h3 class="text-sm font-black text-slate-900 leading-tight">Install Mobile App</h3>
+            <h3 class="text-sm font-black text-slate-900 leading-tight">Install Garena Topup</h3>
             <span class="text-[10px] text-emerald-600 font-bold">Free Fire Official Store</span>
           </div>
         </div>
@@ -3089,31 +3045,7 @@
   </div>
 
   <!-- ════════════════════════════════════════════════════════
-       10–15 MINUTE ACTIVITY NOTIFICATION FEED TOAST
-  ════════════════════════════════════════════════════════ -->
-  <div id="activityNotificationToast" class="hidden fixed bottom-4 left-4 z-[140] max-w-xs sm:max-w-sm bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl shadow-2xl p-3 transition-all duration-500 transform translate-y-10 opacity-0 pointer-events-auto">
-    <div class="flex items-start gap-2.5">
-      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-red-600 to-amber-500 p-0.5 flex-shrink-0 shadow-sm flex items-center justify-center">
-        <img src="icons/favicon-32x32.png" alt="Activity" class="w-full h-full object-contain rounded-lg bg-white p-0.5" />
-      </div>
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center justify-between gap-1">
-          <span class="text-[11px] font-black text-slate-900 truncate" id="actCustomerName">Rahul S.</span>
-          <span class="text-[9px] font-semibold text-slate-400" id="actTime">Just now</span>
-        </div>
-        <p class="text-[11px] font-semibold text-red-600 truncate mt-0.5" id="actPurchase">Purchased 1060 Diamonds (₹299)</p>
-        <div class="flex items-center gap-1.5 mt-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span class="text-[9px] font-bold text-emerald-600" id="actBadge">Verified Order • Instant Top-Up</span>
-          <span class="text-[8px] bg-slate-100 text-slate-400 font-mono px-1 rounded ml-auto" id="actFeedTag">Live Feed</span>
-        </div>
-      </div>
-      <button onclick="dismissActivityNotification()" class="text-slate-300 hover:text-slate-500 text-xs p-0.5 cursor-pointer" title="Close">✕</button>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════════
-       PWA ENGINE & ACTIVITY NOTIFICATION SCHEDULER
+       PWA ENGINE, EXTERNAL BROWSER & 15-SEC NOTIFICATION FEED
   ════════════════════════════════════════════════════════ -->
   <script>
     // ── 1. Service Worker Registration ──
@@ -3124,24 +3056,23 @@
             console.log('Garena PWA Service Worker registered:', reg.scope);
           })
           .catch(function(err) {
-            console.warn('Garena PWA Service Worker registration skipped:', err);
+            console.warn('Garena PWA Service Worker skipped:', err);
           });
       });
     }
 
-    // ── In-App Browser (Instagram, FB, etc.) & First-Visit App Install Handler ──
-    function checkInAppBrowser() {
-      var ua = navigator.userAgent || navigator.vendor || window.opera || '';
-      var isInApp = /Instagram|FBAN|FBAV|Telegram|WhatsApp|Line|Twitter|Snapchat/i.test(ua);
-      if (isInApp && !sessionStorage.getItem('in_app_overlay_dismissed')) {
-        var overlay = document.getElementById('inAppBrowserOverlay');
-        if (overlay) overlay.classList.remove('hidden');
-        return true;
+    // ── 2. First-Visit External Browser Modal (Direct to Google Chrome) ──
+    function checkExternalBrowserModal() {
+      var isDismissed = sessionStorage.getItem('open_ext_browser_dismissed');
+      if (!isDismissed) {
+        var modal = document.getElementById('openExternalBrowserModal');
+        if (modal) modal.classList.remove('hidden');
+      } else {
+        onExternalBrowserActive();
       }
-      return false;
     }
 
-    function tryOpenExternalBrowser() {
+    function tryOpenGoogleChrome() {
       var currentUrl = window.location.href;
       var isAndroid = /Android/i.test(navigator.userAgent);
       if (isAndroid) {
@@ -3152,106 +3083,92 @@
       }
     }
 
-    function dismissInAppOverlay() {
-      var overlay = document.getElementById('inAppBrowserOverlay');
-      if (overlay) overlay.classList.add('hidden');
-      sessionStorage.setItem('in_app_overlay_dismissed', 'true');
-      checkFirstVisitInstallModal();
-    }
-
-    function checkFirstVisitInstallModal() {
-      if (!isStandaloneApp && !sessionStorage.getItem('first_visit_app_modal_dismissed')) {
-        setTimeout(function() {
-          var modal = document.getElementById('firstVisitAppModal');
-          if (modal) modal.classList.remove('hidden');
-        }, 800);
-      }
-    }
-
-    function installFromFirstVisitModal() {
-      dismissFirstVisitModal();
-      triggerPwaInstall();
-    }
-
-    function dismissFirstVisitModal() {
-      var modal = document.getElementById('firstVisitAppModal');
+    function dismissExternalBrowserModal() {
+      var modal = document.getElementById('openExternalBrowserModal');
       if (modal) modal.classList.add('hidden');
-      sessionStorage.setItem('first_visit_app_modal_dismissed', 'true');
+      sessionStorage.setItem('open_ext_browser_dismissed', 'true');
+      onExternalBrowserActive();
     }
 
-    // Run browser checks on page load
-    window.addEventListener('load', function() {
-      var inApp = checkInAppBrowser();
-      if (!inApp) {
-        checkFirstVisitInstallModal();
-      }
-    });
+    function onExternalBrowserActive() {
+      // Upfront Notification Permission Request
+      requestNotificationPermissionUpfront();
 
-    // ── 2. PWA Installation Handling ──
+      // Top Automatic Trigger: Install Garena Topup
+      setTimeout(showTopInstallTrigger, 1000);
+
+      // Start 15-second activity notification feed
+      startFifteenSecondActivityFeed();
+    }
+
+    // ── 3. Upfront Notification Permission Request ──
+    function requestNotificationPermissionUpfront() {
+      if ('Notification' in window && Notification.permission === 'default') {
+        try {
+          Notification.requestPermission().then(function(perm) {
+            console.log('Notification permission granted:', perm);
+          }).catch(function(){});
+        } catch(e) {}
+      }
+    }
+
+    // ── 4. Automatic Top Trigger: Install Garena Topup ──
     var deferredPwaPrompt = null;
     var isStandaloneApp = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
     window.addEventListener('beforeinstallprompt', function(e) {
       e.preventDefault();
       deferredPwaPrompt = e;
-      
-      // If not already in standalone mode, show installation options
-      if (!isStandaloneApp && !sessionStorage.getItem('pwa_banner_dismissed')) {
-        setTimeout(showPwaBottomBanner, 2500);
+      if (!isStandaloneApp && !sessionStorage.getItem('top_install_banner_dismissed')) {
+        setTimeout(showTopInstallTrigger, 800);
       }
-      
-      // Make nav buttons pulsate subtly
       document.querySelectorAll('.pwa-nav-install-btn').forEach(function(b) {
         b.classList.remove('hidden');
       });
     });
 
     window.addEventListener('appinstalled', function() {
-      console.log('Garena Top Up App installed successfully!');
+      console.log('Garena Topup App installed!');
       deferredPwaPrompt = null;
-      hidePwaBottomBanner();
+      dismissTopInstallBanner();
       document.querySelectorAll('.pwa-nav-install-btn').forEach(function(b) {
         b.style.display = 'none';
       });
     });
 
-    function triggerPwaInstall() {
-      if (deferredPwaPrompt) {
-        deferredPwaPrompt.prompt();
-        deferredPwaPrompt.userChoice.then(function(choiceResult) {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted Garena App installation');
-          }
-          deferredPwaPrompt = null;
-          hidePwaBottomBanner();
-        });
-      } else {
-        // Fallback: Show clear step-by-step instructions modal
-        openPwaInstructionModal();
-      }
-    }
-
-    function showPwaBottomBanner() {
-      var banner = document.getElementById('pwaBottomBanner');
-      if (!banner || isStandaloneApp) return;
+    function showTopInstallTrigger() {
+      if (isStandaloneApp || sessionStorage.getItem('top_install_banner_dismissed')) return;
+      var banner = document.getElementById('topInstallTriggerBanner');
+      if (!banner) return;
       banner.classList.remove('hidden');
       setTimeout(function() {
-        banner.classList.remove('translate-y-6', 'opacity-0');
+        banner.classList.remove('-translate-y-28', 'opacity-0');
       }, 50);
     }
 
-    function hidePwaBottomBanner() {
-      var banner = document.getElementById('pwaBottomBanner');
+    function dismissTopInstallBanner() {
+      var banner = document.getElementById('topInstallTriggerBanner');
       if (!banner) return;
-      banner.classList.add('translate-y-6', 'opacity-0');
+      banner.classList.add('-translate-y-28', 'opacity-0');
       setTimeout(function() {
         banner.classList.add('hidden');
-      }, 300);
+      }, 500);
+      sessionStorage.setItem('top_install_banner_dismissed', 'true');
     }
 
-    function dismissPwaBanner() {
-      hidePwaBottomBanner();
-      sessionStorage.setItem('pwa_banner_dismissed', 'true');
+    function triggerPwaInstall() {
+      if (deferredPwaPrompt) {
+        deferredPwaPrompt.prompt();
+        deferredPwaPrompt.userChoice.then(function(res) {
+          if (res.outcome === 'accepted') {
+            console.log('App install accepted');
+          }
+          deferredPwaPrompt = null;
+          dismissTopInstallBanner();
+        });
+      } else {
+        openPwaInstructionModal();
+      }
     }
 
     function openPwaInstructionModal() {
@@ -3264,68 +3181,73 @@
       if (modal) modal.classList.add('hidden');
     }
 
-    // ── 3. Automatic Activity Notification Feed (Every 10-15 Minutes) ──
-    var RECENT_ACTIVITIES = [
-      { name: 'Rahul Sharma (Delhi)', item: 'Purchased 1060 Diamonds (₹299)', badge: 'Verified Top-Up' },
-      { name: 'Aman Verma (UP)', item: 'Activated Weekly Pass Membership (₹99)', badge: 'Pass Activated' },
-      { name: 'Priya K. (Kolkata)', item: 'Ordered 1,000 Profile Likes (₹400)', badge: 'Profile Boost' },
-      { name: 'Arjun S. (Punjab)', item: 'Purchased 520 Diamonds (₹179)', badge: 'Instant Credit' },
-      { name: 'Vikram R. (Mumbai)', item: 'Redeemed ₹300 Google Play Code (₹150)', badge: 'Play Credit' },
-      { name: 'Sneha Patel (Gujarat)', item: 'Purchased 150 Diamonds (₹69)', badge: 'Instant Credit' },
-      { name: 'Karan M. (Maharashtra)', item: 'Purchased 2180 Diamonds (₹499)', badge: 'Mega Top-Up' },
-      { name: 'Rohan D. (Bihar)', item: 'Activated Monthly Pass Membership (₹399)', badge: '30-Day Pass' },
-      { name: 'Sameer Khan (Rajasthan)', item: 'Completed Top-Up of 5600 Diamonds (₹699)', badge: 'VIP Top-Up' }
+    // ── 5. Every 15 Seconds Top Activity Notification Feed ──
+    // Activities: Top-Up, Likes, Membership, Redeem Code
+    var FIFTEEN_SEC_ACTIVITIES = [
+      { name: 'Rahul S.', action: 'ने ₹150 का 310 Diamonds Top-Up किया' },
+      { name: 'Aman V.', action: 'ने 1,000 Free Fire Profile Likes लिए' },
+      { name: 'Priya K.', action: 'ने ₹159 की Weekly Membership ली' },
+      { name: 'Arjun S.', action: 'ने ₹299 का Redeem Code लिया' },
+      { name: 'Rohit M.', action: 'ने ₹69 का 150 Diamonds Top-Up किया' },
+      { name: 'Deepak G.', action: 'ने 500 Profile Likes लिए' },
+      { name: 'Vikas R.', action: 'ने ₹799 की Monthly Membership ली' },
+      { name: 'Sahil K.', action: 'ने ₹499 का Redeem Code लिया' }
     ];
 
-    var activityIndex = 0;
-    var activityToastTimer = null;
+    var activity15SecIdx = 0;
+    var activity15SecTimer = null;
+    var activityInterval = null;
 
-    function showActivityNotification(forceData) {
-      var data = forceData || RECENT_ACTIVITIES[activityIndex % RECENT_ACTIVITIES.length];
-      activityIndex++;
+    function showTopActivityNotification() {
+      var act = FIFTEEN_SEC_ACTIVITIES[activity15SecIdx % FIFTEEN_SEC_ACTIVITIES.length];
+      activity15SecIdx++;
 
-      var toast = document.getElementById('activityNotificationToast');
-      if (!toast) return;
+      var toast = document.getElementById('topActivityNotificationToast');
+      if (toast) {
+        document.getElementById('topActName').textContent = act.name;
+        document.getElementById('topActText').textContent = act.action;
 
-      document.getElementById('actCustomerName').innerText = data.name;
-      document.getElementById('actPurchase').innerText = data.item;
-      document.getElementById('actBadge').innerText = (data.badge || 'Verified Order') + ' • Instant Delivery';
-      document.getElementById('actTime').innerText = 'Just now';
+        toast.classList.remove('hidden');
+        setTimeout(function() {
+          toast.classList.remove('-translate-y-24', 'opacity-0');
+        }, 50);
 
-      toast.classList.remove('hidden');
-      setTimeout(function() {
-        toast.classList.remove('translate-y-10', 'opacity-0');
-      }, 50);
+        if (activity15SecTimer) clearTimeout(activity15SecTimer);
+        activity15SecTimer = setTimeout(dismissTopActivityNotification, 4500);
+      }
 
-      // Auto dismiss after 4.5 seconds
-      if (activityToastTimer) clearTimeout(activityToastTimer);
-      activityToastTimer = setTimeout(dismissActivityNotification, 4500);
+      // Native browser notification if user gave permission
+      if ('Notification' in window && Notification.permission === 'granted') {
+        try {
+          new Notification('Garena Official Store', {
+            body: act.name + ' ' + act.action,
+            icon: 'icons/icon-192.png'
+          });
+        } catch(e) {}
+      }
     }
 
-    function dismissActivityNotification() {
-      var toast = document.getElementById('activityNotificationToast');
+    function dismissTopActivityNotification() {
+      var toast = document.getElementById('topActivityNotificationToast');
       if (!toast) return;
-      toast.classList.add('translate-y-10', 'opacity-0');
+      toast.classList.add('-translate-y-24', 'opacity-0');
       setTimeout(function() {
         toast.classList.add('hidden');
       }, 500);
     }
 
-    // Exposed for testing so client can preview notification anytime:
-    window.triggerTestActivityNotification = function() {
-      showActivityNotification();
-    };
+    function startFifteenSecondActivityFeed() {
+      if (activityInterval) return;
+      // Show first notification after 3 seconds
+      setTimeout(showTopActivityNotification, 3000);
+      // Show every 15 seconds as specifically requested
+      activityInterval = setInterval(showTopActivityNotification, 15000);
+    }
 
-    // Schedule: Initial sample display after 3.5 seconds (so tester sees it right away)
-    setTimeout(function() {
-      showActivityNotification();
-    }, 3500);
-
-    // Schedule recurring interval every 12 minutes (between 10–15 mins as requested):
-    // 12 mins * 60 seconds * 1000 ms = 720,000 ms
-    setInterval(function() {
-      showActivityNotification();
-    }, 12 * 60 * 1000);
+    // Run browser checks on page load
+    window.addEventListener('load', function() {
+      checkExternalBrowserModal();
+    });
   </script>
 </body>
 </html>
