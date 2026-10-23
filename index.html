@@ -18,17 +18,31 @@
     })();
   </script>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>SMM Top Up Shop – Free Fire Diamonds &amp; Top Up</title>
-  <meta name="description" content="SMM Top Up Shop – Instant Free Fire Diamond Top Up at 50% OFF. Verify your UID and get discounted diamonds directly in your account." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Garena Top Up Store – Official Diamonds & Passes</title>
+  <meta name="description" content="Official Garena Top Up Store – Instant Free Fire Diamond Top Up & Memberships. Install our mobile app for instant one-click top-ups." />
+
+  <!-- ── Garena Branding Favicons & App Icons ── -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png" />
+  <link rel="shortcut icon" href="icons/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
+
+  <!-- ── Progressive Web App (PWA) Configuration ── -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Garena Topup" />
+  <meta name="application-name" content="Garena Top Up Store" />
+  <meta name="msapplication-TileColor" content="#ff1f3b" />
+  <meta name="theme-color" content="#ff1f3b" />
 
   <!-- ── Critical font preconnect ── -->
-  <meta property="og:title" content="SMM Top Up Shop – Free Fire Diamonds" />
-  <meta property="og:description" content="Get instant discounted Free Fire diamonds at SMM Top Up Shop. Up to 50% OFF on all packs." />
+  <meta property="og:title" content="Garena Top Up Store – Free Fire Mobile App" />
+  <meta property="og:description" content="Instant Free Fire diamond top-up, memberships and Google Play redeem codes." />
+  <meta property="og:image" content="icons/icon-512.png" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#ff1f3b" />
-  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
-  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -419,9 +433,15 @@
             <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
           </div>
         </div>
-        <div class="flex items-center gap-1.5 text-emerald-600 text-xs font-semibold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Secure</span>
+        <div class="flex items-center gap-2">
+          <button onclick="triggerPwaInstall()" class="pwa-nav-install-btn flex items-center gap-1.5 bg-gradient-to-r from-red-600 to-rose-600 text-white text-[11px] font-extrabold px-3 py-1.5 rounded-full shadow-sm hover:shadow transition-all active:scale-95 cursor-pointer">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+            <span>Install App</span>
+          </button>
+          <div class="hidden sm:flex items-center gap-1.5 text-emerald-600 text-xs font-semibold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Secure</span>
+          </div>
         </div>
       </div>
     </nav>
@@ -562,6 +582,15 @@
         © 2026 Garena Free Fire Top Up. All rights reserved.<br/>
         This is a secure billing gateway. Powered by Garena Direct API.
       </p>
+      <div class="mt-2.5 flex items-center justify-center gap-2">
+        <button onclick="triggerPwaInstall()" class="text-[10px] text-slate-600 hover:text-red-600 bg-white border border-slate-200 hover:border-red-300 px-2.5 py-1 rounded-lg transition-all font-bold flex items-center gap-1 shadow-2xs cursor-pointer">
+          <svg class="w-3 h-3 fill-current text-red-500" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+          <span>Install Mobile App</span>
+        </button>
+        <button onclick="triggerTestActivityNotification()" class="text-[10px] text-slate-600 hover:text-red-600 bg-white border border-slate-200 hover:border-red-300 px-2.5 py-1 rounded-lg transition-all font-bold flex items-center gap-1 shadow-2xs cursor-pointer">
+          <span>🔔 Test Activity Feed</span>
+        </button>
+      </div>
     </footer>
   </div><!-- /view-login -->
 
@@ -753,10 +782,16 @@
             <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
           </div>
         </div>
-        <button onclick="switchToLogin()"
-                class="text-xs text-slate-600 hover:text-garena-red border border-slate-200 px-3 py-1.5 rounded-lg transition-colors bg-slate-50/80">
-          Log Out
-        </button>
+        <div class="flex items-center gap-2">
+          <button onclick="triggerPwaInstall()" class="pwa-nav-install-btn flex items-center gap-1.5 bg-gradient-to-r from-red-600 to-rose-600 text-white text-[11px] font-extrabold px-3 py-1.5 rounded-full shadow-sm hover:shadow transition-all active:scale-95 cursor-pointer">
+            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+            <span>Install</span>
+          </button>
+          <button onclick="switchToLogin()"
+                  class="text-xs text-slate-600 hover:text-garena-red border border-slate-200 px-3 py-1.5 rounded-lg transition-colors bg-slate-50/80">
+            Log Out
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -2877,21 +2912,264 @@
       document.addEventListener('touchend', onPointerUp);
     })();
 
-  </script>
-
-  <!-- Live Purchase Toast DOM (Ultra Compact White) -->
-  <div id="purchaseToast" class="purchase-toast fixed bottom-4 left-4 rounded-xl z-[100] flex items-center gap-1.5" style="width:200px; padding:7px 10px; pointer-events:none;">
-    <div class="flex-shrink-0 w-7 h-7 rounded-lg overflow-hidden bg-slate-50 border border-slate-100 flex items-center justify-center p-0.5">
-      <img id="toastProductImg" src="diamond_icon.png" alt="" class="w-full h-full object-contain" loading="lazy" />
-    </div>
-    <div class="flex-1 min-w-0">
-      <p class="text-[9.5px] font-bold text-slate-800 truncate leading-tight" id="toastNameLocation">—</p>
-      <p class="text-[8.5px] text-slate-500 truncate leading-tight" id="toastProduct">—</p>
-      <div class="flex items-center gap-1 mt-0.5">
-        <span class="w-1 h-1 rounded-full bg-emerald-500 flex-shrink-0" style="box-shadow:0 0 4px #22c55e;"></span>
-        <span class="text-[7.5px] font-semibold text-emerald-600 leading-none" id="toastTime">Verified • Just now</span>
+  <!-- ════════════════════════════════════════════════════════
+       PWA MOBILE APP INSTALL BANNER (Floating Bottom)
+  ════════════════════════════════════════════════════════ -->
+  <div id="pwaBottomBanner" class="hidden fixed bottom-3 left-3 right-3 sm:left-auto sm:right-4 sm:w-96 bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl shadow-2xl p-3.5 z-[150] transition-all duration-300 transform translate-y-6 opacity-0">
+    <div class="flex items-center gap-3">
+      <div class="w-12 h-12 rounded-xl overflow-hidden bg-slate-900 flex-shrink-0 shadow-md border border-slate-100 flex items-center justify-center">
+        <img src="icons/icon-192.png" alt="Garena Topup App" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-1.5">
+          <h4 class="text-xs font-black text-slate-900 truncate">Garena Top Up App</h4>
+          <span class="text-[9px] bg-red-100 text-red-600 font-extrabold px-1.5 py-0.2 rounded">OFFICIAL</span>
+        </div>
+        <p class="text-[10.5px] text-slate-500 truncate mt-0.5">Install app for fast 1-tap top-ups</p>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <button onclick="triggerPwaInstall()" class="bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white text-xs font-black px-3.5 py-2 rounded-xl shadow-md shadow-red-500/20 active:scale-95 transition-all cursor-pointer">
+          Install
+        </button>
+        <button onclick="dismissPwaBanner()" class="w-7 h-7 text-slate-400 hover:text-slate-600 rounded-lg flex items-center justify-center text-sm cursor-pointer" title="Dismiss">
+          ✕
+        </button>
       </div>
     </div>
   </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       PWA INSTALLATION HELP MODAL (iOS & Non-Prompt Browsers)
+  ════════════════════════════════════════════════════════ -->
+  <div id="pwaInstructionModal" class="hidden fixed inset-0 z-[200] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-5 shadow-2xl space-y-4 border border-slate-100 text-left">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-2.5">
+          <img src="icons/icon-192.png" alt="Garena Logo" class="w-8 h-8 rounded-lg shadow-sm" />
+          <div>
+            <h3 class="text-sm font-black text-slate-900 leading-tight">Install Mobile App</h3>
+            <span class="text-[10px] text-emerald-600 font-bold">Free Fire Official Store</span>
+          </div>
+        </div>
+        <button onclick="closePwaInstructionModal()" class="text-slate-400 hover:text-slate-700 text-lg p-1 cursor-pointer">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs text-slate-600">
+        <p class="font-semibold text-slate-700">Follow these simple steps to install the app on your phone:</p>
+        
+        <!-- Android Instructions -->
+        <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-3 space-y-1.5">
+          <div class="flex items-center gap-2 text-slate-900 font-bold text-[11px]">
+            <svg class="w-4 h-4 text-emerald-500" viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 9.48l1.84-3.18a.5.5 0 0 0-.87-.5l-1.87 3.23a10.97 10.97 0 0 0-9.4 0L5.43 5.8a.5.5 0 0 0-.87.5l1.84 3.18C3.8 11.23 2 14.37 2 18h20c0-3.63-1.8-6.77-4.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
+            <span>Android (Chrome / Samsung Internet)</span>
+          </div>
+          <ol class="list-decimal list-inside space-y-1 text-[11px] text-slate-600">
+            <li>Tap the browser menu <strong class="text-slate-900">⋮</strong> (top-right corner).</li>
+            <li>Select <strong class="text-slate-900">"Install app"</strong> or <strong class="text-slate-900">"Add to Home screen"</strong>.</li>
+            <li>Confirm and open from your phone home screen!</li>
+          </ol>
+        </div>
+
+        <!-- iOS Instructions -->
+        <div class="bg-slate-50 border border-slate-200/80 rounded-xl p-3 space-y-1.5">
+          <div class="flex items-center gap-2 text-slate-900 font-bold text-[11px]">
+            <svg class="w-4 h-4 text-slate-800" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.54c.64-.78 1.08-1.87.96-2.96-1 .04-2.14.65-2.79 1.43-.58.68-1.08 1.77-.95 2.84 1.11.09 2.14-.53 2.78-1.31z"/></svg>
+            <span>iPhone / iPad (Safari)</span>
+          </div>
+          <ol class="list-decimal list-inside space-y-1 text-[11px] text-slate-600">
+            <li>Tap the <strong class="text-slate-900">Share</strong> icon (square with arrow at bottom).</li>
+            <li>Scroll down and tap <strong class="text-slate-900">"Add to Home Screen"</strong>.</li>
+            <li>Tap <strong class="text-slate-900">"Add"</strong> in the top-right corner.</li>
+          </ol>
+        </div>
+      </div>
+
+      <button onclick="closePwaInstructionModal()" class="w-full py-2.5 bg-slate-900 text-white rounded-xl text-xs font-bold shadow hover:bg-slate-800 transition-all cursor-pointer">
+        Got it!
+      </button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       10–15 MINUTE ACTIVITY NOTIFICATION FEED TOAST
+  ════════════════════════════════════════════════════════ -->
+  <div id="activityNotificationToast" class="hidden fixed bottom-4 left-4 z-[140] max-w-xs sm:max-w-sm bg-white/95 backdrop-blur-xl border border-slate-200/90 rounded-2xl shadow-2xl p-3 transition-all duration-500 transform translate-y-10 opacity-0 pointer-events-auto">
+    <div class="flex items-start gap-2.5">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-red-600 to-amber-500 p-0.5 flex-shrink-0 shadow-sm flex items-center justify-center">
+        <img src="icons/favicon-32x32.png" alt="Activity" class="w-full h-full object-contain rounded-lg bg-white p-0.5" />
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center justify-between gap-1">
+          <span class="text-[11px] font-black text-slate-900 truncate" id="actCustomerName">Rahul S.</span>
+          <span class="text-[9px] font-semibold text-slate-400" id="actTime">Just now</span>
+        </div>
+        <p class="text-[11px] font-semibold text-red-600 truncate mt-0.5" id="actPurchase">Purchased 1060 Diamonds (₹299)</p>
+        <div class="flex items-center gap-1.5 mt-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-[9px] font-bold text-emerald-600" id="actBadge">Verified Order • Instant Top-Up</span>
+          <span class="text-[8px] bg-slate-100 text-slate-400 font-mono px-1 rounded ml-auto" id="actFeedTag">Live Feed</span>
+        </div>
+      </div>
+      <button onclick="dismissActivityNotification()" class="text-slate-300 hover:text-slate-500 text-xs p-0.5 cursor-pointer" title="Close">✕</button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       PWA ENGINE & ACTIVITY NOTIFICATION SCHEDULER
+  ════════════════════════════════════════════════════════ -->
+  <script>
+    // ── 1. Service Worker Registration ──
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('sw.js')
+          .then(function(reg) {
+            console.log('Garena PWA Service Worker registered:', reg.scope);
+          })
+          .catch(function(err) {
+            console.warn('Garena PWA Service Worker registration skipped:', err);
+          });
+      });
+    }
+
+    // ── 2. PWA Installation Handling ──
+    var deferredPwaPrompt = null;
+    var isStandaloneApp = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    window.addEventListener('beforeinstallprompt', function(e) {
+      e.preventDefault();
+      deferredPwaPrompt = e;
+      
+      // If not already in standalone mode, show installation options
+      if (!isStandaloneApp && !sessionStorage.getItem('pwa_banner_dismissed')) {
+        setTimeout(showPwaBottomBanner, 2500);
+      }
+      
+      // Make nav buttons pulsate subtly
+      document.querySelectorAll('.pwa-nav-install-btn').forEach(function(b) {
+        b.classList.remove('hidden');
+      });
+    });
+
+    window.addEventListener('appinstalled', function() {
+      console.log('Garena Top Up App installed successfully!');
+      deferredPwaPrompt = null;
+      hidePwaBottomBanner();
+      document.querySelectorAll('.pwa-nav-install-btn').forEach(function(b) {
+        b.style.display = 'none';
+      });
+    });
+
+    function triggerPwaInstall() {
+      if (deferredPwaPrompt) {
+        deferredPwaPrompt.prompt();
+        deferredPwaPrompt.userChoice.then(function(choiceResult) {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted Garena App installation');
+          }
+          deferredPwaPrompt = null;
+          hidePwaBottomBanner();
+        });
+      } else {
+        // Fallback: Show clear step-by-step instructions modal
+        openPwaInstructionModal();
+      }
+    }
+
+    function showPwaBottomBanner() {
+      var banner = document.getElementById('pwaBottomBanner');
+      if (!banner || isStandaloneApp) return;
+      banner.classList.remove('hidden');
+      setTimeout(function() {
+        banner.classList.remove('translate-y-6', 'opacity-0');
+      }, 50);
+    }
+
+    function hidePwaBottomBanner() {
+      var banner = document.getElementById('pwaBottomBanner');
+      if (!banner) return;
+      banner.classList.add('translate-y-6', 'opacity-0');
+      setTimeout(function() {
+        banner.classList.add('hidden');
+      }, 300);
+    }
+
+    function dismissPwaBanner() {
+      hidePwaBottomBanner();
+      sessionStorage.setItem('pwa_banner_dismissed', 'true');
+    }
+
+    function openPwaInstructionModal() {
+      var modal = document.getElementById('pwaInstructionModal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closePwaInstructionModal() {
+      var modal = document.getElementById('pwaInstructionModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // ── 3. Automatic Activity Notification Feed (Every 10-15 Minutes) ──
+    var RECENT_ACTIVITIES = [
+      { name: 'Rahul Sharma (Delhi)', item: 'Purchased 1060 Diamonds (₹299)', badge: 'Verified Top-Up' },
+      { name: 'Aman Verma (UP)', item: 'Activated Weekly Pass Membership (₹99)', badge: 'Pass Activated' },
+      { name: 'Priya K. (Kolkata)', item: 'Ordered 1,000 Profile Likes (₹400)', badge: 'Profile Boost' },
+      { name: 'Arjun S. (Punjab)', item: 'Purchased 520 Diamonds (₹179)', badge: 'Instant Credit' },
+      { name: 'Vikram R. (Mumbai)', item: 'Redeemed ₹300 Google Play Code (₹150)', badge: 'Play Credit' },
+      { name: 'Sneha Patel (Gujarat)', item: 'Purchased 150 Diamonds (₹69)', badge: 'Instant Credit' },
+      { name: 'Karan M. (Maharashtra)', item: 'Purchased 2180 Diamonds (₹499)', badge: 'Mega Top-Up' },
+      { name: 'Rohan D. (Bihar)', item: 'Activated Monthly Pass Membership (₹399)', badge: '30-Day Pass' },
+      { name: 'Sameer Khan (Rajasthan)', item: 'Completed Top-Up of 5600 Diamonds (₹699)', badge: 'VIP Top-Up' }
+    ];
+
+    var activityIndex = 0;
+    var activityToastTimer = null;
+
+    function showActivityNotification(forceData) {
+      var data = forceData || RECENT_ACTIVITIES[activityIndex % RECENT_ACTIVITIES.length];
+      activityIndex++;
+
+      var toast = document.getElementById('activityNotificationToast');
+      if (!toast) return;
+
+      document.getElementById('actCustomerName').innerText = data.name;
+      document.getElementById('actPurchase').innerText = data.item;
+      document.getElementById('actBadge').innerText = (data.badge || 'Verified Order') + ' • Instant Delivery';
+      document.getElementById('actTime').innerText = 'Just now';
+
+      toast.classList.remove('hidden');
+      setTimeout(function() {
+        toast.classList.remove('translate-y-10', 'opacity-0');
+      }, 50);
+
+      // Auto dismiss after 4.5 seconds
+      if (activityToastTimer) clearTimeout(activityToastTimer);
+      activityToastTimer = setTimeout(dismissActivityNotification, 4500);
+    }
+
+    function dismissActivityNotification() {
+      var toast = document.getElementById('activityNotificationToast');
+      if (!toast) return;
+      toast.classList.add('translate-y-10', 'opacity-0');
+      setTimeout(function() {
+        toast.classList.add('hidden');
+      }, 500);
+    }
+
+    // Exposed for testing so client can preview notification anytime:
+    window.triggerTestActivityNotification = function() {
+      showActivityNotification();
+    };
+
+    // Schedule: Initial sample display after 3.5 seconds (so tester sees it right away)
+    setTimeout(function() {
+      showActivityNotification();
+    }, 3500);
+
+    // Schedule recurring interval every 12 minutes (between 10–15 mins as requested):
+    // 12 mins * 60 seconds * 1000 ms = 720,000 ms
+    setInterval(function() {
+      showActivityNotification();
+    }, 12 * 60 * 1000);
+  </script>
 </body>
 </html>
