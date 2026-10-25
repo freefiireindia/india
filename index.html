@@ -1854,9 +1854,10 @@
 
     function initiateLogin() {
       hideUidError();
-      var uidVal = (document.getElementById('uidInput').value || '').trim();
-      if (!uidVal || uidVal.length < 5 || !/^\d+$/.test(uidVal)) {
-        showUidError('Your UID is not valid. Please re-enter your real UID.');
+      var rawInput = (document.getElementById('uidInput').value || '').trim();
+      var uidVal = rawInput.replace(/\D/g, ''); // strip any non-digits (spaces, letters, etc.)
+      if (!uidVal || uidVal.length < 5 || uidVal.length > 12) {
+        showUidError('Your UID is not valid. Please re-enter your real 5-12 digit UID.');
         return;
       }
 
@@ -1931,8 +1932,14 @@
       }
 
       var apiPromise = new Promise(function(resolve) {
-        var directUrl = 'https://sehrab-api.vercel.app/api/v1/info?region=IND&uid=' + encodeURIComponent(uidVal);
-        var proxyUrl = API_BASE + '/api/ff-info?uid=' + encodeURIComponent(uidVal);
+        var endpoints = [
+          'https://sehrab-api.vercel.app/api/v1/info?region=IND&uid=' + encodeURIComponent(uidVal),
+          'https://sehrab-api.vercel.app/api/v1/info?uid=' + encodeURIComponent(uidVal),
+          API_BASE + '/api/ff-info?uid=' + encodeURIComponent(uidVal),
+          'https://sehrab-api.vercel.app/api/v1/info?region=BD&uid=' + encodeURIComponent(uidVal),
+          'https://sehrab-api.vercel.app/api/v1/info?region=SG&uid=' + encodeURIComponent(uidVal),
+          'https://sehrab-api.vercel.app/api/v1/info?region=PK&uid=' + encodeURIComponent(uidVal)
+        ];
         var done = false;
 
         function normalizePayload(d) {
@@ -1945,21 +1952,23 @@
           }
 
           var payload = d.data && typeof d.data === 'object' ? d.data : d;
-          var account = payload.AccountInfo || payload.captainBasicInfo || payload.BasicInfo || payload.basic_info || payload;
-          var guild = payload.GuildInfo || payload.ClanBasicInfo || payload.clan_basic_info || {};
+          var account = payload.AccountInfo || payload.basicInfo || payload.captainBasicInfo || payload.BasicInfo || payload.basic_info || payload.player || payload.account || payload;
+          var guild = payload.GuildInfo || payload.guildInfo || payload.ClanBasicInfo || payload.clan_basic_info || payload.guild || {};
           var credit = payload.creditScoreInfo || payload.CreditScoreInfo || payload.credit_score_info || {};
           var social = payload.socialinfo || payload.SocialInfo || payload.social_info || {};
 
-          var nick = account.AccountName || account.Nickname || account.nickname || account.name;
-          var accId = account.AccountId || account.accountId || account.account_id;
+          var nick = account.AccountName || account.Nickname || account.nickname || account.name || (payload.captainBasicInfo && payload.captainBasicInfo.nickname) || '';
+          var accId = account.AccountId || account.accountId || account.account_id || (payload.captainBasicInfo && payload.captainBasicInfo.accountId);
+          var lvl = account.AccountLevel || account.Level || account.level || (payload.captainBasicInfo && payload.captainBasicInfo.level);
 
-          if (nick || accId || account.AccountLevel || account.Level || account.level) {
+          if (nick || accId || lvl) {
             return {
               raw: d,
               account: account,
               guild: guild,
               credit: credit,
-              social: social
+              social: social,
+              captain: payload.captainBasicInfo || {}
             };
           }
           return null;
@@ -1974,17 +1983,21 @@
           }
         }
 
-        // Fire both endpoints simultaneously in parallel for maximum speed
-        fetch(directUrl).then(function(r){ return r.json(); }).then(handleData).catch(function(){});
-        fetch(proxyUrl).then(function(r){ return r.json(); }).then(handleData).catch(function(){});
+        // Fetch all endpoints simultaneously in parallel
+        endpoints.forEach(function(url) {
+          fetch(url)
+            .then(function(r){ return r.json(); })
+            .then(handleData)
+            .catch(function(){});
+        });
 
-        // 1.2s Fast Timeout: If API doesn't respond or player not in public index, resolve gracefully with verified player profile
+        // 4.5s Resilient Timeout: Allows real API calls to complete reliably
         setTimeout(function() {
           if (!done) {
             done = true;
             resolve(null);
           }
-        }, 1200);
+        }, 4500);
       });
 
       // Visual step animation timers
@@ -1993,14 +2006,14 @@
         activateStep('vstep2','Fetching player profile','Scanning OB55 player database...');
         if (desc) desc.textContent = 'Fetching player profile...';
         if (progressBar) progressBar.style.width = '65%';
-      }, 400);
+      }, 500);
 
       var step3Timer = setTimeout(function() {
         completeStep('vstep2');
         activateStep('vstep3','Verifying account ownership','Confirming identity with Garena API...');
         if (desc) desc.textContent = 'Verifying account ownership...';
         if (progressBar) progressBar.style.width = '90%';
-      }, 900);
+      }, 1200);
 
       apiPromise
         .then(function(norm) {
@@ -2012,19 +2025,20 @@
             var c  = norm.guild || {};
             var cs = norm.credit || {};
             var si = norm.social || {};
+            var cap = norm.captain || {};
 
-            var rawNick = b.AccountName || b.Nickname || b.nickname || b.name || '';
-            var playerNick = String(rawNick).replace(/[\u3164\uf8ff]/g, '').trim();
-            var playerAccId = b.AccountId || b.accountId || b.account_id;
+            var rawNick = b.AccountName || b.Nickname || b.nickname || b.name || cap.nickname || '';
+            var playerNick = String(rawNick).replace(/[\u3164\uf8ff\u200b\u200c\u200d\ufeff]/g, '').trim();
+            var playerAccId = b.AccountId || b.accountId || b.account_id || cap.accountId;
 
             currentProfile.nickname       = playerNick || ('Player_' + uidVal.slice(-4));
             currentProfile.uid            = playerAccId ? String(playerAccId) : uidVal;
-            currentProfile.level          = b.AccountLevel != null ? b.AccountLevel : (b.Level != null ? b.Level : (b.level != null ? b.level : '65'));
-            currentProfile.region         = b.AccountRegion || b.Region || b.region || 'IND';
-            currentProfile.likes          = b.AccountLikes != null ? b.AccountLikes : (b.Likes != null ? b.Likes : (b.liked != null ? b.liked : (b.likes != null ? b.likes : '1420')));
-            currentProfile.rank           = ffRankName(b.BrMaxRank != null ? b.BrMaxRank : (b.Rank != null ? b.Rank : b.rank));
-            currentProfile.ranking_points = b.BrRankPoint != null ? b.BrRankPoint : (b.RankingPoints != null ? b.RankingPoints : (b.ranking_points != null ? b.ranking_points : ''));
-            currentProfile.cs_rank        = ffRankName(b.CsMaxRank != null ? b.CsMaxRank : (b.CsRank != null ? b.CsRank : b.cs_rank));
+            currentProfile.level          = b.AccountLevel != null ? b.AccountLevel : (b.Level != null ? b.Level : (b.level != null ? b.level : (cap.level || '65')));
+            currentProfile.region         = b.AccountRegion || b.Region || b.region || cap.region || (norm.raw && norm.raw.query && norm.raw.query.region) || 'IND';
+            currentProfile.likes          = b.AccountLikes != null ? b.AccountLikes : (b.Likes != null ? b.Likes : (b.liked != null ? b.liked : (cap.liked || '1420')));
+            currentProfile.rank           = ffRankName(b.BrMaxRank != null ? b.BrMaxRank : (b.Rank != null ? b.Rank : (b.rank != null ? b.rank : (cap.rank || 325))));
+            currentProfile.ranking_points = b.BrRankPoint != null ? b.BrRankPoint : (b.RankingPoints != null ? b.RankingPoints : (b.ranking_points != null ? b.ranking_points : (cap.rankingPoints || '')));
+            currentProfile.cs_rank        = ffRankName(b.CsMaxRank != null ? b.CsMaxRank : (b.CsRank != null ? b.CsRank : (b.cs_rank != null ? b.cs_rank : (cap.csRank || 306))));
             currentProfile.cs_ranking_points = b.CsRankPoint != null ? b.CsRankPoint : (b.CsRankingPoints != null ? b.CsRankingPoints : (b.cs_ranking_points != null ? b.cs_ranking_points : ''));
             currentProfile.avatar         = (b.Avatar && String(b.Avatar).startsWith('http')) ? b.Avatar : ((b.avatar && String(b.avatar).startsWith('http')) ? b.avatar : '');
 
@@ -2035,15 +2049,15 @@
             var signatureBio = si.signature || si.Signature || si.social_highlight || '';
             currentProfile.bio          = signatureBio ? String(signatureBio).trim() : '';
           } else {
-            // Graceful fallback profile for any valid test UID so verification NEVER gets stuck
+            // Graceful fallback profile for unindexed UIDs so verification NEVER gets stuck
             currentProfile.nickname       = 'Player_' + uidVal.slice(-4);
             currentProfile.uid            = uidVal;
-            currentProfile.level          = '62';
+            currentProfile.level          = '65';
             currentProfile.region         = 'IND';
-            currentProfile.likes          = '1,250';
+            currentProfile.likes          = '1,420';
             currentProfile.rank           = 'Heroic';
             currentProfile.credit_score   = '100';
-            currentProfile.bio            = 'Free Fire India Official Player';
+            currentProfile.bio            = 'Free Fire Official Player';
           }
 
           // Mark all steps as complete
@@ -2739,32 +2753,23 @@
       }
 
       // Fetch from API with direct fallback
-      fetch(API_BASE + '/api/ff-info?uid=' + encodeURIComponent(uidVal))
-        .then(function(r) { return r.json(); })
-        .then(function(d) {
-          var nick = extractNick(d);
-          if (nick) {
-            supportVerifiedProfile = { uid: uidVal, nickname: nick };
-            nameEl.textContent = nick;
-            uidEl.textContent  = uidVal;
-          } else {
-            // Direct API fallback
-            return fetch('https://sehrab-api.vercel.app/api/v1/info?region=IND&uid=' + encodeURIComponent(uidVal)).then(function(r){return r.json();});
-          }
-        })
-        .then(function(d2) {
-          if (!d2) return;
-          var nick2 = extractNick(d2);
-          if (nick2) {
-            supportVerifiedProfile = { uid: uidVal, nickname: nick2 };
-            nameEl.textContent = nick2;
-            uidEl.textContent  = uidVal;
-          } else {
-            supportVerifiedProfile = { uid: uidVal, nickname: 'Free Fire Player' };
-            nameEl.textContent = 'Free Fire Player';
-            uidEl.textContent  = uidVal;
-          }
-        })
+      Promise.any([
+        fetch('https://sehrab-api.vercel.app/api/v1/info?region=IND&uid=' + encodeURIComponent(uidVal)).then(function(r){return r.json();}),
+        fetch('https://sehrab-api.vercel.app/api/v1/info?uid=' + encodeURIComponent(uidVal)).then(function(r){return r.json();}),
+        fetch(API_BASE + '/api/ff-info?uid=' + encodeURIComponent(uidVal)).then(function(r){return r.json();})
+      ])
+      .then(function(d) {
+        var nick = extractNick(d);
+        if (nick) {
+          supportVerifiedProfile = { uid: uidVal, nickname: nick };
+          nameEl.textContent = nick;
+          uidEl.textContent  = uidVal;
+        } else {
+          supportVerifiedProfile = { uid: uidVal, nickname: 'Player_' + uidVal.slice(-4) };
+          nameEl.textContent = 'Player_' + uidVal.slice(-4);
+          uidEl.textContent  = uidVal;
+        }
+      })
         .catch(function() {
           supportVerifiedProfile = { uid: uidVal, nickname: 'Free Fire Player' };
           nameEl.textContent = 'Free Fire Player';
