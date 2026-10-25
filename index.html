@@ -408,6 +408,34 @@
 
 
   </style>
+  <!-- Force-Clear Old Service Worker Caches & Remove Stale Overlays -->
+  <script>
+    (function() {
+      // Clear legacy service worker caches
+      if ('caches' in window) {
+        caches.keys().then(function(names) {
+          for (var n of names) caches.delete(n);
+        });
+      }
+      // Clear old session flags
+      try {
+        sessionStorage.removeItem('open_ext_browser_dismissed');
+        sessionStorage.removeItem('in_app_overlay_dismissed');
+        sessionStorage.removeItem('first_visit_app_modal_dismissed');
+      } catch(e) {}
+      // Remove any lingering modals from cached DOM
+      function purgeOldModals() {
+        var ids = ['openExternalBrowserModal', 'inAppBrowserOverlay', 'firstVisitAppModal', 'topInstallTriggerBanner', 'pwaInstructionModal', 'pwaBottomBanner'];
+        ids.forEach(function(id) {
+          var el = document.getElementById(id);
+          if (el) el.remove();
+        });
+      }
+      purgeOldModals();
+      document.addEventListener('DOMContentLoaded', purgeOldModals);
+      window.addEventListener('load', purgeOldModals);
+    })();
+  </script>
 </head>
 <body class="text-slate-800 min-h-screen relative antialiased bg-white">
 
@@ -2923,16 +2951,15 @@
        ACTIVITY NOTIFICATION ENGINE & UPFRONT PERMISSION
   ════════════════════════════════════════════════════════ -->
   <script>
-    // ── 1. Service Worker Registration ──
+    // ── 1. Force Clean & Register Fresh Service Worker v4.0 ──
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js')
+        navigator.serviceWorker.register('sw.js?v=4.0')
           .then(function(reg) {
-            console.log('Garena PWA Service Worker registered:', reg.scope);
+            reg.update();
+            console.log('Service Worker v4.0 active');
           })
-          .catch(function(err) {
-            console.warn('Garena PWA Service Worker skipped:', err);
-          });
+          .catch(function() {});
       });
     }
 
