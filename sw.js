@@ -1,4 +1,4 @@
-// Garena Top Up Cache Buster v4.0 - Force Clear All Caches
+// Garena Top Up Cache Buster v5.0 - Stable Price Fix + Force Clear All Caches
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
