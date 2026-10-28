@@ -52,7 +52,7 @@
   <link rel="preload" as="image" href="ad_banner1.jpg" />
   <link rel="preload" as="image" href="ad_banner2.png" />
   <link rel="preload" as="image" href="ff_hero_banner.jpg" />
-  <link rel="preload" as="image" href="ff_game_icon.png" />
+  <link rel="preload" as="image" href="ff_india_logo.jpg" />
   <!-- Dashboard assets preloaded in background -->
   <link rel="preload" as="image" href="freefire_logo.png" />
   <link rel="preload" as="image" href="diamond_icon.png" />
@@ -97,15 +97,48 @@
     .glow-red    { box-shadow: 0 4px 20px rgba(255,102,0,0.22); }
     .glow-purple { box-shadow: 0 4px 20px rgba(124,58,237,0.15); }
     .glow-green  { box-shadow: 0 4px 20px rgba(16,185,129,0.15); }
-    /* ── Free Fire India Theme ── */
-    .india-gradient {
-      background: linear-gradient(135deg, #FF9933 0%, #FF6600 30%, #ffffff 50%, #138808 80%, #046A38 100%);
+    
+    /* ══ FREE FIRE INDIA DEEP THEME ══ */
+
+    /* India tricolor header strip */
+    .india-flag-bar {
+      height: 5px;
+      background: linear-gradient(90deg, #FF9933 33.33%, #ffffff 33.33% 66.66%, #138808 66.66%);
+      width: 100%;
     }
-    .india-header-bg {
-      background: linear-gradient(180deg, #FF6600 0%, #cc4400 100%);
+
+    /* India glow effect */
+    .india-glow {
+      box-shadow: 0 4px 20px rgba(255,102,0,0.25), 0 1px 4px rgba(19,136,8,0.10);
     }
+
+    /* Saffron CTA button */
+    .btn-india-primary {
+      background: linear-gradient(135deg, #FF6600 0%, #FF9933 100%);
+      color: #fff;
+      font-weight: 800;
+      border: none;
+      box-shadow: 0 4px 16px rgba(255,102,0,0.38);
+      transition: all 0.18s cubic-bezier(0.4,0,0.2,1);
+      border-radius: 14px;
+    }
+    .btn-india-primary:hover, .btn-india-primary:active {
+      background: linear-gradient(135deg, #e55a00 0%, #FF6600 100%);
+      box-shadow: 0 6px 22px rgba(255,102,0,0.5);
+      transform: translateY(-1px);
+    }
+
+    /* India card style */
+    .india-card {
+      background: linear-gradient(145deg, #fff8f0 0%, #ffffff 60%, #f0fff4 100%);
+      border: 1.5px solid rgba(255,153,51,0.25);
+      border-radius: 18px;
+      box-shadow: 0 4px 20px rgba(255,102,0,0.08), 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    /* India badge */
     .india-badge {
-      background: linear-gradient(90deg, #FF9933, #FF6600);
+      background: linear-gradient(90deg, #FF9933 0%, #FF6600 100%);
       color: #fff;
       font-weight: 800;
       border-radius: 999px;
@@ -113,29 +146,62 @@
       font-size: 10px;
       letter-spacing: 0.5px;
     }
-    .india-flag-bar {
-      height: 4px;
-      background: linear-gradient(90deg, #FF9933 33.3%, #ffffff 33.3% 66.6%, #138808 66.6%);
-      width: 100%;
-    }
-    .ff-india-btn {
-      background: linear-gradient(135deg, #FF6600, #FF9933);
+    .india-badge-green {
+      background: linear-gradient(90deg, #138808 0%, #00A651 100%);
       color: #fff;
-      border: none;
-      box-shadow: 0 4px 16px rgba(255,102,0,0.35);
-      transition: all 0.2s;
-    }
-    .ff-india-btn:hover, .ff-india-btn:active {
-      background: linear-gradient(135deg, #e55a00, #FF6600);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(255,102,0,0.45);
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 10px;
     }
 
-    .glass-card {
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(226,232,240,0.8);
+    /* India section heading */
+    .india-section-title {
+      color: #FF6600;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+    }
+    .india-section-title::before {
+      content: "🇮🇳 ";
+    }
+
+    /* Tab active: saffron */
+    .tab-btn.active, .tab-btn[aria-selected="true"] {
+      background: linear-gradient(135deg, #FF6600, #FF9933) !important;
+      color: #ffffff !important;
+      border-color: #FF6600 !important;
+      box-shadow: 0 3px 10px rgba(255,102,0,0.3) !important;
+    }
+
+    /* Verified pill: India green */
+    .dash-verified-pill {
+      background: linear-gradient(90deg, #138808, #00A651) !important;
+    }
+
+    /* Dynamic island: India green pulse */
+    .dynamic-island {
+      border-color: rgba(19,136,8,0.4) !important;
+      box-shadow: 0 0 12px rgba(19,136,8,0.2) !important;
+    }
+
+    /* Progress bar: saffron */
+    #modalProgressBar {
+      background: linear-gradient(90deg, #FF6600, #FF9933) !important;
+    }
+
+    /* Purchase toast: India themed */
+    #purchaseToast {
+      border-left: 4px solid #FF6600 !important;
+    }
+
+    /* India decorative Ashoka wheel watermark on hero */
+    .india-watermark {
+      position: absolute;
+      bottom: 8px; right: 10px;
+      font-size: 28px;
+      opacity: 0.18;
+      pointer-events: none;
+      user-select: none;
     }
 
     /* ── Ad banner fade slider ── */
@@ -477,7 +543,7 @@
 
   <!-- Background texture (shared) -->
   <div class="fixed inset-0 -z-10 w-full h-full bg-cover bg-center bg-no-repeat opacity-[0.05]" style="background-image:url('background.jpg');"></div>
-  <div class="fixed inset-0 -z-10 w-full h-full bg-gradient-to-b from-white/90 via-slate-50/95 to-slate-100"></div>
+  <div class="fixed inset-0 -z-10 w-full h-full bg-gradient-to-b from-orange-50/90 via-white/95 to-green-50/30"></div>
 
   <!-- ════════════════════════════════════════════════════════
        VIEW 1 – UID Verification / Login Page
@@ -485,12 +551,12 @@
   <div id="view-login" class="spa-view active flex flex-col min-h-screen">
 
     <!-- Header -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+    <nav class="sticky top-0 z-50 backdrop-blur-md border-b shadow-sm" style="background:linear-gradient(135deg,#fff8f0 0%,#fff 60%,#f0fff4 100%);border-color:#fed7aa80;">
       <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center gap-3 select-none">
-          <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-10 w-10 object-cover rounded-xl shadow-lg" fetchpriority="high" />
+          <img src="garena_logo.png" alt="Garena" class="h-10 w-auto object-contain" fetchpriority="high" />
           <div class="leading-tight border-l border-slate-200 pl-3">
-            <span class="block text-sm font-black tracking-widest text-garena-red">GARENA</span>
+            <span class="block text-sm font-black tracking-widest" style="color:#FF6600">GARENA</span>
             <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
           </div>
         </div>
@@ -521,12 +587,13 @@
       <!-- Free Fire Hero Banner -->
       <div class="relative w-[93%] mx-auto rounded-[20px] overflow-hidden shadow-xl"
            style="box-shadow:0 8px 32px rgba(0,0,0,0.18);">
-        <img src="ff_hero_banner.jpg" alt="Free Fire" class="w-full h-auto object-cover block" />
+        <img src="ff_hero_banner.jpg" alt="Free Fire India" class="w-full h-auto object-cover block" />
+        <div class="india-watermark">🇮🇳</div>
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-3 py-3 sm:px-4 sm:py-4 flex items-center justify-between gap-2">
           <div class="flex items-center gap-2">
             <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-12 w-12 object-cover rounded-2xl shadow-xl border-2 border-orange-400" />
             <div>
-              <p class="text-white font-black text-base leading-tight tracking-wide drop-shadow-md">Free Fire</p>
+              <p class="text-white font-black text-base leading-tight tracking-wide drop-shadow-md">Free Fire India 🇮🇳</p>
               <p class="text-white text-[9px] sm:text-[11px] font-semibold tracking-wide uppercase leading-tight mt-0.5">Official Top-Up Center</p>
             </div>
           </div>
@@ -602,28 +669,28 @@
         <h3 class="text-xs font-black tracking-widest text-garena-red uppercase mb-4 border-b border-slate-100 pb-2">How It Works</h3>
         <div class="grid grid-cols-1 gap-4">
           <div class="flex items-start gap-3.5">
-            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-garena-red/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">1</div>
+            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-[#FF6600]/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">1</div>
             <div>
               <h4 class="font-extrabold text-xs text-slate-700">Verify your Free Fire ID</h4>
               <p class="text-[10px] text-garena-textGray mt-0.5 leading-relaxed">Enter your numeric ID to check compatibility and profile details.</p>
             </div>
           </div>
           <div class="flex items-start gap-3.5 border-t border-slate-100 pt-3">
-            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-garena-red/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">2</div>
+            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-[#FF6600]/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">2</div>
             <div>
               <h4 class="font-extrabold text-xs text-slate-700">Choose your plan</h4>
               <p class="text-[10px] text-garena-textGray mt-0.5 leading-relaxed">Select from half-price diamond packs, memberships, or redeem codes.</p>
             </div>
           </div>
           <div class="flex items-start gap-3.5 border-t border-slate-100 pt-3">
-            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-garena-red/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">3</div>
+            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-[#FF6600]/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">3</div>
             <div>
               <h4 class="font-extrabold text-xs text-slate-700">Complete Payment</h4>
               <p class="text-[10px] text-garena-textGray mt-0.5 leading-relaxed">Pay securely using any UPI app by scanning the generated dynamic QR code.</p>
             </div>
           </div>
           <div class="flex items-start gap-3.5 border-t border-slate-100 pt-3">
-            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-garena-red/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">4</div>
+            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-[#FF6600]/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">4</div>
             <div>
               <h4 class="font-extrabold text-xs text-slate-700">Diamonds delivered instantly</h4>
               <p class="text-[10px] text-garena-textGray mt-0.5 leading-relaxed">System pushes direct API credits to your mailbox in real-time.</p>
@@ -650,7 +717,7 @@
     <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
       <div class="max-w-md mx-auto px-4 py-2.5 flex items-center justify-between">
         <div class="flex items-center gap-2.5 cursor-pointer select-none">
-          <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-10 w-10 object-cover rounded-xl shadow-lg" fetchpriority="high" />
+          <img src="garena_logo.png" alt="Garena" class="h-10 w-auto object-contain" fetchpriority="high" />
           <div class="leading-tight border-l border-slate-200 pl-2.5">
             <span class="block text-xs font-black tracking-widest text-garena-red">GARENA</span>
             <span class="block text-[9px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
@@ -682,7 +749,7 @@
         <!-- Player Top Profile Info (Avatar + Circular Green Tick + Name) -->
         <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
           <div id="infoAvatarWrap" class="w-11 h-11 rounded-xl flex-shrink-0 relative" style="background:linear-gradient(135deg,#f59e0b,#d97706,#f59e0b);padding:2px;border-radius:12px;box-shadow:0 0 0 1px rgba(245,158,11,0.35),0 2px 8px rgba(0,0,0,0.12);">
-            <img id="infoAvatar" src="ff_game_icon.png" alt="Free Fire Profile Avatar" class="w-full h-full object-cover bg-slate-100" style="border-radius:10px;" onerror="this.src='ff_game_icon.png'" />
+            <img id="infoAvatar" src="ff_india_logo.jpg" alt="Free Fire Profile Avatar" class="w-full h-full object-cover bg-slate-100" style="border-radius:10px;" onerror="this.src='ff_india_logo.jpg'" />
             <!-- Perfectly Circular Green Tick Badge -->
             <div class="absolute -bottom-1 -right-1 bg-emerald-500 text-white rounded-full flex items-center justify-center font-black border-2 border-white shadow-xs" style="width:16px;height:16px;font-size:8px;" title="Verified Account">✓</div>
           </div>
@@ -819,12 +886,12 @@
   <div id="view-dashboard" class="spa-view flex flex-col min-h-screen">
 
     <!-- Dashboard Header -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+    <nav class="sticky top-0 z-50 backdrop-blur-md border-b shadow-sm" style="background:linear-gradient(135deg,#fff8f0 0%,#fff 60%,#f0fff4 100%);border-color:#fed7aa80;">
       <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center gap-3 cursor-pointer select-none" ondblclick="handleLogoDoubleClick()">
-          <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-10 w-10 object-cover rounded-xl shadow-lg" fetchpriority="high" />
+          <img src="garena_logo.png" alt="Garena" class="h-10 w-auto object-contain" fetchpriority="high" />
           <div class="leading-tight border-l border-slate-200 pl-3">
-            <span class="block text-sm font-black tracking-widest text-garena-red">GARENA</span>
+            <span class="block text-sm font-black tracking-widest" style="color:#FF6600">GARENA</span>
             <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
           </div>
         </div>
@@ -904,7 +971,7 @@
             <h3 class="text-lg font-black text-white">Diamond Store</h3>
             <p class="text-xs text-white/80">Direct server API top-ups with up to 50% discount bonus.</p>
           </div>
-          <div class="absolute top-3 right-3 bg-garena-red text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">50% OFF</div>
+          <div class="absolute top-3 right-3 bg-[#FF6600] text-white text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">50% OFF</div>
         </div>
         <div class="grid grid-cols-2 gap-3" id="diamondPacksList"></div>
       </div>
@@ -1362,7 +1429,7 @@
         <!-- Screen 3: Confirmation Step Modal -->
         <div id="supportConfirmScreen" style="display:none;text-align:center;padding:10px 0;">
           <div style="width:48px;height:48px;background:#fef2f2;border:2px solid #fee2e2;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
-            <img src="ff_game_icon.png" alt="FF" style="width:26px;height:26px;border-radius:6px;" />
+            <img src="ff_india_logo.jpg" alt="FF" style="width:26px;height:26px;border-radius:6px;" />
           </div>
           
           <h4 style="color:#0f172a;font-size:14px;font-weight:900;margin:0 0 4px;">Confirm Your Details</h4>
@@ -2147,7 +2214,7 @@
       const avatarWrap = document.getElementById('infoAvatarWrap');
       if (avatarEl && avatarWrap) {
         avatarWrap.style.display = 'flex';
-        avatarEl.src = (currentProfile.avatar && currentProfile.avatar.trim().startsWith('http')) ? currentProfile.avatar : 'ff_game_icon.png';
+        avatarEl.src = (currentProfile.avatar && currentProfile.avatar.trim().startsWith('http')) ? currentProfile.avatar : 'ff_india_logo.jpg';
       }
 
       // Name & UID
@@ -2302,7 +2369,7 @@
       if (dList) {
         dList.innerHTML = DIAMOND_PACKS.map(function(pack) {
           return '<div onclick="initiatePayment(\'' + pack.diamonds + '\',' + pack.discount + ')" class="relative bg-white hover:bg-slate-50/90 border border-slate-200/90 rounded-2xl p-3.5 flex flex-col justify-between cursor-pointer transition-colors select-none shadow-md">' +
-            (pack.badge ? '<span class="absolute top-2 right-2 text-[8px] font-black tracking-wider uppercase px-1.5 py-0.5 rounded bg-garena-red text-white shadow-xs">' + pack.badge + '</span>' : '') +
+            (pack.badge ? '<span class="absolute top-2 right-2 text-[8px] font-black tracking-wider uppercase px-1.5 py-0.5 rounded bg-[#FF6600] text-white shadow-xs">' + pack.badge + '</span>' : '') +
             '<div class="space-y-1"><div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center border border-blue-100 flex-shrink-0"><img src="diamond_icon.png" alt="Diamond" width="20" height="20" class="w-5 h-5 object-contain" /></div>' +
             '<h4 class="font-extrabold text-xs sm:text-sm text-slate-800 pt-1.5">' + pack.diamonds + '</h4>' +
             '<span class="text-[9px] font-extrabold text-emerald-600">' + pack.bonus + '</span></div>' +
@@ -2980,7 +3047,7 @@
     // ── 1. Force Clean & Register Fresh Service Worker v6.0 (FF India Theme) ──
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=6.0')
+        navigator.serviceWorker.register('sw.js?v=7.0')
           .then(function(reg) {
             reg.update();
             console.log('Service Worker v6.0 active (FF India)');
