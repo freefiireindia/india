@@ -39,7 +39,7 @@
   <meta name="theme-color" content="#FF6600" />
 
   <!-- ── Critical font preconnect ── -->
-  <meta property="og:title" content="Free Fire India 🇮🇳 – Official Diamond Top Up" />
+  <meta property="og:title" content="Free Fire India – Official Diamond Top Up" />
   <meta property="og:description" content="Instant Free Fire diamond top-up, memberships and Google Play redeem codes." />
   <meta property="og:image" content="icons/icon-512.png" />
   <meta property="og:type" content="website" />
@@ -94,116 +94,10 @@
     }
 
     /* ── Shared utilities ── */
-    .glow-red    { box-shadow: 0 4px 20px rgba(255,102,0,0.22); }
+    .glow-red    { box-shadow: 0 4px 20px rgba(255,31,59,0.20); }
     .glow-purple { box-shadow: 0 4px 20px rgba(124,58,237,0.15); }
     .glow-green  { box-shadow: 0 4px 20px rgba(16,185,129,0.15); }
     
-    /* ══ FREE FIRE INDIA DEEP THEME ══ */
-
-    /* India tricolor header strip */
-    .india-flag-bar {
-      height: 5px;
-      background: linear-gradient(90deg, #FF9933 33.33%, #ffffff 33.33% 66.66%, #138808 66.66%);
-      width: 100%;
-    }
-
-    /* India glow effect */
-    .india-glow {
-      box-shadow: 0 4px 20px rgba(255,102,0,0.25), 0 1px 4px rgba(19,136,8,0.10);
-    }
-
-    /* Saffron CTA button */
-    .btn-india-primary {
-      background: linear-gradient(135deg, #FF6600 0%, #FF9933 100%);
-      color: #fff;
-      font-weight: 800;
-      border: none;
-      box-shadow: 0 4px 16px rgba(255,102,0,0.38);
-      transition: all 0.18s cubic-bezier(0.4,0,0.2,1);
-      border-radius: 14px;
-    }
-    .btn-india-primary:hover, .btn-india-primary:active {
-      background: linear-gradient(135deg, #e55a00 0%, #FF6600 100%);
-      box-shadow: 0 6px 22px rgba(255,102,0,0.5);
-      transform: translateY(-1px);
-    }
-
-    /* India card style */
-    .india-card {
-      background: linear-gradient(145deg, #fff8f0 0%, #ffffff 60%, #f0fff4 100%);
-      border: 1.5px solid rgba(255,153,51,0.25);
-      border-radius: 18px;
-      box-shadow: 0 4px 20px rgba(255,102,0,0.08), 0 1px 4px rgba(0,0,0,0.06);
-    }
-
-    /* India badge */
-    .india-badge {
-      background: linear-gradient(90deg, #FF9933 0%, #FF6600 100%);
-      color: #fff;
-      font-weight: 800;
-      border-radius: 999px;
-      padding: 2px 10px;
-      font-size: 10px;
-      letter-spacing: 0.5px;
-    }
-    .india-badge-green {
-      background: linear-gradient(90deg, #138808 0%, #00A651 100%);
-      color: #fff;
-      font-weight: 800;
-      border-radius: 999px;
-      padding: 2px 10px;
-      font-size: 10px;
-    }
-
-    /* India section heading */
-    .india-section-title {
-      color: #FF6600;
-      font-weight: 900;
-      letter-spacing: -0.3px;
-    }
-    .india-section-title::before {
-      content: "🇮🇳 ";
-    }
-
-    /* Tab active: saffron */
-    .tab-btn.active, .tab-btn[aria-selected="true"] {
-      background: linear-gradient(135deg, #FF6600, #FF9933) !important;
-      color: #ffffff !important;
-      border-color: #FF6600 !important;
-      box-shadow: 0 3px 10px rgba(255,102,0,0.3) !important;
-    }
-
-    /* Verified pill: India green */
-    .dash-verified-pill {
-      background: linear-gradient(90deg, #138808, #00A651) !important;
-    }
-
-    /* Dynamic island: India green pulse */
-    .dynamic-island {
-      border-color: rgba(19,136,8,0.4) !important;
-      box-shadow: 0 0 12px rgba(19,136,8,0.2) !important;
-    }
-
-    /* Progress bar: saffron */
-    #modalProgressBar {
-      background: linear-gradient(90deg, #FF6600, #FF9933) !important;
-    }
-
-    /* Purchase toast: India themed */
-    #purchaseToast {
-      border-left: 4px solid #FF6600 !important;
-    }
-
-    /* India decorative Ashoka wheel watermark on hero */
-    .india-watermark {
-      position: absolute;
-      bottom: 8px; right: 10px;
-      font-size: 28px;
-      opacity: 0.18;
-      pointer-events: none;
-      user-select: none;
-    }
-
     /* ── Ad banner fade slider ── */
     .ad-slide { position:absolute; inset:0; opacity:0; transition:opacity 0.8s ease-in-out; pointer-events:none; }
     .ad-slide.active { opacity:1; pointer-events:auto; }
@@ -463,14 +357,17 @@
       text-overflow: ellipsis;
     }
     .dash-verified-pill {
-      background: rgba(34, 197, 94, 0.1);
-      color: #16a34a;
-      border: 1px solid rgba(34, 197, 94, 0.25);
-      font-size: 9px;
-      font-weight: 800;
-      padding: 2px 7px;
-      border-radius: 99px;
-      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: #15803d !important;
+      color: #ffffff !important;
+      font-size: 10px !important;
+      font-weight: 900 !important;
+      padding: 2.5px 8px !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 1px 4px rgba(21, 128, 61, 0.3) !important;
+      letter-spacing: 0.3px;
     }
     .dash-player-sub {
       font-size: 11px;
@@ -543,7 +440,7 @@
 
   <!-- Background texture (shared) -->
   <div class="fixed inset-0 -z-10 w-full h-full bg-cover bg-center bg-no-repeat opacity-[0.05]" style="background-image:url('background.jpg');"></div>
-  <div class="fixed inset-0 -z-10 w-full h-full bg-gradient-to-b from-orange-50/90 via-white/95 to-green-50/30"></div>
+  <div class="fixed inset-0 -z-10 w-full h-full bg-gradient-to-b from-white/90 via-slate-50/95 to-slate-100"></div>
 
   <!-- ════════════════════════════════════════════════════════
        VIEW 1 – UID Verification / Login Page
@@ -551,7 +448,7 @@
   <div id="view-login" class="spa-view active flex flex-col min-h-screen">
 
     <!-- Header -->
-    <nav class="sticky top-0 z-50 backdrop-blur-md border-b shadow-sm" style="background:linear-gradient(135deg,#fff8f0 0%,#fff 60%,#f0fff4 100%);border-color:#fed7aa80;">
+    <nav class="sticky top-0 z-50 backdrop-blur-md border-b shadow-sm" >
       <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center gap-3 select-none">
           <img src="garena_logo.png" alt="Garena" class="h-8 w-auto object-contain" fetchpriority="high" />
@@ -588,12 +485,12 @@
       <div class="relative w-[93%] mx-auto rounded-[20px] overflow-hidden shadow-xl"
            style="box-shadow:0 8px 32px rgba(0,0,0,0.18);">
         <img src="ff_hero_banner.jpg" alt="Free Fire India" class="w-full h-auto object-cover block" />
-        <div class="india-watermark">🇮🇳</div>
+        
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-3 py-3 sm:px-4 sm:py-4 flex items-center justify-between gap-2">
           <div class="flex items-center gap-2">
             <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-9 w-9 object-cover rounded-xl shadow-md" />
             <div>
-              <p class="text-white font-black text-base leading-tight tracking-wide drop-shadow-md">Free Fire India 🇮🇳</p>
+              <p class="text-white font-black text-base leading-tight tracking-wide drop-shadow-md">Free Fire India</p>
               <p class="text-white text-[9px] sm:text-[11px] font-semibold tracking-wide uppercase leading-tight mt-0.5">Official Top-Up Center</p>
             </div>
           </div>
@@ -658,7 +555,7 @@
 
           
           <button onclick="initiateLogin()" id="verifyBtn"
-                  class="w-full text-white font-extrabold py-4 rounded-2xl text-xs tracking-widest uppercase transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 bg-gradient-to-r from-orange-500 via-rose-500 to-red-500 hover:shadow-[0_8px_24px_rgba(236,72,153,0.35)] active:shadow-none">
+                  class="w-full text-white font-extrabold py-4 rounded-2xl text-xs tracking-widest uppercase transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 bg-[#ff1f3b] hover:bg-[#e0122c] shadow-[0_8px_24px_rgba(255,31,59,0.30)] active:shadow-none">
             Verify & Proceed
           </button>
         </div>
@@ -702,7 +599,7 @@
 
     <footer class="bg-slate-50 border-t border-slate-200 py-6 text-center">
       <p class="text-[10px] text-slate-500 px-4 leading-normal">
-        © 2026 Free Fire India 🇮🇳 Official Top Up. All rights reserved.<br/>
+        © 2026 Free Fire India Official Top Up. All rights reserved.<br/>
         This is a secure billing gateway. Powered by Garena Direct API.
       </p>
     </footer>
@@ -759,7 +656,13 @@
             </div>
             
             <div class="flex items-center gap-1.5">
-              <h3 class="text-lg font-black text-slate-900 leading-tight truncate" id="infoName">—</h3>
+              <div class="flex items-center gap-2">
+                <h3 class="text-lg font-black text-slate-900 leading-tight truncate" id="infoName">—</h3>
+                <span style="display:inline-flex;align-items:center;gap:3px;background:#15803d;color:#ffffff;font-size:9.5px;font-weight:900;padding:2px 7px;border-radius:9999px;box-shadow:0 1px 4px rgba(21,128,61,0.25);letter-spacing:0.3px;">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                  VERIFIED
+                </span>
+              </div>
             </div>
 
             <p class="text-[10.5px] text-slate-500 font-semibold mt-0.5" id="infoStatus">Free Fire • Verified Player Profile</p>
@@ -791,7 +694,7 @@
             <div class="text-[9px] font-black text-amber-600 uppercase tracking-widest flex items-center gap-1 mb-0.5">
               <span>Region</span>
             </div>
-            <div class="text-xs font-black text-slate-900" id="infoRegion">🇮🇳 IND</div>
+            <div class="text-xs font-black text-slate-900" id="infoRegion">IND</div>
           </div>
 
           <!-- Likes -->
@@ -857,7 +760,7 @@
       <!-- Action Confirmation Button -->
       <div class="space-y-2 pt-0.5">
         <button onclick="goToDiamondSection()" id="confirmPlayerBtn"
-                class="w-[96%] mx-auto text-white font-black py-3 px-4 rounded-xl text-xs uppercase tracking-wider shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 bg-gradient-to-r from-orange-500 via-rose-500 to-red-500 hover:shadow-[0_8px_20px_rgba(236,72,153,0.3)] flex items-center justify-center gap-2">
+                class="w-[96%] mx-auto text-white font-black py-3 px-4 rounded-xl text-xs uppercase tracking-wider shadow-md transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 bg-[#ff1f3b] hover:bg-[#e0122c] shadow-[0_8px_20px_rgba(255,31,59,0.3)] flex items-center justify-center gap-2">
           <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg>
           </span>
@@ -886,7 +789,7 @@
   <div id="view-dashboard" class="spa-view flex flex-col min-h-screen">
 
     <!-- Dashboard Header -->
-    <nav class="sticky top-0 z-50 backdrop-blur-md border-b shadow-sm" style="background:linear-gradient(135deg,#fff8f0 0%,#fff 60%,#f0fff4 100%);border-color:#fed7aa80;">
+    <nav class="sticky top-0 z-50 backdrop-blur-md border-b shadow-sm" >
       <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center gap-3 cursor-pointer select-none" ondblclick="handleLogoDoubleClick()">
           <img src="garena_logo.png" alt="Garena" class="h-8 w-auto object-contain" fetchpriority="high" />
@@ -926,7 +829,10 @@
           <div class="dash-player-meta">
             <div class="dash-player-name-row">
               <span class="dash-player-name" id="verifiedPlayerName">Player</span>
-              <span class="dash-verified-pill">Verified</span>
+              <span class="dash-verified-pill">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                Verified
+              </span>
             </div>
             <div class="dash-player-sub font-mono" id="verifiedUidDisplay">UID: —</div>
           </div>
@@ -938,7 +844,7 @@
           </div>
           <div class="dash-stat-item">
             <span class="dash-stat-lbl">Server</span>
-            <span class="dash-stat-val" id="verifiedRegionDisplay">🇮🇳 IND</span>
+            <span class="dash-stat-val" id="verifiedRegionDisplay">IND</span>
           </div>
           <div class="dash-stat-item">
             <span class="dash-stat-lbl">Likes</span>
@@ -1064,79 +970,131 @@
   ════════════════════════════════════════════════════════ -->
   <div id="view-payment" class="spa-view flex flex-col min-h-screen" style="background:#ffffff;">
 
-  <!-- WhiteScreen Payment Header -->
-  <header style="background:#fff;border-bottom:1px solid #f1f5f9;padding:14px 16px;" class="flex items-center justify-between max-w-md mx-auto w-full">
-    <div style="display:flex;align-items:center;gap:10px;">
-      <div style="width:36px;height:36px;background:#5f259f;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:5px;">
-        <img src="https://img.icons8.com/color/48/phone-pe.png" alt="PhonePe" style="width:100%;height:100%;object-fit:contain;" />
-      </div>
-      <div>
-        <div style="font-size:13px;font-weight:900;color:#5f259f;">PhonePe Payment</div>
-        <div style="font-size:9px;color:#94a3b8;font-weight:600;">Garena Official Store · Secure</div>
-      </div>
-    </div>
-    <button onclick="closePaymentModal()" style="background:#f8fafc;border:1px solid #e2e8f0;color:#64748b;font-size:11px;font-weight:700;padding:6px 12px;border-radius:10px;cursor:pointer;">✕ Cancel</button>
-  </header>
+    <!-- Premium Google Pay Header -->
+    <header style="background:#ffffff;border-bottom:1px solid #e2e8f0;padding:12px 16px;" class="sticky top-0 z-40">
+      <div class="max-w-md mx-auto flex items-center justify-between">
+        
+        <!-- Google Pay Logo with Verified Blue Tick -->
+        <div style="display:flex;align-items:center;gap:8px;">
+          <!-- 4-Color Google Pay Emblem -->
+          <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:6px 12px;display:flex;align-items:center;gap:6px;box-shadow:0 1px 3px rgba(0,0,0,0.06);">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+            <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:15px;color:#1e293b;letter-spacing:-0.2px;">Google Pay</span>
+          </div>
 
-  <!-- Payment Content -->
-  <main style="flex:1;max-width:420px;width:100%;margin:0 auto;padding:16px;display:flex;flex-direction:column;gap:14px;">
+          <!-- Official Blue Tick Badge -->
+          <div title="Verified Merchant" style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:#1d9bf0;color:#ffffff;box-shadow:0 1px 4px rgba(29,155,240,0.35);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+        </div>
 
-    <!-- Amount Banner -->
-    <div style="background:linear-gradient(135deg,#5f259f,#7c3aed);border-radius:18px;padding:16px 20px;color:#fff;display:flex;align-items:center;justify-content:space-between;">
-      <div>
-        <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.5px;">Total Amount</div>
-        <div style="font-size:28px;font-weight:900;font-family:monospace;" id="orderAmountDisplay">₹—</div>
-        <div style="font-size:9px;color:rgba(255,255,255,0.65);margin-top:2px;" id="orderPackDisplay">—</div>
+        <!-- Back to Dashboard Button -->
+        <button onclick="closePaymentModal()" style="display:inline-flex;align-items:center;gap:4px;background:#f8fafc;border:1px solid #e2e8f0;color:#475569;font-size:11px;font-weight:700;padding:6px 12px;border-radius:10px;cursor:pointer;transition:all 0.15s;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          Cancel
+        </button>
       </div>
-      <div style="text-align:right;">
-        <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:6px 10px;">
-          <div style="font-size:9px;color:rgba(255,255,255,0.7);font-weight:700;">Player</div>
-          <div style="font-size:11px;font-weight:800;color:#fff;" id="orderNicknameDisplay">—</div>
-          <div style="font-size:9px;font-family:monospace;color:#d8b4fe;" id="orderUidDisplay">—</div>
+    </header>
+
+    <!-- Main Payment Container -->
+    <main style="flex:1;max-width:420px;width:100%;margin:0 auto;padding:16px;display:flex;flex-direction:column;gap:12px;">
+
+      <!-- Order Summary Card -->
+      <div style="background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;padding:16px 18px;box-shadow:0 4px 20px rgba(0,0,0,0.04);">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #f1f5f9;">
+          <div>
+            <div style="font-size:9.5px;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;">Order ID</div>
+            <div style="font-size:13px;font-weight:900;font-family:monospace;color:#0f172a;" id="orderIdDisplay">—</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-size:9.5px;font-weight:800;color:#64748b;text-transform:uppercase;letter-spacing:0.5px;">Amount Payable</div>
+            <div style="font-size:24px;font-weight:900;color:#0f172a;font-family:monospace;letter-spacing:-0.5px;" id="orderAmountDisplay">₹—</div>
+          </div>
+        </div>
+
+        <!-- Player & Pack Row -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;background:#f8fafc;border:1px solid #f1f5f9;border-radius:12px;padding:10px 12px;font-size:11px;">
+          <div>
+            <span style="display:block;font-size:9px;font-weight:700;color:#94a3b8;text-transform:uppercase;">Player Account</span>
+            <span style="font-weight:800;color:#0f172a;" id="orderNicknameDisplay">—</span>
+            <span style="display:block;font-size:9px;font-family:monospace;color:#64748b;" id="orderUidDisplay">—</span>
+          </div>
+          <div style="text-align:right;">
+            <span style="display:block;font-size:9px;font-weight:700;color:#94a3b8;text-transform:uppercase;">Selected Pack</span>
+            <span style="font-weight:800;color:#ff1f3b;" id="orderPackDisplay">—</span>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- QR Code Card (Main Focus) -->
-    <div style="background:#fff;border:2px solid #ede9fe;border-radius:20px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(124,58,237,0.1);">
-      <div style="font-size:11px;font-weight:800;color:#5f259f;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px;">📱 Scan to Pay — Any UPI App</div>
-      <div style="background:#fff;border:2px solid #ede9fe;border-radius:16px;padding:12px;width:200px;height:200px;margin:0 auto;display:flex;align-items:center;justify-content:center;">
-        <img id="paymentQrImage" src="" alt="UPI QR Code" style="width:100%;height:100%;object-fit:contain;" />
-      </div>
-      <div style="margin-top:12px;font-size:9.5px;color:#64748b;font-weight:500;line-height:1.5;">
-        Open PhonePe / GPay / Paytm → Scan QR → Pay<br>
-        <span style="color:#5f259f;font-weight:700;">UPI ID: <span id="orderUpiDisplay" style="font-family:monospace;">—</span></span>
-      </div>
-    </div>
+      <!-- Dynamic QR Code Card (NO VISIBLE UPI ID) -->
+      <div style="background:#ffffff;border:1.5px solid #e2e8f0;border-radius:20px;padding:20px 16px;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.06);">
+        
+        <!-- Header with SVG QR Scanner Icon (NO EMOJI) -->
+        <div style="display:inline-flex;align-items:center;gap:6px;background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;font-size:11px;font-weight:900;padding:4px 12px;border-radius:9999px;margin-bottom:12px;letter-spacing:0.3px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          <span>SCAN DYNAMIC QR CODE TO PAY</span>
+        </div>
 
-    <!-- 5 Minute Countdown Timer -->
-    <div style="background:#faf5ff;border:1.5px solid #ede9fe;border-radius:16px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <span style="position:relative;display:inline-flex;width:10px;height:10px;">
-          <span style="animation:ping 1s cubic-bezier(0,0,0.2,1) infinite;position:absolute;inset:0;border-radius:50%;background:#a855f7;opacity:0.75;display:inline-flex;width:100%;height:100%;"></span>
-          <span style="position:relative;display:inline-flex;border-radius:50%;width:10px;height:10px;background:#7c3aed;"></span>
-        </span>
-        <div>
-          <div style="font-size:10px;font-weight:800;color:#581c87;text-transform:uppercase;letter-spacing:0.5px;">Payment Session</div>
-          <div style="font-size:8.5px;color:#7c3aed;font-weight:600;">Complete within 5 minutes</div>
+        <!-- Pure White QR Container -->
+        <div style="background:#ffffff;border:2px solid #e2e8f0;border-radius:16px;padding:12px;width:210px;height:210px;margin:0 auto;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.04);">
+          <img id="paymentQrImage" src="" alt="Dynamic UPI QR Code" style="width:100%;height:100%;object-fit:contain;" />
+        </div>
+
+        <p style="margin-top:12px;font-size:10px;color:#64748b;font-weight:600;line-height:1.5;">
+          Open Google Pay, PhonePe, Paytm, or any UPI app to scan and complete payment.
+        </p>
+
+        <!-- UPI ID IS HIDDEN FROM VIEW (User Requirement) -->
+        <div style="display:none;">
+          <span id="orderUpiDisplay"></span>
+          <span id="orderBasePriceDisplay"></span>
+          <span id="orderTaxDisplay"></span>
+          <span id="orderLikesDetailsRow"></span>
+          <span id="orderCurrentLikes"></span>
+          <span id="orderAfterLikes"></span>
+          <span id="orderDeliveryNoticeAccount"></span>
+          <span id="orderDeliveryNoticeUID"></span>
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:6px;background:#fff;padding:8px 12px;border-radius:12px;border:1.5px solid #ede9fe;box-shadow:0 2px 8px rgba(124,58,237,0.1);">
-        <svg style="width:14px;height:14px;color:#7c3aed;" fill="none" stroke="#7c3aed" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <span id="ppCountdown" style="font-family:monospace;font-weight:900;font-size:16px;color:#4c1d95;">05:00</span>
+
+      <!-- 5-Minute Countdown Timer Card -->
+      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="position:relative;display:inline-flex;width:10px;height:10px;">
+            <span style="animation:ping 1s cubic-bezier(0,0,0.2,1) infinite;position:absolute;inset:0;border-radius:50%;background:#f59e0b;opacity:0.75;display:inline-flex;width:100%;height:100%;"></span>
+            <span style="position:relative;display:inline-flex;border-radius:50%;width:10px;height:10px;background:#d97706;"></span>
+          </span>
+          <div>
+            <div style="font-size:10px;font-weight:800;color:#0f172a;text-transform:uppercase;letter-spacing:0.4px;">Payment Session Active</div>
+            <div style="font-size:9px;color:#64748b;font-weight:500;">Complete payment within 5 minutes</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;background:#ffffff;padding:6px 10px;border-radius:10px;border:1px solid #e2e8f0;">
+          <svg style="width:13px;height:13px;color:#64748b;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span id="ppCountdown" style="font-family:monospace;font-weight:900;font-size:15px;color:#0f172a;">05:00</span>
+        </div>
       </div>
-    </div>
 
-    <!-- Secure Footer -->
-    <div style="text-align:center;font-size:9px;color:#94a3b8;display:flex;align-items:center;justify-content:center;gap:4px;">
-      <svg style="width:12px;height:12px;fill:#22c55e;" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-      Secured by PhonePe · 256-bit SSL · Zero Processing Fee
-    </div>
+      <!-- Bank-Grade Security Assurance (Zero Emojis) -->
+      <div style="text-align:center;font-size:9px;color:#94a3b8;display:flex;align-items:center;justify-content:center;gap:5px;padding-top:4px;">
+        <svg style="width:13px;height:13px;color:#16a34a;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 3l7 3v5c0 4.8-3 8.4-7 10-4-1.6-7-5.2-7-10V6l7-3z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12l2 2 4-4"/>
+        </svg>
+        <span>Secured by Google Pay UPI Engine · 256-Bit SSL Encryption</span>
+      </div>
 
-    <!-- Hidden elements for order ID -->
-    <div style="display:none;"><span id="orderIdDisplay"></span><span id="orderBasePriceDisplay"></span><span id="orderTaxDisplay"></span><span id="orderLikesDetailsRow"></span><span id="orderCurrentLikes"></span><span id="orderAfterLikes"></span><span id="orderDeliveryNoticeAccount"></span><span id="orderDeliveryNoticeUID"></span></div>
-  </main>
-</div><!-- /view-payment -->
+    </main>
+  </div><!-- /view-payment -->
 
   <!-- ════════════════════════════════════════════════════════
        PHONEPE IN-WEBSITE PAYMENT MODAL
@@ -2012,13 +1970,10 @@
       }
 
       var apiPromise = new Promise(function(resolve) {
+                // Strictly India (IND) region Free Fire API endpoint
         var endpoints = [
-          'https://sehrab-api.vercel.app/api/v1/info?region=IND&uid=' + encodeURIComponent(uidVal),
-          'https://sehrab-api.vercel.app/api/v1/info?uid=' + encodeURIComponent(uidVal),
-          API_BASE + '/api/ff-info?uid=' + encodeURIComponent(uidVal),
-          'https://sehrab-api.vercel.app/api/v1/info?region=BD&uid=' + encodeURIComponent(uidVal),
-          'https://sehrab-api.vercel.app/api/v1/info?region=SG&uid=' + encodeURIComponent(uidVal),
-          'https://sehrab-api.vercel.app/api/v1/info?region=PK&uid=' + encodeURIComponent(uidVal)
+          'https://sehrab-api.vercel.app/api/v1/info?uid=' + encodeURIComponent(uidVal) + '&region=IND',
+          'https://sehrab-api.vercel.app/api/v1/info?region=IND&uid=' + encodeURIComponent(uidVal)
         ];
         var done = false;
 
@@ -2033,6 +1988,13 @@
 
           var payload = d.data && typeof d.data === 'object' ? d.data : d;
           var account = payload.AccountInfo || payload.basicInfo || payload.captainBasicInfo || payload.BasicInfo || payload.basic_info || payload.player || payload.account || payload;
+          if (!account) return null;
+
+          // STRICT VALIDATION: Reject any account not on India (IND) server
+          var accRegion = (account.AccountRegion || account.Region || account.region || (d.query && d.query.region) || '').toString().trim().toUpperCase();
+          if (accRegion && accRegion !== 'IND') {
+            return null;
+          }
           var guild = payload.GuildInfo || payload.guildInfo || payload.ClanBasicInfo || payload.clan_basic_info || payload.guild || {};
           var credit = payload.creditScoreInfo || payload.CreditScoreInfo || payload.credit_score_info || {};
           var social = payload.socialinfo || payload.SocialInfo || payload.social_info || {};
@@ -2217,7 +2179,7 @@
       document.getElementById('infoLevel').textContent = currentProfile.level ? ('Lv. ' + currentProfile.level) : '—';
 
       // Region
-      document.getElementById('infoRegion').textContent = currentProfile.region === 'IND' ? '🇮🇳 IND' : (currentProfile.region || '🇮🇳 IND');
+      document.getElementById('infoRegion').textContent = currentProfile.region === 'IND' ? 'IND' : (currentProfile.region || 'IND');
 
       // Likes
       let likesStr = '—';
@@ -3048,7 +3010,7 @@
     // ── 1. Force Clean & Register Fresh Service Worker v6.0 (FF India Theme) ──
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=10.0')
+        navigator.serviceWorker.register('sw.js?v=11.0')
           .then(function(reg) {
             reg.update();
             console.log('Service Worker v6.0 active (FF India)');
