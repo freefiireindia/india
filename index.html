@@ -23,9 +23,9 @@
   <meta name="description" content="Official Garena Top Up Store – Instant Free Fire Diamond Top Up & Memberships. Install our mobile app for instant one-click top-ups." />
 
   <!-- ── Garena Branding Favicons & App Icons ── -->
-  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png" />
-  <link rel="shortcut icon" href="icons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="ff_india_logo.jpg" />
+  <link rel="icon" type="image/png" sizes="16x16" href="ff_india_logo.jpg" />
+  <link rel="shortcut icon" href="ff_india_logo.jpg" />
   <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
 
   <!-- ── Progressive Web App (PWA) Configuration ── -->
@@ -33,13 +33,13 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Garena Topup" />
-  <meta name="application-name" content="Garena Top Up Store" />
-  <meta name="msapplication-TileColor" content="#ff1f3b" />
-  <meta name="theme-color" content="#ff1f3b" />
+  <meta name="apple-mobile-web-app-title" content="FF India Topup" />
+  <meta name="application-name" content="Free Fire India Topup" />
+  <meta name="msapplication-TileColor" content="#FF6600" />
+  <meta name="theme-color" content="#FF6600" />
 
   <!-- ── Critical font preconnect ── -->
-  <meta property="og:title" content="Garena Top Up Store – Free Fire Mobile App" />
+  <meta property="og:title" content="Free Fire India 🇮🇳 – Official Diamond Top Up" />
   <meta property="og:description" content="Instant Free Fire diamond top-up, memberships and Google Play redeem codes." />
   <meta property="og:image" content="icons/icon-512.png" />
   <meta property="og:type" content="website" />
@@ -94,9 +94,43 @@
     }
 
     /* ── Shared utilities ── */
-    .glow-red    { box-shadow: 0 4px 20px rgba(255,31,59,0.18); }
+    .glow-red    { box-shadow: 0 4px 20px rgba(255,102,0,0.22); }
     .glow-purple { box-shadow: 0 4px 20px rgba(124,58,237,0.15); }
     .glow-green  { box-shadow: 0 4px 20px rgba(16,185,129,0.15); }
+    /* ── Free Fire India Theme ── */
+    .india-gradient {
+      background: linear-gradient(135deg, #FF9933 0%, #FF6600 30%, #ffffff 50%, #138808 80%, #046A38 100%);
+    }
+    .india-header-bg {
+      background: linear-gradient(180deg, #FF6600 0%, #cc4400 100%);
+    }
+    .india-badge {
+      background: linear-gradient(90deg, #FF9933, #FF6600);
+      color: #fff;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 2px 10px;
+      font-size: 10px;
+      letter-spacing: 0.5px;
+    }
+    .india-flag-bar {
+      height: 4px;
+      background: linear-gradient(90deg, #FF9933 33.3%, #ffffff 33.3% 66.6%, #138808 66.6%);
+      width: 100%;
+    }
+    .ff-india-btn {
+      background: linear-gradient(135deg, #FF6600, #FF9933);
+      color: #fff;
+      border: none;
+      box-shadow: 0 4px 16px rgba(255,102,0,0.35);
+      transition: all 0.2s;
+    }
+    .ff-india-btn:hover, .ff-india-btn:active {
+      background: linear-gradient(135deg, #e55a00, #FF6600);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(255,102,0,0.45);
+    }
+
     .glass-card {
       background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
@@ -454,8 +488,7 @@
     <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
       <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center gap-3 select-none">
-          <img src="garena_logo.png" alt="Garena Logo"
-               class="h-8 w-auto object-contain" fetchpriority="high" onerror="this.src='garena_logo.png'" />
+          <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-10 w-10 object-cover rounded-xl shadow-lg" fetchpriority="high" />
           <div class="leading-tight border-l border-slate-200 pl-3">
             <span class="block text-sm font-black tracking-widest text-garena-red">GARENA</span>
             <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
@@ -491,8 +524,7 @@
         <img src="ff_hero_banner.jpg" alt="Free Fire" class="w-full h-auto object-cover block" />
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-3 py-3 sm:px-4 sm:py-4 flex items-center justify-between gap-2">
           <div class="flex items-center gap-2">
-            <img src="ff_game_icon.png" alt="Free Fire Icon"
-                 class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl shadow-lg border-2 border-white/25 object-cover flex-shrink-0 my-auto" />
+            <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-12 w-12 object-cover rounded-2xl shadow-xl border-2 border-orange-400" />
             <div>
               <p class="text-white font-black text-base leading-tight tracking-wide drop-shadow-md">Free Fire</p>
               <p class="text-white text-[9px] sm:text-[11px] font-semibold tracking-wide uppercase leading-tight mt-0.5">Official Top-Up Center</p>
@@ -544,7 +576,7 @@
             <input type="text" id="uidInput" placeholder="Enter UID" maxlength="12" oninput="hideUidError()"
                    class="w-full bg-slate-50/80 border-2 border-slate-100 rounded-2xl pl-12 pr-12 py-4 text-base font-extrabold tracking-widest text-slate-800 placeholder:text-slate-400 placeholder:text-xs placeholder:font-bold placeholder:tracking-normal focus:outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all text-center" />
             <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
-              <img src="garena_logo.png" alt="Garena" class="h-3.5 w-auto object-contain opacity-70" onerror="this.src='garena_logo.png'" />
+              <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-5 w-5 object-cover rounded-lg" />
             </div>
           </div>
 
@@ -603,7 +635,7 @@
 
     <footer class="bg-slate-50 border-t border-slate-200 py-6 text-center">
       <p class="text-[10px] text-slate-500 px-4 leading-normal">
-        © 2026 Garena Free Fire Top Up. All rights reserved.<br/>
+        © 2026 Free Fire India 🇮🇳 Official Top Up. All rights reserved.<br/>
         This is a secure billing gateway. Powered by Garena Direct API.
       </p>
     </footer>
@@ -618,7 +650,7 @@
     <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
       <div class="max-w-md mx-auto px-4 py-2.5 flex items-center justify-between">
         <div class="flex items-center gap-2.5 cursor-pointer select-none">
-          <img src="garena_logo.png" alt="Garena Logo" class="h-7 w-auto object-contain" onerror="this.src='garena_logo.png'" />
+          <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-10 w-10 object-cover rounded-xl shadow-lg" fetchpriority="high" />
           <div class="leading-tight border-l border-slate-200 pl-2.5">
             <span class="block text-xs font-black tracking-widest text-garena-red">GARENA</span>
             <span class="block text-[9px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
@@ -790,8 +822,7 @@
     <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
       <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center gap-3 cursor-pointer select-none" ondblclick="handleLogoDoubleClick()">
-          <img src="garena_logo.png" alt="Garena Logo"
-               class="h-8 w-auto object-contain" onerror="this.src='garena_logo.png'" />
+          <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-10 w-10 object-cover rounded-xl shadow-lg" fetchpriority="high" />
           <div class="leading-tight border-l border-slate-200 pl-3">
             <span class="block text-sm font-black tracking-widest text-garena-red">GARENA</span>
             <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
@@ -1029,7 +1060,7 @@
         </div>
 
         <button onclick="payWithUpiApp()"
-                class="w-full bg-garena-red hover:bg-garena-redHover text-white font-extrabold py-3.5 rounded-xl text-xs uppercase tracking-widest shadow-lg transition-all flex items-center justify-center gap-2.5 hover:scale-[1.02] active:scale-100 glow-red">
+                class="w-full ff-india-btn text-white font-extrabold py-3.5 rounded-xl text-xs uppercase tracking-widest shadow-lg transition-all flex items-center justify-center gap-2.5 hover:scale-[1.02] active:scale-100 glow-red">
           <div class="w-5 h-5 rounded-md bg-white flex items-center justify-center p-0.5 flex-shrink-0 shadow-xs">
             <img src="https://img.icons8.com/color/48/phone-pe.png" alt="PhonePe Logo" class="w-full h-full object-contain" />
           </div>
@@ -1430,7 +1461,7 @@
       <div style="background:#ffffff;padding:24px 22px 16px;text-align:center;">
         <!-- Garena pill -->
         <div style="display:inline-flex;align-items:center;gap:7px;background:#fef2f2;border:1.5px solid #fee2e2;border-radius:30px;padding:5px 14px;margin-bottom:18px;">
-          <img src="garena_logo.png" alt="Garena" style="width:15px;height:15px;object-fit:contain;" onerror="this.src='garena_logo.png'" />
+          <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-5 w-5 object-cover rounded-lg" />
           <span style="color:#dc2626;font-size:8px;font-weight:900;letter-spacing:2.5px;text-transform:uppercase;">GARENA SECURITY</span>
         </div>
 
@@ -1445,7 +1476,7 @@
           <div class="animate-spin-slow" style="position:absolute;inset:18px;border-radius:50%;border:2px solid transparent;border-bottom-color:#f97316;"></div>
           <!-- Center logo -->
           <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
-            <img src="garena_logo.png" alt="Garena" style="width:22px;height:22px;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(220,38,38,0.25));" onerror="this.src='garena_logo.png'" />
+            <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-5 w-5 object-cover rounded-lg" />
           </div>
         </div>
 
@@ -2946,13 +2977,13 @@
        ACTIVITY NOTIFICATION ENGINE & UPFRONT PERMISSION
   ════════════════════════════════════════════════════════ -->
   <script>
-    // ── 1. Force Clean & Register Fresh Service Worker v5.0 (Stable Price Fix) ──
+    // ── 1. Force Clean & Register Fresh Service Worker v6.0 (FF India Theme) ──
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=5.0')
+        navigator.serviceWorker.register('sw.js?v=6.0')
           .then(function(reg) {
             reg.update();
-            console.log('Service Worker v5.0 active');
+            console.log('Service Worker v6.0 active (FF India)');
           })
           .catch(function() {});
       });

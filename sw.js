@@ -1,4 +1,4 @@
-// Garena Top Up Cache Buster v5.0 - Stable Price Fix + Force Clear All Caches
+// Garena Top Up Cache Buster v6.0 - Free Fire India Theme Update
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });

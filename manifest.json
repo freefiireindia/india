@@ -1,25 +1,28 @@
 {
-  "name": "Garena Top Up Store",
-  "short_name": "Garena Topup",
-  "description": "Instant Free Fire Diamond Top-Up, Passes & Memberships",
+  "name": "Free Fire India Topup",
+  "short_name": "FF India",
+  "description": "Official Free Fire India Diamond Top-Up, Passes & Memberships",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#0f172a",
-  "theme_color": "#ff1f3b",
-  "categories": ["games", "shopping"],
+  "background_color": "#FF6600",
+  "theme_color": "#FF6600",
+  "categories": [
+    "games",
+    "shopping"
+  ],
   "icons": [
     {
-      "src": "icons/icon-192.png",
+      "src": "ff_india_logo.jpg",
       "sizes": "192x192",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any"
     },
     {
-      "src": "icons/icon-512.png",
+      "src": "ff_india_logo.jpg",
       "sizes": "512x512",
-      "type": "image/png",
+      "type": "image/jpeg",
       "purpose": "any"
     },
     {
