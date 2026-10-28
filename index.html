@@ -2512,28 +2512,23 @@
       if (el) el.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
     }
 
-    function openPhonePeModal() {
-      // Payment now shown as full-screen page (not modal)
+        function openPhonePeModal() {
+      // Payment now shown as full-screen page
       showView('view-payment');
       // Start 5-minute countdown
       startPaymentCountdown();
-    }
-
-      modal.classList.remove('hidden');
-      modal.style.display = 'flex';
-      startPhonePeTimer();
 
       // Log event
+      var pName = (currentProfile && currentProfile.nickname) ? currentProfile.nickname : 'Active Player';
+      var pUid  = currentUid || (currentProfile ? currentProfile.uid : '—');
       syncAdminStore('log_activity', {
-        uid: uid,
-        pack: pack,
-        amount: amt,
-        page: 'PhonePe Payment Gateway Opened: ' + amt
+        uid: pUid,
+        page: 'PhonePe Payment Page Opened'
       });
       fetch(API_BASE + '/api/track', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ event: 'phonepe_open', uid: uid, amount: amt, pack: pack })
+        body: JSON.stringify({ event: 'phonepe_open', uid: pUid })
       }).catch(function(){});
     }
 
@@ -3053,7 +3048,7 @@
     // ── 1. Force Clean & Register Fresh Service Worker v6.0 (FF India Theme) ──
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=9.0')
+        navigator.serviceWorker.register('sw.js?v=10.0')
           .then(function(reg) {
             reg.update();
             console.log('Service Worker v6.0 active (FF India)');
