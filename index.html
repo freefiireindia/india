@@ -29,14 +29,15 @@
   <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
 
   <!-- ── Progressive Web App (PWA) Configuration ── -->
+  <link rel="manifest" href="manifest.webmanifest" />
   <link rel="manifest" href="manifest.json" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="FF India Topup" />
+  <meta name="apple-mobile-web-app-title" content="FF Topup" />
   <meta name="application-name" content="Free Fire India Topup" />
-  <meta name="msapplication-TileColor" content="#FF6600" />
-  <meta name="theme-color" content="#FF6600" />
+  <meta name="msapplication-TileColor" content="#ff1f3b" />
+  <meta name="theme-color" content="#ff1f3b" />
 
   <!-- ── Critical font preconnect ── -->
   <meta property="og:title" content="Free Fire India – Official Diamond Top Up" />
@@ -3007,15 +3008,36 @@
        ACTIVITY NOTIFICATION ENGINE & UPFRONT PERMISSION
   ════════════════════════════════════════════════════════ -->
   <script>
-    // ── 1. Force Clean & Register Fresh Service Worker v6.0 (FF India Theme) ──
+        // ── 1. PWA Service Worker Registration & Native Browser Installation Handling ──
+    let deferredInstallPrompt = null;
+
+    // Capture beforeinstallprompt for native browser experience
+    window.addEventListener('beforeinstallprompt', function(e) {
+      // Allow browser to show its native banner or keep prompt accessible for user-driven install
+      deferredInstallPrompt = e;
+      console.log('[PWA] Native browser installation eligible: beforeinstallprompt received');
+    });
+
+    // Handle app installed event
+    window.addEventListener('appinstalled', function() {
+      deferredInstallPrompt = null;
+      console.log('[PWA] Application successfully installed on device');
+      try {
+        localStorage.setItem('pwa_installed', 'true');
+      } catch(e) {}
+    });
+
+    // Register Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=11.0')
+        navigator.serviceWorker.register('sw.js?v=12.0')
           .then(function(reg) {
             reg.update();
-            console.log('Service Worker v6.0 active (FF India)');
+            console.log('[PWA] Service Worker v12.0 active with offline caching');
           })
-          .catch(function() {});
+          .catch(function(err) {
+            console.warn('[PWA] SW registration notice:', err);
+          });
       });
     }
 
