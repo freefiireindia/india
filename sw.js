@@ -1,4 +1,4 @@
-// Garena Top Up Cache Buster v8.0 - Free Fire India Theme Update
+// Garena Top Up Cache Buster v9.0 - Free Fire India Theme Update
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });

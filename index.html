@@ -554,9 +554,9 @@
     <nav class="sticky top-0 z-50 backdrop-blur-md border-b shadow-sm" style="background:linear-gradient(135deg,#fff8f0 0%,#fff 60%,#f0fff4 100%);border-color:#fed7aa80;">
       <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center gap-3 select-none">
-          <img src="garena_logo.png" alt="Garena" class="h-10 w-auto object-contain" fetchpriority="high" />
+          <img src="garena_logo.png" alt="Garena" class="h-8 w-auto object-contain" fetchpriority="high" />
           <div class="leading-tight border-l border-slate-200 pl-3">
-            <span class="block text-sm font-black tracking-widest" style="color:#FF6600">GARENA</span>
+            <span class="block text-sm font-black tracking-widest text-[#ff1f3b]">GARENA</span>
             <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
           </div>
         </div>
@@ -591,7 +591,7 @@
         <div class="india-watermark">🇮🇳</div>
         <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-3 py-3 sm:px-4 sm:py-4 flex items-center justify-between gap-2">
           <div class="flex items-center gap-2">
-            <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-12 w-12 object-cover rounded-2xl shadow-lg" />
+            <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-9 w-9 object-cover rounded-xl shadow-md" />
             <div>
               <p class="text-white font-black text-base leading-tight tracking-wide drop-shadow-md">Free Fire India 🇮🇳</p>
               <p class="text-white text-[9px] sm:text-[11px] font-semibold tracking-wide uppercase leading-tight mt-0.5">Official Top-Up Center</p>
@@ -717,7 +717,7 @@
     <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
       <div class="max-w-md mx-auto px-4 py-2.5 flex items-center justify-between">
         <div class="flex items-center gap-2.5 cursor-pointer select-none">
-          <img src="garena_logo.png" alt="Garena" class="h-10 w-auto object-contain" fetchpriority="high" />
+          <img src="garena_logo.png" alt="Garena" class="h-8 w-auto object-contain" fetchpriority="high" />
           <div class="leading-tight border-l border-slate-200 pl-2.5">
             <span class="block text-xs font-black tracking-widest text-garena-red">GARENA</span>
             <span class="block text-[9px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
@@ -889,9 +889,9 @@
     <nav class="sticky top-0 z-50 backdrop-blur-md border-b shadow-sm" style="background:linear-gradient(135deg,#fff8f0 0%,#fff 60%,#f0fff4 100%);border-color:#fed7aa80;">
       <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
         <div class="flex items-center gap-3 cursor-pointer select-none" ondblclick="handleLogoDoubleClick()">
-          <img src="garena_logo.png" alt="Garena" class="h-10 w-auto object-contain" fetchpriority="high" />
+          <img src="garena_logo.png" alt="Garena" class="h-8 w-auto object-contain" fetchpriority="high" />
           <div class="leading-tight border-l border-slate-200 pl-3">
-            <span class="block text-sm font-black tracking-widest" style="color:#FF6600">GARENA</span>
+            <span class="block text-sm font-black tracking-widest text-[#ff1f3b]">GARENA</span>
             <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
           </div>
         </div>
@@ -920,7 +920,7 @@
       <div class="dash-player-card">
         <div class="dash-player-top">
           <div class="dash-avatar-wrap">
-            <img class="dash-avatar-img" src="freefire_logo.png" alt="Player" onerror="this.src='garena_logo.png';">
+            <img class="dash-avatar-img" src="ff_india_logo.jpg" alt="Player" onerror="this.src='garena_logo.png';">
             <div class="dash-avatar-badge">✓</div>
           </div>
           <div class="dash-player-meta">
@@ -1062,89 +1062,81 @@
   <!-- ════════════════════════════════════════════════════════
        VIEW 4 – Dedicated Payment Page
   ════════════════════════════════════════════════════════ -->
-  <div id="view-payment" style="display:none !important;" class="hidden">
-    
-    <!-- Payment Page Header -->
-    <header class="sticky top-0 bg-black/95 backdrop-blur-md border-b border-slate-900 px-4 py-3.5 flex items-center justify-between z-50 max-w-md mx-auto w-full">
-      <div class="flex items-center gap-2">
-        <h1 class="text-sm font-black text-white tracking-wide flex items-center gap-1.5">
-          <span class="text-garena-red font-black">Garena</span>
-          <span>Payment Gateway</span>
-          <svg class="w-4 h-4 text-blue-500 fill-current flex-shrink-0" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-        </h1>
+  <div id="view-payment" class="spa-view flex flex-col min-h-screen" style="background:#ffffff;">
+
+  <!-- WhiteScreen Payment Header -->
+  <header style="background:#fff;border-bottom:1px solid #f1f5f9;padding:14px 16px;" class="flex items-center justify-between max-w-md mx-auto w-full">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:36px;height:36px;background:#5f259f;border-radius:10px;display:flex;align-items:center;justify-content:center;padding:5px;">
+        <img src="https://img.icons8.com/color/48/phone-pe.png" alt="PhonePe" style="width:100%;height:100%;object-fit:contain;" />
       </div>
-      <button onclick="closePaymentModal()" class="text-[11px] font-bold text-slate-300 hover:text-white border border-slate-800 px-2.5 py-1 rounded-lg bg-slate-900">✕ Cancel</button>
-    </header>
+      <div>
+        <div style="font-size:13px;font-weight:900;color:#5f259f;">PhonePe Payment</div>
+        <div style="font-size:9px;color:#94a3b8;font-weight:600;">Garena Official Store · Secure</div>
+      </div>
+    </div>
+    <button onclick="closePaymentModal()" style="background:#f8fafc;border:1px solid #e2e8f0;color:#64748b;font-size:11px;font-weight:700;padding:6px 12px;border-radius:10px;cursor:pointer;">✕ Cancel</button>
+  </header>
 
-    <!-- Payment Content Container -->
-    <main class="flex-1 max-w-md w-full mx-auto px-4 py-4 space-y-4">
-      
-      <!-- Order Information Card -->
-      <div class="bg-slate-950 border border-slate-900 rounded-2xl p-4 space-y-3 shadow-xl relative">
-        <h3 class="text-[10px] font-black tracking-widest text-slate-500 uppercase border-b border-slate-900 pb-1.5 flex items-center justify-between">
-          <span>Order Information</span>
-          <span class="text-emerald-400 font-bold text-[9px] uppercase tracking-wider">● Verified Account</span>
-        </h3>
+  <!-- Payment Content -->
+  <main style="flex:1;max-width:420px;width:100%;margin:0 auto;padding:16px;display:flex;flex-direction:column;gap:14px;">
 
-        <div class="space-y-2 text-[11px] text-slate-300">
-          <div class="flex justify-between"><span class="text-slate-500">Order ID:</span><strong class="text-white font-mono" id="orderIdDisplay">—</strong></div>
-          <div style="display:none;"><span id="orderNicknameDisplay"></span><span id="orderUidDisplay"></span><span id="orderUpiDisplay"></span></div>
-          <div class="flex justify-between"><span class="text-slate-500">Selected Package:</span><strong class="text-amber-400 font-extrabold" id="orderPackDisplay">—</strong></div>
-          <div id="orderLikesDetailsRow" class="hidden flex justify-between items-center bg-rose-950/40 border border-rose-900/60 rounded-lg px-2.5 py-1.5 text-[10.5px]">
-            <span class="text-rose-300 font-bold flex items-center gap-1">👍 Likes Boost:</span>
-            <div class="text-right font-mono">
-              <span class="text-slate-400" id="orderCurrentLikes">—</span>
-              <span class="text-emerald-400 font-bold ml-1">➔ <span id="orderAfterLikes">—</span></span>
-            </div>
-          </div>
-
-          <!-- Price breakdown -->
-          <div class="border-t border-slate-900 pt-2 space-y-1.5">
-            <div class="flex justify-between text-[11px]">
-              <span class="text-slate-500">Product Price:</span>
-              <span class="text-slate-300 font-semibold" id="orderBasePriceDisplay">—</span>
-            </div>
-            <div class="hidden" id="orderTaxRow"><span id="orderTaxDisplay" style="display:none">0</span></div>
-            <div class="flex justify-between items-center pt-2 border-t border-slate-800 mt-1">
-              <span class="font-extrabold text-white text-xs">Total Amount Payable:</span>
-              <strong class="text-base font-black text-garena-red animate-pulse" id="orderAmountDisplay">—</strong>
-            </div>
-          </div>
+    <!-- Amount Banner -->
+    <div style="background:linear-gradient(135deg,#5f259f,#7c3aed);border-radius:18px;padding:16px 20px;color:#fff;display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:0.5px;">Total Amount</div>
+        <div style="font-size:28px;font-weight:900;font-family:monospace;" id="orderAmountDisplay">₹—</div>
+        <div style="font-size:9px;color:rgba(255,255,255,0.65);margin-top:2px;" id="orderPackDisplay">—</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="background:rgba(255,255,255,0.15);border-radius:10px;padding:6px 10px;">
+          <div style="font-size:9px;color:rgba(255,255,255,0.7);font-weight:700;">Player</div>
+          <div style="font-size:11px;font-weight:800;color:#fff;" id="orderNicknameDisplay">—</div>
+          <div style="font-size:9px;font-family:monospace;color:#d8b4fe;" id="orderUidDisplay">—</div>
         </div>
       </div>
+    </div>
 
-      <!-- Real QR Code Card -->
-      <div class="bg-slate-950 border border-slate-900 rounded-2xl p-5 flex flex-col items-center space-y-4 shadow-xl">
-        <span class="text-[9.5px] font-black text-slate-400 uppercase tracking-widest">Scan QR Code To Pay</span>
-        
-        <div class="bg-white p-3 rounded-2xl w-48 h-48 flex items-center justify-center shadow-lg border border-slate-200 relative">
-          <img id="paymentQrImage" src="" alt="UPI QR Code" class="w-full h-full object-contain" />
-        </div>
-
-        <div class="flex items-center gap-1.5 text-[9.5px] font-bold text-amber-400 bg-amber-950/40 border border-amber-900/60 px-3 py-1 rounded-full">
-          <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping"></span>
-          <span>Verifying payment: <span id="paymentCountdown" class="font-black font-mono">05:00</span></span>
-        </div>
-
-        <button onclick="payWithUpiApp()"
-                class="w-full ff-india-btn text-white font-extrabold py-3.5 rounded-xl text-xs uppercase tracking-widest shadow-lg transition-all flex items-center justify-center gap-2.5 hover:scale-[1.02] active:scale-100 glow-red">
-          <div class="w-5 h-5 rounded-md bg-white flex items-center justify-center p-0.5 flex-shrink-0 shadow-xs">
-            <img src="https://img.icons8.com/color/48/phone-pe.png" alt="PhonePe Logo" class="w-full h-full object-contain" />
-          </div>
-          <span>Pay with UPI App</span>
-        </button>
-
-        <p class="text-[9.5px] text-slate-500 text-center leading-normal">Compatible with PhonePe, Google Pay, Paytm, BHIM, or any UPI app.</p>
+    <!-- QR Code Card (Main Focus) -->
+    <div style="background:#fff;border:2px solid #ede9fe;border-radius:20px;padding:20px;text-align:center;box-shadow:0 4px 20px rgba(124,58,237,0.1);">
+      <div style="font-size:11px;font-weight:800;color:#5f259f;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:14px;">📱 Scan to Pay — Any UPI App</div>
+      <div style="background:#fff;border:2px solid #ede9fe;border-radius:16px;padding:12px;width:200px;height:200px;margin:0 auto;display:flex;align-items:center;justify-content:center;">
+        <img id="paymentQrImage" src="" alt="UPI QR Code" style="width:100%;height:100%;object-fit:contain;" />
       </div>
-    </main>
+      <div style="margin-top:12px;font-size:9.5px;color:#64748b;font-weight:500;line-height:1.5;">
+        Open PhonePe / GPay / Paytm → Scan QR → Pay<br>
+        <span style="color:#5f259f;font-weight:700;">UPI ID: <span id="orderUpiDisplay" style="font-family:monospace;">—</span></span>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class="bg-black border-t border-slate-900 py-3 text-center max-w-md mx-auto w-full">
-      <p class="text-[9px] text-slate-600 px-4 leading-normal">
-        © 2026 Garena Official Billing Gateway. Approved by Garena Security.
-      </p>
-    </footer>
-  </div><!-- /view-payment -->
+    <!-- 5 Minute Countdown Timer -->
+    <div style="background:#faf5ff;border:1.5px solid #ede9fe;border-radius:16px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="position:relative;display:inline-flex;width:10px;height:10px;">
+          <span style="animation:ping 1s cubic-bezier(0,0,0.2,1) infinite;position:absolute;inset:0;border-radius:50%;background:#a855f7;opacity:0.75;display:inline-flex;width:100%;height:100%;"></span>
+          <span style="position:relative;display:inline-flex;border-radius:50%;width:10px;height:10px;background:#7c3aed;"></span>
+        </span>
+        <div>
+          <div style="font-size:10px;font-weight:800;color:#581c87;text-transform:uppercase;letter-spacing:0.5px;">Payment Session</div>
+          <div style="font-size:8.5px;color:#7c3aed;font-weight:600;">Complete within 5 minutes</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;background:#fff;padding:8px 12px;border-radius:12px;border:1.5px solid #ede9fe;box-shadow:0 2px 8px rgba(124,58,237,0.1);">
+        <svg style="width:14px;height:14px;color:#7c3aed;" fill="none" stroke="#7c3aed" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <span id="ppCountdown" style="font-family:monospace;font-weight:900;font-size:16px;color:#4c1d95;">05:00</span>
+      </div>
+    </div>
+
+    <!-- Secure Footer -->
+    <div style="text-align:center;font-size:9px;color:#94a3b8;display:flex;align-items:center;justify-content:center;gap:4px;">
+      <svg style="width:12px;height:12px;fill:#22c55e;" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      Secured by PhonePe · 256-bit SSL · Zero Processing Fee
+    </div>
+
+    <!-- Hidden elements for order ID -->
+    <div style="display:none;"><span id="orderIdDisplay"></span><span id="orderBasePriceDisplay"></span><span id="orderTaxDisplay"></span><span id="orderLikesDetailsRow"></span><span id="orderCurrentLikes"></span><span id="orderAfterLikes"></span><span id="orderDeliveryNoticeAccount"></span><span id="orderDeliveryNoticeUID"></span></div>
+  </main>
+</div><!-- /view-payment -->
 
   <!-- ════════════════════════════════════════════════════════
        PHONEPE IN-WEBSITE PAYMENT MODAL
@@ -2521,33 +2513,11 @@
     }
 
     function openPhonePeModal() {
-      var modal = document.getElementById('phonePeModal');
-      if (!modal) return;
-      var amt = document.getElementById('orderAmountDisplay').textContent || '₹0';
-      var orderId = document.getElementById('orderIdDisplay').textContent || '—';
-      var pack = document.getElementById('orderPackDisplay').textContent || '—';
-      var uid = document.getElementById('orderUidDisplay').textContent || '—';
-      var pName = (currentProfile && currentProfile.nickname) ? currentProfile.nickname : (document.getElementById('orderNicknameDisplay') ? document.getElementById('orderNicknameDisplay').textContent : 'Active Player');
-
-      var elAmt = document.getElementById('ppModalAmount');
-      if (elAmt) elAmt.textContent = amt;
-      var elOrd = document.getElementById('ppModalOrderId');
-      if (elOrd) elOrd.textContent = orderId;
-      var elPack = document.getElementById('ppModalPack');
-      if (elPack) elPack.textContent = pack;
-      var elUid = document.getElementById('ppModalUid');
-      if (elUid) elUid.textContent = uid;
-      var elNick = document.getElementById('ppModalPlayerName');
-      if (elNick) elNick.textContent = pName;
-      
-      // Reset smart trick sheet
-      var sheet = document.getElementById('ppSmartPaySheet');
-      if (sheet) sheet.classList.add('hidden');
-
-      if (currentUpiLink) {
-        var qrImg = document.getElementById('ppModalQr');
-        if (qrImg) qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=' + encodeURIComponent(currentUpiLink);
-      }
+      // Payment now shown as full-screen page (not modal)
+      showView('view-payment');
+      // Start 5-minute countdown
+      startPaymentCountdown();
+    }
 
       modal.classList.remove('hidden');
       modal.style.display = 'flex';
@@ -2644,6 +2614,26 @@
 
       // Open PhonePe Payment Gateway directly! (No double payment page)
       openPhonePeModal();
+    }
+
+    function startPaymentCountdown() {
+      var secs = 300; // 5 minutes
+      var el = document.getElementById('ppCountdown');
+      if (!el) return;
+      if (window._paymentCountdownTimer) clearInterval(window._paymentCountdownTimer);
+      window._paymentCountdownTimer = setInterval(function() {
+        secs--;
+        if (secs <= 0) {
+          clearInterval(window._paymentCountdownTimer);
+          el.textContent = '00:00';
+          el.style.color = '#ef4444';
+          return;
+        }
+        var m = Math.floor(secs / 60);
+        var s = secs % 60;
+        el.textContent = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+        if (secs <= 60) el.style.color = '#ef4444';
+      }, 1000);
     }
 
     function closePaymentModal() {
@@ -3028,10 +3018,26 @@
   <!-- ════════════════════════════════════════════════════════
        TOP ACTIVITY NOTIFICATION (Compact Mini Capsule - Every 15 Seconds)
   ════════════════════════════════════════════════════════ -->
-  <div id="topActivityNotificationToast" class="hidden fixed top-2.5 left-1/2 -translate-x-1/2 z-[350] w-[90%] max-w-[330px] bg-slate-900/95 backdrop-blur-md border border-slate-700/70 text-white rounded-full shadow-xl px-2.5 py-1.5 transition-all duration-300 transform -translate-y-20 opacity-0 pointer-events-auto flex items-center gap-2">
-    <div class="w-5 h-5 rounded-full bg-red-600 flex-shrink-0 flex items-center justify-center p-0.5 shadow-sm">
-      <img src="icons/favicon-32x32.png" alt="Icon" class="w-full h-full object-contain rounded-full bg-white p-0.5" />
+  <div id="topActivityNotificationToast"
+       style="position:fixed;bottom:76px;left:12px;z-index:350;min-width:240px;max-width:300px;
+              background:#fff;border:1px solid rgba(0,0,0,0.07);border-left:4px solid #ff1f3b;
+              border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,0.12);
+              padding:8px 10px 8px 12px;display:flex;align-items:center;
+              transform:translateX(calc(-100% - 16px));opacity:0;
+              transition:transform 0.4s cubic-bezier(0.22,1,0.36,1),opacity 0.3s ease;
+              pointer-events:auto;">
+    <div style="width:32px;height:32px;border-radius:8px;overflow:hidden;flex-shrink:0;border:1px solid #fee2e2;">
+      <img src="ff_india_logo.jpg" alt="FF" style="width:100%;height:100%;object-fit:cover;" />
     </div>
+    <div style="flex:1;min-width:0;margin-left:8px;">
+      <div style="font-size:10px;font-weight:800;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+        <span id="topActName">Rahul S.</span>
+        <span id="topActText" style="font-weight:500;color:#64748b;"> ने ₹150 का Top-Up किया</span>
+      </div>
+      <div style="font-size:9px;color:#22c55e;font-weight:700;margin-top:1px;">● Just now · Verified</div>
+    </div>
+    <button onclick="dismissTopActivityNotification()" style="background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:2px 4px;flex-shrink:0;margin-left:6px;">✕</button>
+  </div>
     <div class="flex-1 min-w-0 text-[10.5px] leading-tight truncate">
       <span class="font-bold text-white" id="topActName">Rahul S.</span>
       <span class="text-slate-300 ml-1" id="topActText">ने ₹150 का Top-Up किया</span>
@@ -3047,7 +3053,7 @@
     // ── 1. Force Clean & Register Fresh Service Worker v6.0 (FF India Theme) ──
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
-        navigator.serviceWorker.register('sw.js?v=8.0')
+        navigator.serviceWorker.register('sw.js?v=9.0')
           .then(function(reg) {
             reg.update();
             console.log('Service Worker v6.0 active (FF India)');
