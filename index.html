@@ -150,27 +150,6 @@
     .btn-glow:hover  { box-shadow:0 0 25px rgba(255,31,59,0.5); transform:translateY(-2px); }
     .btn-glow:active { transform:translateY(0); }
 
-    /* ── Ultra-Smooth Compact White Toast ── */
-    .purchase-toast {
-      background: #ffffff;
-      border: 1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.04);
-      will-change: transform, opacity;
-      transform: translateX(calc(-100% - 16px));
-      opacity: 0;
-      transition:
-        transform 0.40s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity   0.30s ease;
-    }
-    .purchase-toast.toast-visible {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    .purchase-toast.toast-hidden {
-      transform: translateX(calc(-100% - 16px));
-      opacity: 0;
-    }
-
     /* ── Tax row style ── */
     .tax-row {
       display: flex;
@@ -1811,20 +1790,15 @@
       }
 
       const supportBtn = document.getElementById('floatingSupportBtn');
-      const purchaseToast = document.getElementById('purchaseToast');
-
       if (id === 'view-payment') {
         if (supportBtn) supportBtn.style.display = 'none';
-        if (purchaseToast) purchaseToast.style.display = 'none';
         document.body.style.backgroundColor = '#000000';
       } else if (id === 'view-infocard') {
         // Hide both support button and purchase notifications in ID Information section
         if (supportBtn) supportBtn.style.display = 'none';
-        if (purchaseToast) purchaseToast.style.display = 'none';
         document.body.style.backgroundColor = '';
       } else {
         if (supportBtn) supportBtn.style.display = 'flex';
-        if (purchaseToast) purchaseToast.style.display = '';
         document.body.style.backgroundColor = '';
       }
 
@@ -1992,78 +1966,77 @@
       }
 
       var apiPromise = new Promise(function(resolve) {
-                // Strictly India (IND) region Free Fire API endpoint
-        var endpoints = [
-          'https://sehrab-api.vercel.app/api/v1/info?uid=' + encodeURIComponent(uidVal) + '&region=IND',
-          'https://sehrab-api.vercel.app/api/v1/info?region=IND&uid=' + encodeURIComponent(uidVal)
-        ];
         var done = false;
 
         function normalizePayload(d) {
           if (!d) return null;
-          if (typeof d.data === 'string' && (d.data.includes('NOT_FOUND') || d.data.includes('ACCOUNT_NOT_FOUND'))) {
-            return null;
-          }
-          if (d.error === 'PLAYER_NOT_FOUND' || (typeof d.error === 'string' && d.error.includes('NOT_FOUND'))) {
-            return null;
-          }
+          // Reject error responses
+          if (d.success === false) return null;
+          if (typeof d.data === 'string' && (d.data.includes('NOT_FOUND') || d.data.includes('ACCOUNT_NOT_FOUND'))) return null;
+          if (d.error && typeof d.error === 'string' && d.error.includes('NOT_FOUND')) return null;
 
-          var payload = d.data && typeof d.data === 'object' ? d.data : d;
-          var account = payload.AccountInfo || payload.basicInfo || payload.captainBasicInfo || payload.BasicInfo || payload.basic_info || payload.player || payload.account || payload;
+          var payload = (d.data && typeof d.data === 'object') ? d.data : d;
+          var account = payload.AccountInfo || payload.basicInfo || payload.BasicInfo || payload.basic_info || payload.player || payload.account;
           if (!account) return null;
 
-          // STRICT VALIDATION: Reject any account not on India (IND) server
-          var accRegion = (account.AccountRegion || account.Region || account.region || (d.query && d.query.region) || '').toString().trim().toUpperCase();
-          if (accRegion && accRegion !== 'IND') {
-            return null;
-          }
-          var guild = payload.GuildInfo || payload.guildInfo || payload.ClanBasicInfo || payload.clan_basic_info || payload.guild || {};
-          var credit = payload.creditScoreInfo || payload.CreditScoreInfo || payload.credit_score_info || {};
-          var social = payload.socialinfo || payload.SocialInfo || payload.social_info || {};
+          // Must have a real account name or ID
+          var nick = account.AccountName || account.Nickname || account.nickname || account.name || '';
+          var accId = account.AccountId || account.accountId || account.account_id;
+          var lvl = account.AccountLevel || account.Level || account.level;
+          if (!nick && !accId && !lvl) return null;
 
-          var nick = account.AccountName || account.Nickname || account.nickname || account.name || (payload.captainBasicInfo && payload.captainBasicInfo.nickname) || '';
-          var accId = account.AccountId || account.accountId || account.account_id || (payload.captainBasicInfo && payload.captainBasicInfo.accountId);
-          var lvl = account.AccountLevel || account.Level || account.level || (payload.captainBasicInfo && payload.captainBasicInfo.level);
-
-          if (nick || accId || lvl) {
-            return {
-              raw: d,
-              account: account,
-              guild: guild,
-              credit: credit,
-              social: social,
-              captain: payload.captainBasicInfo || {},
-              accountProfileInfo: payload.AccountProfileInfo || payload.accountProfileInfo || {},
-              petInfo: payload.petInfo || payload.pet || {}
-            };
-          }
-          return null;
+          return {
+            raw: d,
+            account: account,
+            guild: payload.GuildInfo || payload.guildInfo || payload.ClanBasicInfo || {},
+            credit: payload.creditScoreInfo || payload.CreditScoreInfo || {},
+            social: payload.socialinfo || payload.SocialInfo || {},
+            captain: payload.captainBasicInfo || {},
+            accountProfileInfo: payload.AccountProfileInfo || payload.accountProfileInfo || {},
+            petInfo: payload.petInfo || payload.pet || {}
+          };
         }
 
-        function handleData(d) {
+        // Single endpoint — no duplicate race condition
+        var url = 'https://sehrab-api.vercel.app/api/v1/info?uid=' + encodeURIComponent(uidVal) + '&region=IND';
+
+        // Try up to 3 times if API fails
+        function tryFetch(attempt) {
           if (done) return;
-          var normalized = normalizePayload(d);
-          if (normalized) {
-            done = true;
-            resolve(normalized);
-          }
+          fetch(url, { cache: 'no-store' })
+            .then(function(r) { return r.json(); })
+            .then(function(d) {
+              if (done) return;
+              var norm = normalizePayload(d);
+              if (norm) {
+                done = true;
+                resolve(norm);
+              } else if (attempt < 3) {
+                // Retry after 1s if got bad data
+                setTimeout(function() { tryFetch(attempt + 1); }, 1000);
+              } else {
+                // All retries exhausted — resolve null (no fake data)
+                done = true;
+                resolve(null);
+              }
+            })
+            .catch(function() {
+              if (done) return;
+              if (attempt < 3) {
+                setTimeout(function() { tryFetch(attempt + 1); }, 1500);
+              } else {
+                done = true;
+                resolve(null);
+              }
+            });
         }
 
-        // Fetch all endpoints simultaneously in parallel
-        endpoints.forEach(function(url) {
-          fetch(url)
-            .then(function(r){ return r.json(); })
-            .then(handleData)
-            .catch(function(){});
-        });
+        tryFetch(1);
 
-        // 8s Resilient Timeout: Covers Vercel cold-starts so first-try always shows real data
+        // 12s hard timeout — long enough for 3 retries
         setTimeout(function() {
-          if (!done) {
-            done = true;
-            resolve(null);
-          }
-        }, 8000);
+          if (!done) { done = true; resolve(null); }
+        }, 12000);
       });
 
       // Visual step animation timers
@@ -2133,15 +2106,12 @@
             var signatureBio = si.signature || si.Signature || si.social_highlight || '';
             currentProfile.bio          = signatureBio ? String(signatureBio).trim() : '';
           } else {
-            // Graceful fallback profile for unindexed UIDs so verification NEVER gets stuck
-            currentProfile.nickname       = 'Player_' + uidVal.slice(-4);
-            currentProfile.uid            = uidVal;
-            currentProfile.level          = '65';
-            currentProfile.region         = 'IND';
-            currentProfile.likes          = '1,420';
-            currentProfile.rank           = 'Heroic';
-            currentProfile.credit_score   = '100';
-            currentProfile.bio            = 'Free Fire Official Player';
+            // API returned no data — show real error, NOT fake data
+            clearTimeout(step2Timer);
+            clearTimeout(step3Timer);
+            if (modal) { modal.classList.add('hidden'); modal.style.display = 'none'; }
+            showUidError('Could not fetch player info. Please check your UID and try again.');
+            return; // Stop here — do NOT show infocard with fake data
           }
 
           // Mark all steps as complete
@@ -2177,12 +2147,8 @@
         .catch(function() {
           clearTimeout(step2Timer);
           clearTimeout(step3Timer);
-          // Even on unexpected error, proceed with verified player profile
-          currentProfile.nickname = 'Player_' + uidVal.slice(-4);
-          currentProfile.uid = uidVal;
-          currentProfile.level = '60';
-          currentProfile.region = 'IND';
-          showConfirmationPage();
+          if (modal) { modal.classList.add('hidden'); modal.style.display = 'none'; }
+          showUidError('Network error. Please check your connection and try again.');
         });
     }
 
@@ -2391,10 +2357,7 @@
       }
       showView('view-dashboard');
 
-      setTimeout(function() {
-        toastBusy = false;
-        showNotification();
-      }, 500);
+
     }
 
     // ── Dashboard product lists ──
@@ -2774,8 +2737,7 @@
       }, 350);
     }
 
-    // Toast notifications disabled
-    // setTimeout(showNotification, 3500);
+    
 
     // ═══════════════════════════════════════════════
     // SUPPORT MODAL FUNCTIONS & MULTI-STEP FLOW
