@@ -2279,14 +2279,7 @@
       // Region
       document.getElementById('infoRegion').textContent = currentProfile.region === 'IND' ? 'IND' : (currentProfile.region || 'IND');
 
-      // Likes
-      let likesStr = '—';
-      if (currentProfile.likes !== '' && currentProfile.likes !== undefined && currentProfile.likes !== null) {
-        likesStr = typeof currentProfile.likes === 'number'
-          ? currentProfile.likes.toLocaleString('en-IN')
-          : currentProfile.likes;
-      }
-      document.getElementById('infoLikes').textContent = likesStr;
+      // Likes section removed
 
       // Credit Score
       const csBox = document.getElementById('infoCreditScoreBox');
