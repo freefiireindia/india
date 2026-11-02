@@ -511,21 +511,20 @@
     <main class="flex-1 max-w-md w-full mx-auto px-4 pt-4 pb-8 space-y-5">
 
       <!-- Free Fire Hero Banner -->
-      <div class="relative w-[93%] mx-auto rounded-[20px] overflow-hidden shadow-xl"
-           style="box-shadow:0 8px 32px rgba(0,0,0,0.18);">
+      <div class="relative w-full max-w-[420px] mx-auto rounded-md overflow-hidden shadow-sm border border-slate-200/80">
         <img src="ff_hero_banner.jpg" alt="Free Fire India" class="w-full h-auto object-cover block" />
         
-        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-3 py-3 sm:px-4 sm:py-4 flex items-center justify-between gap-2">
+        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent px-3 py-2.5 sm:px-4 sm:py-3 flex items-center justify-between gap-2">
           <div class="flex items-center gap-2">
-            <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-9 w-9 object-cover rounded-xl shadow-md" />
+            <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-9 w-9 object-cover rounded-md shadow-sm" />
             <div>
-              <p class="text-white font-black text-base leading-tight tracking-wide drop-shadow-md">Free Fire India</p>
-              <p class="text-white text-[9px] sm:text-[11px] font-semibold tracking-wide uppercase leading-tight mt-0.5">Official Top-Up Center</p>
+              <p class="text-white font-black text-sm sm:text-base leading-tight tracking-wide drop-shadow-md">Free Fire India</p>
+              <p class="text-white text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase leading-tight mt-0.5">Official Top-Up Center</p>
             </div>
           </div>
-          <div class="inline-flex items-center gap-1.5 flex-shrink-0 px-2.5 py-1 rounded-full border border-emerald-400/50 text-white text-[9px] font-bold"
-               style="background:linear-gradient(135deg,rgba(16,185,129,.80) 0%,rgba(5,150,105,.90) 100%);box-shadow:0 0 12px rgba(16,185,129,.4);">
-            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+          <div class="inline-flex items-center gap-1.5 flex-shrink-0 px-2 py-0.5 rounded-md border border-emerald-400/50 text-white text-[9px] font-bold"
+               style="background:linear-gradient(135deg,rgba(16,185,129,.85) 0%,rgba(5,150,105,.95) 100%);box-shadow:0 0 10px rgba(16,185,129,.35);">
+            <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4Zm3.1-9H8.9V6a3.1 3.1 0 1 1 6.2 0v2Z"/>
             </svg>
             <span>100% Secure</span>
@@ -681,6 +680,13 @@
       <!-- Pure White Compact Luxury Profile Card -->
       <div class="bg-white border border-slate-200/90 rounded-2xl p-3.5 shadow-xl relative overflow-hidden space-y-3">
         
+        <!-- Player In-Game Official Banner (if available from API) -->
+        <div id="infoBannerWrap" class="w-full h-20 sm:h-24 rounded-xl overflow-hidden relative bg-slate-900 border border-slate-200/70 shadow-inner hidden">
+          <img id="infoBanner" src="" alt="Free Fire In-Game Banner" class="w-full h-full object-cover" onerror="document.getElementById('infoBannerWrap').classList.add('hidden')" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <span class="absolute bottom-1.5 right-2 text-[8px] font-black text-amber-300 uppercase tracking-widest bg-black/60 px-1.5 py-0.5 rounded">OB55 BANNER</span>
+        </div>
+
         <!-- Player Top Profile Info (Avatar + Circular Green Tick + Name) -->
         <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
           <div id="infoAvatarWrap" class="w-11 h-11 rounded-xl flex-shrink-0 relative" style="background:linear-gradient(135deg,#f59e0b,#d97706,#f59e0b);padding:2px;border-radius:12px;box-shadow:0 0 0 1px rgba(245,158,11,0.35),0 2px 8px rgba(0,0,0,0.12);">
@@ -781,6 +787,36 @@
               <span>Player Bio</span>
             </div>
             <div class="text-[11px] font-semibold text-slate-700 leading-normal" id="infoBio">—</div>
+          </div>
+
+<!-- Equipped Outfit & Weapon Items from API -->
+          <div id="infoOutfitSection" class="hidden col-span-2 bg-gradient-to-br from-slate-50 to-slate-100/60 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1.5">
+            <div class="flex items-center justify-between">
+              <span class="text-[9px] font-black text-amber-600 uppercase tracking-widest flex items-center gap-1">
+                <svg class="w-3 h-3 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10a2 2 0 002 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"/></svg>
+                <span>EQUIPPED OUTFIT & WEAPONS</span>
+              </span>
+              <span class="text-[8px] font-extrabold text-slate-400 uppercase tracking-wider">API ASSETS</span>
+            </div>
+            <div id="infoOutfitGrid" class="flex items-center gap-1.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none">
+              <!-- Dynamically populated from API -->
+            </div>
+          </div>
+
+          <!-- Equipped Pet from API -->
+          <div id="infoPetBox" class="hidden col-span-2 bg-gradient-to-br from-slate-50 to-amber-50/20 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <div id="infoPetImgWrap" class="w-11 h-11 rounded-lg bg-white border border-slate-200 p-1 flex items-center justify-center flex-shrink-0">
+                <img id="infoPetImg" src="" alt="Pet" class="w-full h-full object-contain" onerror="document.getElementById('infoPetBox').classList.add('hidden')" />
+              </div>
+              <div>
+                <div class="text-[9px] font-black text-amber-600 uppercase tracking-widest">EQUIPPED PET</div>
+                <div class="text-xs font-black text-slate-900" id="infoPetName">—</div>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-amber-100 text-amber-800" id="infoPetLevel">Lv. 1</span>
+            </div>
           </div>
 
         </div>
@@ -2119,7 +2155,25 @@
             currentProfile.ranking_points = b.BrRankPoint != null ? b.BrRankPoint : (b.RankingPoints != null ? b.RankingPoints : (b.ranking_points != null ? b.ranking_points : (cap.rankingPoints || '')));
             currentProfile.cs_rank        = ffRankName(b.CsMaxRank != null ? b.CsMaxRank : (b.CsRank != null ? b.CsRank : (b.cs_rank != null ? b.cs_rank : (cap.csRank || 306))));
             currentProfile.cs_ranking_points = b.CsRankPoint != null ? b.CsRankPoint : (b.CsRankingPoints != null ? b.CsRankingPoints : (b.cs_ranking_points != null ? b.cs_ranking_points : ''));
-            currentProfile.avatar         = (b.Avatar && String(b.Avatar).startsWith('http')) ? b.Avatar : ((b.avatar && String(b.avatar).startsWith('http')) ? b.avatar : '');
+            var prof = norm.profileInfo || {};
+            var pet = norm.pet || {};
+
+            var avatarId = b.AccountAvatarId || b.headPic || cap.headPic || null;
+            var bannerId = b.AccountBannerId || b.bannerId || cap.bannerId || null;
+
+            currentProfile.avatarId = avatarId;
+            currentProfile.bannerId = bannerId;
+            currentProfile.avatar   = avatarId ? ('https://sehrab-api.vercel.app/api/collection/get-pngs/' + avatarId) : ((b.Avatar && String(b.Avatar).startsWith('http')) ? b.Avatar : 'ff_india_logo.jpg');
+            currentProfile.banner   = bannerId ? ('https://sehrab-api.vercel.app/api/collection/get-pngs/' + bannerId) : null;
+
+            currentProfile.outfitIds = (prof.EquippedOutfit && Array.isArray(prof.EquippedOutfit)) ? prof.EquippedOutfit : [];
+            currentProfile.weaponIds = (b.EquippedWeapon && Array.isArray(b.EquippedWeapon)) ? b.EquippedWeapon : ((cap.weaponSkinShows && Array.isArray(cap.weaponSkinShows)) ? cap.weaponSkinShows : []);
+
+            currentProfile.pet = (pet && (pet.skinId || pet.id || pet.name)) ? {
+              name: pet.name || 'Pet',
+              level: pet.level != null ? pet.level : 1,
+              imgId: pet.skinId || pet.id || null
+            } : null;
 
             var clanName = c.GuildName || c.ClanName || c.clan_name || '';
             currentProfile.clan       = clanName ? String(clanName).replace(/[\u3164\uf8ff]/g, '').trim() : '';
@@ -2206,6 +2260,55 @@
       if (avatarEl && avatarWrap) {
         avatarWrap.style.display = 'flex';
         avatarEl.src = (currentProfile.avatar && currentProfile.avatar.trim().startsWith('http')) ? currentProfile.avatar : 'ff_india_logo.jpg';
+        avatarEl.onerror = function() { this.src = 'ff_india_logo.jpg'; };
+      }
+
+      // Populate banner image
+      const bannerEl = document.getElementById('infoBanner');
+      const bannerWrap = document.getElementById('infoBannerWrap');
+      if (bannerEl && bannerWrap) {
+        if (currentProfile.banner && currentProfile.banner.trim().startsWith('http')) {
+          bannerEl.src = currentProfile.banner;
+          bannerWrap.classList.remove('hidden');
+          bannerEl.onerror = function() { bannerWrap.classList.add('hidden'); };
+        } else {
+          bannerWrap.classList.add('hidden');
+        }
+      }
+
+      // Populate outfit and weapon collection images
+      const outfitSection = document.getElementById('infoOutfitSection');
+      const outfitGrid = document.getElementById('infoOutfitGrid');
+      if (outfitSection && outfitGrid) {
+        const allItems = [].concat(currentProfile.weaponIds || [], currentProfile.outfitIds || []);
+        if (allItems.length > 0) {
+          outfitGrid.innerHTML = allItems.map(function(id) {
+            const imgUrl = 'https://sehrab-api.vercel.app/api/collection/get-pngs/' + id;
+            return '<div class="w-12 h-12 rounded-lg bg-white border border-slate-200/90 p-1 flex-shrink-0 flex items-center justify-center shadow-2xs">' +
+              '<img src="' + imgUrl + '" alt="Gear #' + id + '" class="w-full h-full object-contain" loading="lazy" onerror="this.parentElement.style.display=\'none\';" />' +
+            '</div>';
+          }).join('');
+          outfitSection.classList.remove('hidden');
+        } else {
+          outfitSection.classList.add('hidden');
+        }
+      }
+
+      // Populate pet image & info
+      const petBox = document.getElementById('infoPetBox');
+      const petImg = document.getElementById('infoPetImg');
+      const petName = document.getElementById('infoPetName');
+      const petLevel = document.getElementById('infoPetLevel');
+      if (petBox && currentProfile.pet && currentProfile.pet.imgId) {
+        if (petName) petName.textContent = currentProfile.pet.name || 'Pet';
+        if (petLevel) petLevel.textContent = 'Lv. ' + (currentProfile.pet.level || 1);
+        if (petImg) {
+          petImg.src = 'https://sehrab-api.vercel.app/api/collection/get-pngs/' + currentProfile.pet.imgId;
+          petImg.onerror = function() { petBox.classList.add('hidden'); };
+        }
+        petBox.classList.remove('hidden');
+      } else if (petBox) {
+        petBox.classList.add('hidden');
       }
 
       // Name & UID
@@ -2324,6 +2427,11 @@
 
       // Update Dashboard Top Header Card with exact name, UID, Level, Region, Likes
       document.getElementById('verifiedPlayerName').textContent   = currentProfile.nickname || 'Active Player';
+      const dashAvatar = document.querySelector('.dash-avatar-img');
+      if (dashAvatar) {
+        dashAvatar.src = currentProfile.avatar || 'ff_india_logo.jpg';
+        dashAvatar.onerror = function() { this.src = 'garena_logo.png'; };
+      }
       document.getElementById('verifiedUidDisplay').textContent    = 'UID: ' + currentUid;
       document.getElementById('verifiedLevelDisplay').textContent  = 'LV. ' + (currentProfile.level || '—');
       document.getElementById('verifiedRegionDisplay').innerHTML   = '<span class="india-dot"></span> ' + (currentProfile.region === 'IND' ? 'India Region' : (currentProfile.region || 'India Region'));
