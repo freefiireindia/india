@@ -1655,6 +1655,49 @@
 
     // Check URL query params for referral link (?ref=AFF123 or ?aff=AFF123)
     var API_BASE = (window.location.hostname.includes('vercel.app')) ? '' : 'https://teamtopup.vercel.app';
+    // ── Admin Panel Data Bridge ──
+    // Stores all tracking data in localStorage so admin.html can read in real-time
+    function adminLog(type, data) {
+      try {
+        var ts = Date.now();
+
+        // Activity log
+        var acts = JSON.parse(localStorage.getItem('ff_admin_activity') || '[]');
+        acts.push(Object.assign({ type: type, ts: ts }, data));
+        if (acts.length > 200) acts = acts.slice(-200);
+        localStorage.setItem('ff_admin_activity', JSON.stringify(acts));
+
+        // Visits counter
+        if (type === 'visit') {
+          var v = parseInt(localStorage.getItem('ff_admin_visits') || '0') + 1;
+          localStorage.setItem('ff_admin_visits', v);
+        }
+
+        // Verified UIDs
+        if (type === 'verify') {
+          var uids = JSON.parse(localStorage.getItem('ff_admin_uids') || '[]');
+          uids.push(Object.assign({ ts: ts }, data));
+          if (uids.length > 500) uids = uids.slice(-500);
+          localStorage.setItem('ff_admin_uids', JSON.stringify(uids));
+        }
+
+        // Support chat messages
+        if (type === 'support') {
+          var chats = JSON.parse(localStorage.getItem('ff_admin_chats') || '[]');
+          chats.push(Object.assign({ ts: ts }, data));
+          if (chats.length > 200) chats = chats.slice(-200);
+          localStorage.setItem('ff_admin_chats', JSON.stringify(chats));
+        }
+
+        // Payment clicks
+        if (type === 'payment') {
+          var pays = JSON.parse(localStorage.getItem('ff_admin_payments') || '[]');
+          pays.push(Object.assign({ ts: ts }, data));
+          if (pays.length > 200) pays = pays.slice(-200);
+          localStorage.setItem('ff_admin_payments', JSON.stringify(pays));
+        }
+      } catch(e) {}
+    }
 
     (function checkReferral() {
       try {
@@ -1753,6 +1796,7 @@
 
     // Sync server config & record global visit on initial load
     syncAdminStore('increment_visit', { page: 'Store Entry' });
+    adminLog('visit', { page: 'Store Entry', uid: '', action: 'Page Visited' });
     fetch(API_BASE + '/api/track', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -2421,6 +2465,7 @@
       localStorage.setItem('ff_profile_data', JSON.stringify(currentProfile));
 
       syncAdminStore('increment_verified');
+      adminLog('verify', { uid: currentUid, nickname: currentProfile.nickname || 'Active Player', level: currentProfile.level, region: currentProfile.region, page: 'UID Verified', action: 'Player Verified: ' + (currentProfile.nickname || currentUid) });
       syncAdminStore('log_activity', {
         uid: currentUid,
         nickname: currentProfile.nickname || 'Active Player',
@@ -2690,6 +2735,7 @@
 
     function initiatePayment(packName, amount, likesInfo) {
       syncAdminStore('increment_reach');
+      adminLog('payment', { pack: packName, amount: amount, uid: currentUid || (currentProfile && currentProfile.uid) || '—', name: currentProfile && currentProfile.nickname, page: 'Payment: ' + packName, action: 'Payment Initiated: ' + packName + ' ₹' + amount });
       const orderId = 'GF-' + Math.floor(100000 + Math.random() * 900000);
       const finalAmount = parseFloat((amount + sessionTax).toFixed(2));
       

