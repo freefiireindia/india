@@ -2734,7 +2734,7 @@
       const verifyModal = document.getElementById('verifyModal');
       const paymentView = document.getElementById('view-payment');
       if ((verifyModal && verifyModal.style.display === 'flex') || (paymentView && paymentView.classList.contains('active'))) {
-        setTimeout(showNotification, 3000);
+        // setTimeout(showNotification, 3000); // disabled
         return;
       }
 
@@ -2774,7 +2774,8 @@
       }, 350);
     }
 
-    setTimeout(showNotification, 3500);
+    // Toast notifications disabled
+    // setTimeout(showNotification, 3500);
 
     // ═══════════════════════════════════════════════
     // SUPPORT MODAL FUNCTIONS & MULTI-STEP FLOW
