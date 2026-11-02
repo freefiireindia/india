@@ -405,7 +405,42 @@
     }
 
 
-  </style>
+  
+    /* ── Official Player Login Card Styles ── */
+    .step-title { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; }
+    .step-number { width: 36px; height: 36px; flex: 0 0 36px; border-radius: 8px; background: #df190f; color: #fff; display: grid; place-items: center; font-size: 22px; font-weight: 700; line-height: 1; }
+    .step-title h2 { font-size: 24px; line-height: 1; margin: 0; font-weight: 700; letter-spacing: -0.5px; color: #202027; }
+    .login-card { width: 100%; background: #f5f5f6; border: 2px solid #ededee; border-radius: 14px; padding: 16px 18px 18px; box-sizing: border-box; }
+    .field-label { display: flex; align-items: center; gap: 7px; margin: 0 0 10px; font-size: 19px; line-height: 1.1; font-weight: 400; color: #202027; }
+    .help { width: 19px; height: 19px; border: 2px solid #24242b; border-radius: 50%; display: inline-grid; place-items: center; font-size: 13px; font-weight: 700; line-height: 1; color: #24242b; cursor: help; }
+    .login-row { display: flex; width: 100%; height: 50px; }
+    .login-row input { min-width: 0; flex: 1; border: 2px solid #d7d7d9; border-right: 0; border-radius: 9px 0 0 9px; background: #fff; padding: 8px 16px; color: #24242b; font: 400 17px Arial,Helvetica,sans-serif; outline: none; }
+    .login-row input::placeholder { color: #c9c9cb; opacity: 1; }
+    .login-row button { width: 100px; flex: 0 0 100px; border: 0; border-radius: 0 9px 9px 0; background: #df190f; color: #fff; font: 700 17px Arial,Helvetica,sans-serif; cursor: pointer; transition: background 0.15s; }
+    .login-row button:hover { background: #c9160d; }
+    .login-row button:active { background: #b0130b; }
+    .divider { display: flex; align-items: center; gap: 12px; margin: 16px 0 14px; color: #858589; font-size: 13.5px; line-height: 1.2; white-space: nowrap; }
+    .divider:before, .divider:after { content: ""; height: 1.5px; background: #ededee; flex: 1; }
+    .socials { display: flex; justify-content: center; align-items: center; gap: 14px; }
+    .social { width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center; padding: 0; border: 1.5px solid #ededee; border-radius: 50%; background: #fff; cursor: pointer; box-shadow: 0 1px 2px rgba(0,0,0,.025); transition: transform 0.1s, box-shadow 0.15s; }
+    .social:hover { transform: translateY(-1px); box-shadow: 0 3px 6px rgba(0,0,0,.08); }
+    .social.blue { background: #0866e9; border-color: #0866e9; }
+    .social svg { width: 22px; height: 22px; display: block; }
+    .social.google svg { width: 23px; height: 23px; }
+    .social.apple svg { width: 19px; height: 23px; }
+    .social.vk svg { width: 23px; height: 23px; }
+    .login-card .message { min-height: 0; margin: 6px 0 0; text-align: center; color: #df190f; font-size: 12.5px; font-weight: 600; }
+    @media (max-width: 480px) {
+      .step-title h2 { font-size: 21px; }
+      .field-label { font-size: 17px; }
+      .login-row input { font-size: 15px; padding: 8px 12px; }
+      .login-row button { width: 80px; flex: 0 0 80px; font-size: 15px; }
+      .socials { gap: 10px; }
+      .social { width: 38px; height: 38px; flex: 0 0 38px; }
+      .social svg { width: 19px; height: 19px; }
+    }
+
+</style>
   <!-- Force-Clear Old Service Worker Caches & Remove Stale Overlays -->
   <script>
     (function() {
@@ -505,61 +540,70 @@
         </div>
       </div>
 
-      <!-- UID Section -->
-      <div class="px-1 space-y-1.5">
-        <h1 class="text-xl font-black text-slate-900 tracking-tight leading-snug">Verify Your UID</h1>
-        <p class="text-[11px] text-slate-500 leading-relaxed">
-          Enter your Free Fire UID. Ensure your UID is correct so your top-up will be processed and delivered directly to your in-game account.
-        </p>
-        <div class="flex items-center gap-1.5 pt-0.5">
-          <svg class="w-3.5 h-3.5 text-emerald-500" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2Zm-2 15-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9Z"/>
-          </svg>
-          <span class="text-[10px] font-bold text-emerald-600 tracking-wide">Verified by Garena</span>
-        </div>
-      </div>
+      <!-- Step 1 Player Login Card (Official Garena Shop Design) -->
+      <div class="screen" style="width:100%;margin:0 auto;">
+        <header class="step-title">
+          <div class="step-number">1</div>
+          <h2>Login</h2>
+        </header>
 
-      <!-- UID Input Card -->
-      <div class="relative rounded-3xl p-[1.5px] bg-gradient-to-r from-orange-500 via-rose-500 to-red-500 shadow-[0_12px_36px_rgba(249,115,22,0.12)]">
-        <div class="bg-white rounded-[22.5px] p-6 relative overflow-hidden">
-          <div class="absolute -right-16 -top-16 w-36 h-36 bg-orange-100/50 rounded-full blur-2xl pointer-events-none"></div>
-          <div class="absolute -left-16 -bottom-16 w-36 h-36 bg-rose-100/50 rounded-full blur-2xl pointer-events-none"></div>
-          
-          <div class="flex items-center justify-between mb-4">
-            <label for="uidInput" class="flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-slate-700">
-              <svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12Zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8Z"/>
-              </svg>
-              In-Game Player UID
-            </label>
-            <span class="text-[8px] font-extrabold text-emerald-600 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-full uppercase tracking-wider animate-pulse">
-              Live API Online
-            </span>
-          </div>
-          
-          <div class="relative mb-3">
-            <input type="text" id="uidInput" placeholder="Enter UID" maxlength="12" oninput="hideUidError()"
-                   class="w-full bg-slate-50/80 border-2 border-slate-100 rounded-2xl pl-12 pr-12 py-4 text-base font-extrabold tracking-widest text-slate-800 placeholder:text-slate-400 placeholder:text-xs placeholder:font-bold placeholder:tracking-normal focus:outline-none focus:bg-white focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 transition-all text-center" />
-            <div class="absolute right-4 top-1/2 -translate-y-1/2 flex items-center pointer-events-none">
-              <img src="garena_logo.png" alt="Garena" class="h-5 w-auto object-contain" />
+        <main class="login-card">
+          <label class="field-label" for="uidInput">
+            Player ID <span class="help" title="Enter your in-game Player ID">?</span>
+          </label>
+          <form id="loginForm" onsubmit="event.preventDefault(); initiateLogin();">
+            <div class="login-row">
+              <input id="uidInput" type="text" inputmode="numeric" autocomplete="off" maxlength="12"
+                placeholder="Please enter player ID here" aria-label="Player ID" oninput="hideUidError()">
+              <button type="submit" id="verifyBtn">Login</button>
             </div>
-          </div>
+            <div id="uidErrorContainer" class="hidden">
+              <p class="message" id="uidErrorMessage" aria-live="polite"></p>
+            </div>
+          </form>
 
-          <!-- Invalid UID Error Box -->
-          <div id="uidErrorContainer" class="hidden mb-3 p-3 bg-red-50 border border-red-200/80 rounded-2xl flex items-center gap-2.5 text-red-600 text-xs font-extrabold shadow-sm">
-            <svg class="w-4 h-4 flex-shrink-0 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span id="uidErrorMessage">Your UID is not valid. Please re-enter your real UID.</span>
-          </div>
-          
+          <div class="divider">Or login with your game account</div>
 
-          
-          <button onclick="initiateLogin()" id="verifyBtn"
-                  class="w-full text-white font-extrabold py-4 rounded-2xl text-xs tracking-widest uppercase transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 bg-[#ff1f3b] hover:bg-[#e0122c] shadow-[0_8px_24px_rgba(255,31,59,0.30)] active:shadow-none">
-            Verify & Proceed
-          </button>
-        </div>
+          <div class="socials" aria-label="Game account sign-in options">
+            <!-- Facebook: recognizable white f mark -->
+            <button class="social blue" type="button" aria-label="Facebook" onclick="alert('Please enter your Player ID to top up directly.')">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#fff" d="M13.45 21v-8.2h2.76l.41-3.2h-3.17V7.56c0-.93.26-1.56 1.59-1.56h1.7V3.14C16.45 3.05 15.42 3 14.22 3c-2.5 0-4.21 1.53-4.21 4.34V9.6H7.18v3.2h2.83V21h3.44z"/>
+              </svg>
+            </button>
+
+            <!-- Google: four-colour G -->
+            <button class="social" type="button" aria-label="Google" onclick="alert('Please enter your Player ID to top up directly.')">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11c-.5 2.5-1.9 4.6-4 6v5h6.5c3.8-3.5 6.1-8.6 6.1-14.7z"/>
+                <path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.8l-6.5-5c-1.8 1.2-4.1 2-7 2-5.3 0-9.8-3.6-11.4-8.4H5.9v5.2C9.3 39.6 16.1 44 24 44z"/>
+                <path fill="#FBBC05" d="M12.6 27.8a12 12 0 0 1 0-7.6V15H5.9a20 20 0 0 0 0 18z"/>
+                <path fill="#EA4335" d="M24 11.8c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 5.8 29.5 4 24 4 16.1 4 9.3 8.4 5.9 15l6.7 5.2c1.6-4.8 6.1-8.4 11.4-8.4z"/>
+              </svg>
+            </button>
+
+            <!-- X: clean official-style X mark -->
+            <button class="social" type="button" aria-label="X" onclick="alert('Please enter your Player ID to top up directly.')">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#000" d="M18.9 2H22l-6.77 7.74L23.2 22h-6.25l-4.9-7.41L5.57 22H2.43l7.24-8.28L1.9 2h6.41l4.43 6.75L18.9 2zm-1.1 18h1.73L7.36 3.9H5.5L17.8 20z"/>
+              </svg>
+            </button>
+
+            <!-- VK: VK brand glyph, custom inline vector -->
+            <button class="social blue" type="button" aria-label="VK" onclick="alert('Please enter your Player ID to top up directly.')">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#fff" d="M3.2 7.35h3.12c.27 0 .46.12.56.4 1.12 2.86 2.33 4.48 3.02 4.48.34 0 .46-.28.46-1.55V8.55c-.06-1.05-.62-1.28-.62-1.66 0-.25.22-.42.55-.42h4.18c.37 0 .55.22.55.58v3.72c0 .43.14.58.36.58.3 0 .64-.26 1.27-1.08.95-1.23 1.66-2.9 1.98-3.67.12-.32.35-.46.72-.46h3.12c.49 0 .7.25.56.7-.25 1.15-2.88 5-2.88 5-.26.37-.31.6.02.97.22.26.9.92 1.35 1.48.84.98 1.47 1.8 1.67 2.38.18.58-.08.86-.7.86h-3.12c-.5 0-.77-.24-1.15-.78-.52-.72-1.28-1.8-2.04-2.45-.58-.49-.97-.62-1.28-.49-.3.13-.39.45-.39 1.14v1.62c0 .72-.22.96-1.46.96-2.12 0-4.48-1.3-6.27-3.55-2.5-3.1-4.17-6.9-4.17-7.49 0-.3.2-.48.58-.48z"/>
+              </svg>
+            </button>
+
+            <!-- Apple: accurately proportioned bitten-apple silhouette -->
+            <button class="social" type="button" aria-label="Apple" onclick="alert('Please enter your Player ID to top up directly.')">
+              <svg viewBox="0 0 24 28" aria-hidden="true">
+                <path fill="#000" d="M17.55 14.85c.03 3.15 2.76 4.2 2.79 4.22-.02.08-.43 1.49-1.43 2.95-.86 1.25-1.76 2.5-3.17 2.52-1.39.03-1.84-.82-3.43-.82s-2.09.79-3.4.85c-1.36.05-2.39-1.35-3.26-2.6C3.87 18.4 2.55 12.3 4.4 9.1c.92-1.6 2.56-2.61 4.34-2.64 1.35-.03 2.62.91 3.44.91.81 0 2.34-1.12 3.95-.96.67.03 2.56.27 3.77 2.04-.1.06-2.25 1.31-2.35 3.9zM14.96 4.7c.72-.87 1.2-2.08 1.07-3.29-1.04.04-2.3.69-3.04 1.56-.67.77-1.26 2-1.1 3.18 1.16.09 2.35-.59 3.07-1.45z"/>
+              </svg>
+            </button>
+          </div>
+        </main>
       </div>
 
       <!-- How It Works -->
