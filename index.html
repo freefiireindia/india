@@ -1047,8 +1047,55 @@
         </div>
 
         <p style="margin-top:12px;font-size:10px;color:#64748b;font-weight:600;line-height:1.5;">
-          Open Google Pay, PhonePe, Paytm, or any UPI app to scan and complete payment.
+          Scan with any UPI app to complete your payment instantly.
         </p>
+
+        <!-- UPI App Logos Row -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <!-- Google Pay -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+            <div style="width:42px;height:42px;border-radius:12px;background:#fff;border:1.5px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,0.07);display:flex;align-items:center;justify-content:center;padding:5px;">
+              <svg viewBox="0 0 48 48" width="30" height="30" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#4285F4" d="M44.5 20H24v8.5h11.8C34.3 33.6 29.8 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1L37.4 9.7C33.9 6.5 29.2 4.5 24 4.5 13.2 4.5 4.5 13.2 4.5 24S13.2 43.5 24 43.5c11 0 19-7.7 19-19.5 0-1.3-.1-2.4-.5-4z"/>
+                <path fill="#34A853" d="M6.3 14.6l7 5.1C15.1 16.4 19.2 14 24 14c3.1 0 5.9 1.2 8 3.1L37.4 9.7C33.9 6.5 29.2 4.5 24 4.5c-7.7 0-14.3 4.3-17.7 10.1z"/>
+                <path fill="#FBBC05" d="M24 43.5c5.1 0 9.7-1.8 13.3-4.9l-6.5-5.3C28.8 34.8 26.5 35.5 24 35.5c-5.7 0-10.6-3.8-12.2-9l-7 5.4C8.3 39.5 15.5 43.5 24 43.5z"/>
+                <path fill="#EA4335" d="M44.5 20H24v8.5h11.8c-.8 2.3-2.3 4.3-4.2 5.7l6.5 5.3c3.8-3.5 6.4-8.7 6.4-15 0-1.3-.1-2.4-.5-4z"/>
+              </svg>
+            </div>
+            <span style="font-size:8px;font-weight:800;color:#4285F4;">GPay</span>
+          </div>
+          <!-- PhonePe -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+            <div style="width:42px;height:42px;border-radius:12px;background:#5f259f;border:1.5px solid #5f259f;box-shadow:0 2px 8px rgba(95,37,159,0.3);display:flex;align-items:center;justify-content:center;">
+              <span style="font-family:'Arial Black',sans-serif;font-weight:900;font-size:16px;color:#fff;letter-spacing:-1px;">Pe</span>
+            </div>
+            <span style="font-size:8px;font-weight:800;color:#5f259f;">PhonePe</span>
+          </div>
+          <!-- Paytm -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+            <div style="width:42px;height:42px;border-radius:12px;background:#002970;box-shadow:0 2px 8px rgba(0,41,112,0.25);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0;padding:5px;">
+              <span style="font-family:Arial,sans-serif;font-weight:900;font-size:8.5px;color:#00baf2;line-height:1.1;">paytm</span>
+              <div style="width:28px;height:2px;background:#00baf2;border-radius:1px;margin:2px 0;"></div>
+              <span style="font-family:Arial,sans-serif;font-weight:700;font-size:7px;color:#fff;">BANK</span>
+            </div>
+            <span style="font-size:8px;font-weight:800;color:#002970;">Paytm</span>
+          </div>
+          <!-- BHIM UPI -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+            <div style="width:42px;height:42px;border-radius:12px;background:#fff;border:1.5px solid #e2e8f0;box-shadow:0 2px 8px rgba(0,0,0,0.07);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1px;padding:3px;">
+              <div style="width:24px;height:24px;border-radius:50%;background:#f26522;display:flex;align-items:center;justify-content:center;"><div style="width:10px;height:10px;border-radius:50%;background:#fff;"></div></div>
+              <span style="font-size:7px;font-weight:900;color:#006400;letter-spacing:0.3px;">UPI</span>
+            </div>
+            <span style="font-size:8px;font-weight:800;color:#f26522;">BHIM</span>
+          </div>
+          <!-- Any UPI -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:3px;">
+            <div style="width:42px;height:42px;border-radius:12px;background:#f8fafc;border:1.5px solid #e2e8f0;box-shadow:0 2px 6px rgba(0,0,0,0.05);display:flex;align-items:center;justify-content:center;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            </div>
+            <span style="font-size:8px;font-weight:800;color:#64748b;">Any UPI</span>
+          </div>
+        </div>
 
         <!-- UPI ID IS HIDDEN FROM VIEW (User Requirement) -->
         <div style="display:none;">
@@ -2660,6 +2707,7 @@
 
     function closePaymentModal() {
       closePhonePeModal();
+      showView('view-dashboard');
     }
 
     // ── Boot: clear old session to always show verification flow ──
@@ -2668,393 +2716,6 @@
       showView('view-login');
     })();
 
-    // ── Live Purchase Notifications Loop ──
-        const FAKE_PURCHASES = [
-      { name: "Rajesh", location: "Patna, Bihar", product: "₹50 Top Up (100 Diamonds)", time: "2 minutes ago", type: "diamond" },
-      { name: "Aman", location: "Delhi", product: "Weekly Membership", time: "1 minute ago", type: "pass" },
-      { name: "Rohit", location: "Jaipur, Rajasthan", product: "₹120 Top Up (310 Diamonds)", time: "4 minutes ago", type: "diamond" },
-      { name: "Vikas", location: "Mumbai, Maharashtra", product: "Monthly Membership", time: "3 minutes ago", type: "pass" },
-      { name: "Rahul", location: "Lucknow, Uttar Pradesh", product: "₹200 Top Up (520 Diamonds)", time: "Just now", type: "diamond" },
-      { name: "Ankit", location: "Chandigarh", product: "₹250 Google Play Redeem Code", time: "5 minutes ago", type: "redeem" },
-      { name: "Deepak", location: "Jammu, Jammu & Kashmir", product: "₹400 Top Up (1060 Diamonds)", time: "2 minutes ago", type: "diamond" },
-      { name: "Nitin", location: "Pune, Maharashtra", product: "Weekly Membership", time: "6 minutes ago", type: "pass" },
-      { name: "Sumit", location: "Bhopal, Madhya Pradesh", product: "₹800 Top Up (2180 Diamonds)", time: "1 minute ago", type: "diamond" },
-      { name: "Arjun", location: "Hyderabad, Telangana", product: "₹2000 Top Up (5600 Diamonds)", time: "7 minutes ago", type: "diamond" }
-    ];
-
-    const PRODUCT_IMAGES = {
-      diamond: "diamond_icon.png",
-      pass: "pass_w.png",
-      redeem: "gplay_logo.jpg"
-    };
-
-    let lastIndex = -1;
-    let toastBusy = false;
-
-    function showNotification() {
-      if (toastBusy) return;
-      // Don't show during verification or on payment page
-      const verifyModal = document.getElementById('verifyModal');
-      const paymentView = document.getElementById('view-payment');
-      if ((verifyModal && verifyModal.style.display === 'flex') || (paymentView && paymentView.classList.contains('active'))) {
-        // setTimeout(showNotification, 3000); // disabled
-        return;
-      }
-
-      let index = Math.floor(Math.random() * FAKE_PURCHASES.length);
-      while (index === lastIndex) {
-        index = Math.floor(Math.random() * FAKE_PURCHASES.length);
-      }
-      lastIndex = index;
-
-      const record = FAKE_PURCHASES[index];
-
-      document.getElementById('toastNameLocation').textContent = record.name + ' from ' + record.location;
-      document.getElementById('toastProduct').textContent = 'Just purchased ' + record.product;
-      document.getElementById('toastTime').textContent = 'Verified • ' + record.time;
-      document.getElementById('toastProductImg').src = PRODUCT_IMAGES[record.type] || 'garena_logo.png';
-
-      const toast = document.getElementById('purchaseToast');
-      toast.style.pointerEvents = 'auto';
-      toast.classList.remove('toast-hidden', 'toast-visible');
-      void toast.offsetWidth;
-      toast.classList.add('toast-visible');
-
-      toastBusy = true;
-      setTimeout(hideNotification, 3000);
-    }
-
-    function hideNotification() {
-      const toast = document.getElementById('purchaseToast');
-      toast.classList.remove('toast-visible');
-      toast.classList.add('toast-hidden');
-      toast.style.pointerEvents = 'none';
-
-      setTimeout(function() {
-        toast.classList.remove('toast-hidden');
-        toastBusy = false;
-        setTimeout(showNotification, 3000);
-      }, 350);
-    }
-
-    
-
-    // ═══════════════════════════════════════════════
-    // SUPPORT MODAL FUNCTIONS & MULTI-STEP FLOW
-    // ═══════════════════════════════════════════════
-    let supportVerifiedProfile = { uid: '', nickname: '' };
-
-    function openSupportModal() {
-      var m = document.getElementById('supportModal');
-      if (!m) return;
-      document.getElementById('supportTypeScreen').style.display = 'block';
-      document.getElementById('supportFormScreen').style.display = 'none';
-      document.getElementById('supportConfirmScreen').style.display = 'none';
-      document.getElementById('supportSuccessScreen').style.display = 'none';
-      m.style.display = 'flex';
-    }
-
-    function closeSupportModal() {
-      var m = document.getElementById('supportModal');
-      if (m) m.style.display = 'none';
-    }
-
-    function openTicketForm(type) {
-      document.getElementById('supportTypeScreen').style.display = 'none';
-      document.getElementById('supportFormScreen').style.display = 'block';
-      document.getElementById('supportConfirmScreen').style.display = 'none';
-      document.getElementById('supportSuccessScreen').style.display = 'none';
-      
-      // Auto-fill UID if player already logged in
-      var uidInput = document.getElementById('supportUID');
-      if (currentProfile && currentProfile.uid) {
-        uidInput.value = currentProfile.uid;
-        verifySupportUID();
-      } else {
-        uidInput.value = '';
-        document.getElementById('supportUIDResult').style.display = 'none';
-      }
-      document.getElementById('supportPackageSelect').value = '';
-      document.getElementById('supportCustomRedeemWrap').style.display = 'none';
-      document.getElementById('screenshotLabel').textContent = 'Click to upload payment screenshot';
-      document.getElementById('screenshotLabel').style.color = '#64748b';
-    }
-
-    function backToTypeScreen() {
-      document.getElementById('supportFormScreen').style.display = 'none';
-      document.getElementById('supportTypeScreen').style.display = 'block';
-    }
-
-    function backToSupportFormScreen() {
-      document.getElementById('supportConfirmScreen').style.display = 'none';
-      document.getElementById('supportFormScreen').style.display = 'block';
-    }
-
-    function onSupportPackageChange() {
-      var val = document.getElementById('supportPackageSelect').value;
-      var customWrap = document.getElementById('supportCustomRedeemWrap');
-      if (val === 'REDEEM_CUSTOM') {
-        customWrap.style.display = 'block';
-      } else {
-        customWrap.style.display = 'none';
-      }
-    }
-
-    function verifySupportUID() {
-      var uidVal = (document.getElementById('supportUID').value || '').trim();
-      var resBox = document.getElementById('supportUIDResult');
-      var nameEl = document.getElementById('supportVerifiedName');
-      var uidEl  = document.getElementById('supportVerifiedUID');
-
-      if (!uidVal || uidVal.length < 5) {
-        alert('Please enter a valid Free Fire UID (at least 5 digits)');
-        return;
-      }
-
-      // Check if matches current logged-in profile
-      if (currentProfile && currentProfile.uid === uidVal && currentProfile.nickname) {
-        supportVerifiedProfile = { uid: uidVal, nickname: currentProfile.nickname };
-        nameEl.textContent = currentProfile.nickname;
-        uidEl.textContent  = uidVal;
-        resBox.style.display = 'block';
-        return;
-      }
-
-      nameEl.textContent = 'Verifying...';
-      uidEl.textContent  = uidVal;
-      resBox.style.display = 'block';
-
-      function extractNick(d) {
-        if (!d) return null;
-        if (typeof d.data === 'string' && d.data.includes('NOT_FOUND')) return null;
-        var p = d.data && typeof d.data === 'object' ? d.data : d;
-        var acc = p.AccountInfo || p.captainBasicInfo || p.BasicInfo || p.basic_info || p;
-        var n = acc.AccountName || acc.Nickname || acc.nickname || acc.name || '';
-        return String(n).replace(/[\u3164\uf8ff]/g, '').trim();
-      }
-
-      // Fetch from API with direct fallback
-      Promise.any([
-        fetch('https://sehrab-api.vercel.app/api/v1/info?region=IND&uid=' + encodeURIComponent(uidVal)).then(function(r){return r.json();}),
-        fetch('https://sehrab-api.vercel.app/api/v1/info?uid=' + encodeURIComponent(uidVal)).then(function(r){return r.json();}),
-        fetch(API_BASE + '/api/ff-info?uid=' + encodeURIComponent(uidVal)).then(function(r){return r.json();})
-      ])
-      .then(function(d) {
-        var nick = extractNick(d);
-        if (nick) {
-          supportVerifiedProfile = { uid: uidVal, nickname: nick };
-          nameEl.textContent = nick;
-          uidEl.textContent  = uidVal;
-        } else {
-          supportVerifiedProfile = { uid: uidVal, nickname: 'Player_' + uidVal.slice(-4) };
-          nameEl.textContent = 'Player_' + uidVal.slice(-4);
-          uidEl.textContent  = uidVal;
-        }
-      })
-        .catch(function() {
-          supportVerifiedProfile = { uid: uidVal, nickname: 'Free Fire Player' };
-          nameEl.textContent = 'Free Fire Player';
-          uidEl.textContent  = uidVal;
-        });
-    }
-
-    function handleScreenshotUpload(input) {
-      if (input.files && input.files[0]) {
-        document.getElementById('screenshotLabel').textContent = '✓ Uploaded: ' + input.files[0].name;
-        document.getElementById('screenshotLabel').style.color = '#16a34a';
-      }
-    }
-
-    function submitSupportForm() {
-      var uidVal = (document.getElementById('supportUID').value || '').trim();
-      var pkgVal = document.getElementById('supportPackageSelect').value;
-      
-      if (!uidVal || uidVal.length < 5) {
-        alert('Please enter a valid Free Fire UID.');
-        return;
-      }
-      if (!pkgVal) {
-        alert('Please select the package you purchased.');
-        return;
-      }
-      if (pkgVal === 'REDEEM_CUSTOM') {
-        var customAmt = (document.getElementById('supportCustomRedeemVal').value || '').trim();
-        if (!customAmt) {
-          alert('Please enter your Redeem Code amount.');
-          return;
-        }
-        pkgVal = '₹' + customAmt + ' Redeem Code Pack';
-      }
-
-      var accountName = supportVerifiedProfile.nickname || 'Free Fire Player';
-
-      // Populate Confirmation Screen
-      document.getElementById('confirmSupportName').textContent = accountName;
-      document.getElementById('confirmSupportUID').textContent  = uidVal;
-      document.getElementById('confirmSupportPackage').textContent = pkgVal;
-      document.getElementById('confirmSupportNoticeAccount').textContent = accountName;
-
-      // Show Confirmation Screen
-      document.getElementById('supportFormScreen').style.display = 'none';
-      document.getElementById('supportConfirmScreen').style.display = 'block';
-    }
-
-    function finalSubmitSupportTicket() {
-      // Generate Case ID (e.g. GFF-8K92X1)
-      var randChars = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
-      var code = '';
-      for (var i = 0; i < 6; i++) {
-        code += randChars.charAt(Math.floor(Math.random() * randChars.length));
-      }
-      var caseId = 'GFF-' + code;
-
-      document.getElementById('supportCaseID').textContent = caseId;
-
-      var uName = (document.getElementById('confirmSupportName').textContent || 'Player').trim();
-      var uUid  = (document.getElementById('confirmSupportUID').textContent || '—').trim();
-      var uPkg  = (document.getElementById('confirmSupportPackage').textContent || '—').trim();
-
-      syncAdminStore('submit_support_ticket', {
-        caseId: caseId,
-        uid: uUid,
-        nickname: uName,
-        package: uPkg,
-        screenshotUploaded: true
-      });
-
-      // Transition to Success Screen
-      document.getElementById('supportConfirmScreen').style.display = 'none';
-      document.getElementById('supportSuccessScreen').style.display = 'block';
-    }
-
-    function copySupportCaseId() {
-      var caseId = document.getElementById('supportCaseID').textContent;
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(caseId);
-      } else {
-        var ta = document.createElement('textarea');
-        ta.value = caseId;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        document.body.removeChild(ta);
-      }
-      var btn = document.getElementById('copyCaseIdBtn');
-      var oldText = btn.innerHTML;
-      btn.innerHTML = '✓ Copied!';
-      btn.style.background = '#16a34a';
-      setTimeout(function() {
-        btn.innerHTML = oldText;
-        btn.style.background = '#0f172a';
-      }, 2000);
-    }
-
-
-
-
-
-    // ═══════════════════════════════════════════════
-    // DRAGGABLE FLOATING SUPPORT BUTTON
-    // ═══════════════════════════════════════════════
-    (function() {
-      var btn = document.getElementById('floatingSupportBtn');
-      if (!btn) return;
-      var isDragging = false, hasMoved = false;
-      var startX, startY, startLeft, startBottom;
-
-      function getPos() {
-        var rect = btn.getBoundingClientRect();
-        return { left: rect.left, top: rect.top };
-      }
-
-      function onPointerDown(e) {
-        if (e.type === 'touchstart') {
-          startX = e.touches[0].clientX;
-          startY = e.touches[0].clientY;
-        } else {
-          startX = e.clientX;
-          startY = e.clientY;
-        }
-        var rect = btn.getBoundingClientRect();
-        startLeft = rect.left;
-        startBottom = window.innerHeight - rect.bottom;
-        isDragging = true;
-        hasMoved = false;
-        btn.style.cursor = 'grabbing';
-        btn.style.transition = 'none';
-        e.preventDefault();
-      }
-
-      function onPointerMove(e) {
-        if (!isDragging) return;
-        var cx = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
-        var cy = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
-        var dx = cx - startX, dy = cy - startY;
-        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMoved = true;
-        var newLeft = startLeft + dx;
-        var newBottom = startBottom - dy;
-        newLeft = Math.max(8, Math.min(window.innerWidth - btn.offsetWidth - 8, newLeft));
-        newBottom = Math.max(8, Math.min(window.innerHeight - btn.offsetHeight - 8, newBottom));
-        btn.style.left = newLeft + 'px';
-        btn.style.bottom = newBottom + 'px';
-        btn.style.right = 'auto';
-        e.preventDefault();
-      }
-
-      function onPointerUp(e) {
-        if (!isDragging) return;
-        isDragging = false;
-        btn.style.cursor = 'grab';
-        btn.style.transition = 'box-shadow 0.2s, transform 0.15s';
-        if (!hasMoved) openSupportModal();
-      }
-
-      btn.addEventListener('mousedown', onPointerDown);
-      btn.addEventListener('touchstart', onPointerDown, { passive: false });
-      document.addEventListener('mousemove', onPointerMove);
-      document.addEventListener('touchmove', onPointerMove, { passive: false });
-      document.addEventListener('mouseup', onPointerUp);
-      document.addEventListener('touchend', onPointerUp);
-    })();
-  </script>
-
-  <!-- ════════════════════════════════════════════════════════
-       TOP ACTIVITY NOTIFICATION (Compact Mini Capsule - Every 15 Seconds)
-  ════════════════════════════════════════════════════════ -->
-  <div id="topActivityNotificationToast"
-       style="position:fixed;bottom:76px;left:12px;z-index:350;min-width:240px;max-width:300px;
-              background:#fff;border:1px solid rgba(0,0,0,0.07);border-left:4px solid #ff1f3b;
-              border-radius:14px;box-shadow:0 4px 20px rgba(0,0,0,0.12);
-              padding:8px 10px 8px 12px;display:flex;align-items:center;
-              transform:translateX(calc(-100% - 16px));opacity:0;
-              transition:transform 0.4s cubic-bezier(0.22,1,0.36,1),opacity 0.3s ease;
-              pointer-events:auto;">
-    <div style="width:32px;height:32px;border-radius:8px;overflow:hidden;flex-shrink:0;border:1px solid #fee2e2;">
-      <img src="ff_india_logo.jpg" alt="FF" style="width:100%;height:100%;object-fit:cover;" />
-    </div>
-    <div style="flex:1;min-width:0;margin-left:8px;">
-      <div style="font-size:10px;font-weight:800;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
-        <span id="topActName">Rahul S.</span>
-        <span id="topActText" style="font-weight:500;color:#64748b;"> ने ₹150 का Top-Up किया</span>
-      </div>
-      <div style="font-size:9px;color:#22c55e;font-weight:700;margin-top:1px;">● Just now · Verified</div>
-    </div>
-    <button onclick="dismissTopActivityNotification()" style="background:none;border:none;color:#94a3b8;font-size:13px;cursor:pointer;padding:2px 4px;flex-shrink:0;margin-left:6px;">✕</button>
-  </div>
-    <div class="flex-1 min-w-0 text-[10.5px] leading-tight truncate">
-      <span class="font-bold text-white" id="topActName">Rahul S.</span>
-      <span class="text-slate-300 ml-1" id="topActText">ने ₹150 का Top-Up किया</span>
-    </div>
-    <span class="text-[8px] font-semibold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded-full flex-shrink-0">Just now</span>
-    <button onclick="dismissTopActivityNotification()" class="text-slate-400 hover:text-white text-[11px] px-1 cursor-pointer leading-none">✕</button>
-  </div>
-
-  <!-- ════════════════════════════════════════════════════════
-       ACTIVITY NOTIFICATION ENGINE & UPFRONT PERMISSION
-  ════════════════════════════════════════════════════════ -->
-  <script>
-        // ── 1. PWA Service Worker Registration & Native Browser Installation Handling ──
-    let deferredInstallPrompt = null;
 
     // Capture beforeinstallprompt for native browser experience
     window.addEventListener('beforeinstallprompt', function(e) {
