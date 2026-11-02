@@ -2064,13 +2064,13 @@
             .catch(function(){});
         });
 
-        // 4.5s Resilient Timeout: Allows real API calls to complete reliably
+        // 8s Resilient Timeout: Covers Vercel cold-starts so first-try always shows real data
         setTimeout(function() {
           if (!done) {
             done = true;
             resolve(null);
           }
-        }, 4500);
+        }, 8000);
       });
 
       // Visual step animation timers
