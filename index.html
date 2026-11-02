@@ -2414,15 +2414,23 @@
       const likesFormatted = currentProfile.likes ? (typeof currentProfile.likes === 'number' ? currentProfile.likes.toLocaleString('en-IN') : currentProfile.likes) : '—';
       var likesEl = document.getElementById('verifiedLikesDisplay'); if (likesEl) likesEl.textContent = likesFormatted;
 
-      // Load products & switch view to Diamond Store (view-dashboard)
-      loadDashboardData(true);
+      // Switch view FIRST so scroll resets to top, then load products
       if (modal) {
         modal.classList.add('hidden');
         modal.style.display = 'none';
       }
       showView('view-dashboard');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
 
-
+      // Load products after view switch so DOM renders at top
+      setTimeout(function() {
+        loadDashboardData(true);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 50);
     }
 
     // ── Dashboard product lists ──
