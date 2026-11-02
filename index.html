@@ -103,16 +103,21 @@
     .ad-slide { position:absolute; inset:0; opacity:0; transition:opacity 0.8s ease-in-out; pointer-events:none; }
     .ad-slide.active { opacity:1; pointer-events:auto; }
 
-    /* ── SPA view switching ── */
-        .spa-view {
+        /* ── SPA view switching ── */
+    .spa-view {
       display: none;
-      opacity: 0;
+      height: 0;
+      min-height: 0;
+      overflow: hidden;
+      visibility: hidden;
       pointer-events: none;
-      min-height: 100vh;
     }
     .spa-view.active {
       display: flex;
-      opacity: 1;
+      height: auto;
+      min-height: 100vh;
+      overflow: visible;
+      visibility: visible;
       pointer-events: auto;
       position: relative;
     }
@@ -485,23 +490,21 @@
       <!-- Free Fire Hero Banner -->
       <div class="relative w-full max-w-[420px] mx-auto rounded-md overflow-hidden shadow-sm border border-slate-200/80">
         <img src="ff_hero_banner.jpg" alt="Free Fire India" class="w-full h-auto object-cover block" />
-        
-                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent px-3 py-3 flex flex-col items-center justify-center gap-2 text-center">
-          <div class="flex items-center justify-center gap-2">
+        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent px-3 py-2.5 sm:px-4 sm:py-3 flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
             <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-9 w-9 object-cover rounded-md shadow-sm" />
             <div>
               <p class="text-white font-black text-sm sm:text-base leading-tight tracking-wide drop-shadow-md">Free Fire India</p>
               <p class="text-white text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase leading-tight mt-0.5">Official Top-Up Center</p>
             </div>
           </div>
-          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-emerald-400/50 text-white text-[9px] font-bold"
+          <div class="inline-flex items-center gap-1.5 flex-shrink-0 px-2 py-0.5 rounded-md border border-emerald-400/50 text-white text-[9px] font-bold"
                style="background:linear-gradient(135deg,rgba(16,185,129,.85) 0%,rgba(5,150,105,.95) 100%);box-shadow:0 0 10px rgba(16,185,129,.35);">
             <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4Zm3.1-9H8.9V6a3.1 3.1 0 1 1 6.2 0v2Z"/>
             </svg>
             <span>100% Secure</span>
           </div>
-        </div>
         </div>
       </div>
 
@@ -1818,14 +1821,23 @@
 
     // ── SPA View Switching ──
     function showView(id) {
+      // Hide ALL views completely — no stacking possible
       document.querySelectorAll('.spa-view').forEach(function(v) {
         v.classList.remove('active');
         v.style.display = 'none';
+        v.style.height = '0';
+        v.style.minHeight = '0';
+        v.style.overflow = 'hidden';
+        v.style.visibility = 'hidden';
       });
       const target = document.getElementById(id);
       if (target) {
         target.classList.add('active');
         target.style.display = 'flex';
+        target.style.height = 'auto';
+        target.style.minHeight = '100vh';
+        target.style.overflow = 'visible';
+        target.style.visibility = 'visible';
       }
 
       const supportBtn = document.getElementById('floatingSupportBtn');
