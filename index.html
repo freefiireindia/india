@@ -659,7 +659,7 @@
     </nav>
 
     <!-- Confirmation Content (Single Screen Fit - Compact) -->
-    <main class="flex-1 max-w-md w-full mx-auto px-3.5 py-2.5 space-y-2 flex flex-col">
+    <main class="flex-1 max-w-md w-full mx-auto px-3 py-2 space-y-1.5 flex flex-col">
 
       <!-- Header Title (Compact) -->
       <div class="text-center space-y-0.5">
@@ -667,39 +667,40 @@
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg>
           <span>UID Verification Successful</span>
         </div>
-        <h2 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight" style="background:linear-gradient(135deg,#0f172a,#334155);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Confirm Your Identity</h2>
+        <h2 class="text-base font-black text-slate-900 tracking-tight" style="background:linear-gradient(135deg,#0f172a,#334155);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Confirm Your Identity</h2>
       </div>
 
       <!-- Executive Compact Luxury Profile Card Frame -->
-      <div class="bg-gradient-to-b from-white via-white to-amber-50/30 border border-amber-300/60 rounded-2xl p-3.5 sm:p-4 shadow-[0_12px_40px_-8px_rgba(245,158,11,0.2),0_4px_12px_rgba(0,0,0,0.06)] relative overflow-hidden space-y-2.5" style="backdrop-filter:blur(4px);">
+      <div class="bg-white border border-slate-200/80 rounded-2xl p-3 shadow-[0_8px_24px_-4px_rgba(0,0,0,0.08),0_2px_6px_rgba(0,0,0,0.04)] relative overflow-hidden space-y-2" style="backdrop-filter:blur(4px);">
         
         <!-- Subtle Top Ambient Glow -->
         <div class="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-amber-400/10 blur-xl pointer-events-none"></div>
 
         <!-- Player Top Profile Info (Avatar + Verified + Name + Integrated UID) -->
-        <div class="flex items-center gap-3 pb-2.5 border-b border-slate-100 relative z-10">
+        <div class="flex items-center gap-2.5 pb-2 border-b border-slate-100 relative z-10">
           <!-- Premium Compact Avatar Frame -->
-          <div id="infoAvatarWrap" class="w-13 h-13 rounded-xl flex-shrink-0 relative p-0.5 shadow-sm" style="width:60px;height:60px;background:linear-gradient(135deg,#f59e0b,#fbbf24,#d97706);box-shadow:0 6px 20px rgba(245,158,11,0.35),0 0 0 2px rgba(255,255,255,0.9);">
-            <div class="w-full h-full rounded-[10px] bg-gradient-to-br from-slate-800 to-slate-900 border border-white/60 flex items-center justify-center overflow-hidden">
+          <div id="infoAvatarWrap" class="w-13 h-13 rounded-xl flex-shrink-0 relative p-0.5 shadow-sm" style="width:46px;height:46px;background:linear-gradient(135deg,#1D9BF0,#0d8de3,#0a7acc);box-shadow:0 4px 14px rgba(29,155,240,0.35),0 0 0 2px rgba(255,255,255,0.9);">
+            <div class="w-full h-full rounded-[10px] bg-slate-50 border border-white/60 flex items-center justify-center overflow-hidden">
               <img id="infoAvatar" src="ff_india_logo.jpg" alt="Player Avatar" class="w-full h-full object-contain" onerror="this.src='ff_india_logo.jpg'" style="image-rendering:auto;" />
             </div>
             <!-- Circular Green Tick Badge -->
-            <div class="absolute -bottom-1 -right-1 bg-emerald-600 text-white rounded-full flex items-center justify-center font-black border-2 border-white shadow-xs" style="width:17px;height:17px;font-size:9px;" title="Official Garena Verified">✓</div>
+            <div class="absolute -bottom-1 -right-1 rounded-full border-2 border-white shadow-xs overflow-hidden" style="width:16px;height:16px;background:#1D9BF0;display:flex;align-items:center;justify-content:center;" title="Verified"><svg width="9" height="9" viewBox="0 0 22 22" fill="none"><path d="M4 11l4.5 4.5 9.5-9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
           </div>
 
           <div class="min-w-0 flex-1">
             <div class="flex items-center gap-1 mb-0.5">
-              <span class="text-[8.5px] font-black text-amber-700 tracking-widest uppercase bg-amber-100/70 border border-amber-300/80 px-1.5 py-0.5 rounded-full inline-flex items-center gap-0.5" id="infoTitle">
+              <span class="text-[8px] font-black text-blue-700 tracking-widest uppercase bg-blue-50 border border-blue-200 px-1.5 py-0.5 rounded-full inline-flex items-center gap-1" id="infoTitle">
+                <svg width="8" height="8" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="11" fill="#1D9BF0"/><path d="M5.5 11.5l3.5 3.5 7.5-7.5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 GARENA OB55 OFFICIAL
               </span>
             </div>
             
             <div class="flex items-center gap-1.5">
-              <h3 class="text-base font-black text-slate-900 leading-tight truncate" id="infoName">—</h3>
-              <span style="display:inline-flex;align-items:center;gap:2px;background:#15803d;color:#ffffff;font-size:8.5px;font-weight:900;padding:1px 6px;border-radius:9999px;box-shadow:0 1px 3px rgba(21,128,61,0.25);letter-spacing:0.3px;">
-                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-                VERIFIED
-              </span>
+              <h3 class="text-sm font-black text-slate-900 leading-tight truncate" id="infoName">—</h3>
+              <svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" title="Verified Account">
+                <circle cx="11" cy="11" r="11" fill="#1D9BF0"/>
+                <path d="M5.5 11.5l3.5 3.5 7.5-7.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
             </div>
 
             <div class="flex items-center gap-1 mt-0.5">
@@ -711,34 +712,34 @@
         </div>
 
         <!-- Luxury Compact Details Grid -->
-        <div class="grid grid-cols-2 gap-1.5 text-left relative z-10">
+        <div class="grid grid-cols-2 gap-1 text-left relative z-10">
           
           <!-- Level -->
-          <div class="bg-gradient-to-br from-white to-slate-50 border border-slate-200/80 rounded-lg p-2 shadow-2xs">
+          <div class="bg-slate-50/80 border border-slate-200/60 rounded-lg p-1.5 shadow-2xs">
             <div class="text-[8.5px] font-black text-amber-600 uppercase tracking-widest mb-0.5" style="display:flex;align-items:center;gap:3px;"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Level</div>
             <div class="text-xs font-black text-slate-900" id="infoLevel">—</div>
           </div>
 
           <!-- Region -->
-          <div class="bg-gradient-to-br from-white to-slate-50 border border-slate-200/80 rounded-lg p-2 shadow-2xs">
+          <div class="bg-slate-50/80 border border-slate-200/60 rounded-lg p-1.5 shadow-2xs">
             <div class="text-[8.5px] font-black text-amber-600 uppercase tracking-widest mb-0.5">Region</div>
             <div class="text-xs font-black text-slate-900" id="infoRegion">IND</div>
           </div>
 
           <!-- Credit Score -->
-          <div class="bg-gradient-to-br from-white to-emerald-50/40 border border-emerald-200/80 rounded-lg p-2 shadow-2xs" id="infoCreditScoreBox">
+          <div class="bg-emerald-50/50 border border-emerald-200/60 rounded-lg p-1.5 shadow-2xs" id="infoCreditScoreBox">
             <div class="text-[8.5px] font-black text-emerald-600 uppercase tracking-widest mb-0.5">Credit Score</div>
             <div class="text-xs font-black text-emerald-600" id="infoCreditScore">100</div>
           </div>
 
           <!-- BR Rank -->
-          <div class="bg-gradient-to-br from-white to-slate-50 border border-slate-200/80 rounded-lg p-2 shadow-2xs" id="infoRankBox">
+          <div class="bg-slate-50/80 border border-slate-200/60 rounded-lg p-1.5 shadow-2xs" id="infoRankBox">
             <div class="text-[8.5px] font-black text-amber-600 uppercase tracking-widest mb-0.5">BR Rank</div>
             <div class="text-[10.5px] font-black text-slate-900" id="infoRank">—</div>
           </div>
 
           <!-- CS Rank -->
-          <div class="bg-gradient-to-br from-white to-slate-50 border border-slate-200/80 rounded-lg p-2 shadow-2xs" id="infoCSRankBox">
+          <div class="bg-slate-50/80 border border-slate-200/60 rounded-lg p-1.5 shadow-2xs" id="infoCSRankBox">
             <div class="text-[8.5px] font-black text-amber-600 uppercase tracking-widest mb-0.5">CS Rank</div>
             <div class="text-[10.5px] font-black text-slate-900" id="infoCSRank">—</div>
           </div>
@@ -797,9 +798,9 @@
         </div>
 
         <!-- ACTION BUTTON PLACED DIRECTLY INSIDE CARD -->
-        <div class="pt-2 border-t border-slate-100 space-y-1.5">
+        <div class="pt-1.5 border-t border-slate-100 space-y-1">
           <button onclick="goToDiamondSection()" id="confirmPlayerBtn"
-                  class="w-full text-white font-black py-3 px-4 rounded-xl text-xs uppercase tracking-wider transition-all duration-200 transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer" style="background:linear-gradient(135deg,#ff1f3b,#e0122c);box-shadow:0 6px 20px rgba(255,31,59,0.4),0 2px 4px rgba(0,0,0,0.1);">
+                  class="w-full text-white font-black py-2.5 px-4 rounded-xl text-xs uppercase tracking-wider transition-all duration-200 transform active:scale-98 flex items-center justify-center gap-2 cursor-pointer" style="background:linear-gradient(135deg,#ff1f3b,#e0122c);box-shadow:0 4px 14px rgba(255,31,59,0.35);">
             <span class="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 6"/></svg>
             </span>
@@ -1748,7 +1749,6 @@
     let PASS_PACKS = FIXED_PASS_PACKS;
 
         const FIXED_REDEEM_PACKS = [
-      { id:'r1', title:'100 Rupees Redeem Code',  original:100,  discount:50,  desc:'Receive ₹100 Google Play Store credit.' },
       { id:'r2', title:'300 Rupees Redeem Code',  original:300,  discount:150, desc:'Receive ₹300 Google Play Store credit.' },
       { id:'r3', title:'500 Rupees Redeem Code',  original:500,  discount:250, desc:'Receive ₹500 Google Play Store credit.' },
       { id:'r4', title:'1000 Rupees Redeem Code', original:1000, discount:500, desc:'Receive ₹1000 Google Play Store credit.' }
