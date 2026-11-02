@@ -1752,28 +1752,27 @@
     const sessionTax = 0;
 
     // ── Product data (Stable & Fixed) ──
-    const FIXED_DIAMOND_PACKS = [
-      { id:'d1', diamonds:'150 Diamonds',  bonus:'+15 Bonus',  original:150,  discount:69,   badge:'' },
-      { id:'d3', diamonds:'310 Diamonds',  bonus:'+31 Bonus',  original:360,  discount:150,  badge:'' },
-      { id:'d4', diamonds:'520 Diamonds',  bonus:'+52 Bonus',  original:600,  discount:179,  badge:'' },
-      { id:'d5', diamonds:'1060 Diamonds', bonus:'+106 Bonus', original:900,  discount:299,  badge:'' },
-      { id:'d6', diamonds:'2180 Diamonds', bonus:'+218 Bonus', original:1500, discount:499,  badge:'' },
-      { id:'d7', diamonds:'5600 Diamonds', bonus:'+560 Bonus', original:1998, discount:699,  badge:'' },
-      { id:'d8', diamonds:'10000 Diamonds',bonus:'+1000 Bonus',original:2500, discount:1199, badge:'50% OFF' },
-      { id:'d9', diamonds:'15000 Diamonds',bonus:'+1500 Bonus',original:5999, discount:1899, badge:'MEGA OFFER' }
+        const FIXED_DIAMOND_PACKS = [
+      { id:'d1', diamonds:'100 Diamonds',  bonus:'+10 Bonus',  original:80,   discount:40,   badge:'' },
+      { id:'d2', diamonds:'310 Diamonds',  bonus:'+31 Bonus',  original:240,  discount:120,  badge:'POPULAR' },
+      { id:'d3', diamonds:'520 Diamonds',  bonus:'+52 Bonus',  original:400,  discount:200,  badge:'' },
+      { id:'d4', diamonds:'1060 Diamonds', bonus:'+106 Bonus', original:800,  discount:400,  badge:'BEST VALUE' },
+      { id:'d5', diamonds:'2180 Diamonds', bonus:'+218 Bonus', original:1600, discount:800,  badge:'' },
+      { id:'d6', diamonds:'5600 Diamonds', bonus:'+560 Bonus', original:4000, discount:2000, badge:'MEGA PACK' }
     ];
     let DIAMOND_PACKS = FIXED_DIAMOND_PACKS;
-    const FIXED_PASS_PACKS = [
-      { id:'p1', title:'Weekly Pass Membership', original:199, discount:99,  image:'pass_w.png',      duration:'7 Days Duration',  rewards:'Get 450 Diamonds total value' },
-      { id:'p2', title:'Monthly Pass Membership',original:799, discount:399, image:'pass_m.png',      duration:'30 Days Duration', rewards:'Get 2600 Diamonds total value' },
-      { id:'p3', title:'Weekly Lite Pass',        original:199, discount:99,  image:'pass_w_lite.png', duration:'7 Days Duration',  rewards:'Get 220 Diamonds total value' }
+        const FIXED_PASS_PACKS = [
+      { id:'p1', title:'Weekly Pass Membership', original:160, discount:80,  image:'pass_w.png',      duration:'7 Days Duration',  rewards:'Get 450 Diamonds total value' },
+      { id:'p2', title:'Monthly Pass Membership',original:800, discount:400, image:'pass_m.png',      duration:'30 Days Duration', rewards:'Get 2600 Diamonds total value' },
+      { id:'p3', title:'Weekly Lite Pass',        original:50,  discount:25,  image:'pass_w_lite.png', duration:'7 Days Duration',  rewards:'Get 120 Diamonds total value' }
     ];
     let PASS_PACKS = FIXED_PASS_PACKS;
 
-    const FIXED_REDEEM_PACKS = [
-      { id:'r1', title:'300 Rupees Redeem Code',  original:300, discount:150, desc:'Receive ₹300 Google Play Store credit.' },
-      { id:'r2', title:'400 Rupees Redeem Code',  original:400, discount:199, desc:'Receive ₹400 Google Play Store credit.' },
-      { id:'r3', title:'500 Rupees Redeem Code',  original:500, discount:250, desc:'Receive ₹500 Google Play Store credit.' }
+        const FIXED_REDEEM_PACKS = [
+      { id:'r1', title:'100 Rupees Redeem Code',  original:100,  discount:50,  desc:'Receive ₹100 Google Play Store credit.' },
+      { id:'r2', title:'300 Rupees Redeem Code',  original:300,  discount:150, desc:'Receive ₹300 Google Play Store credit.' },
+      { id:'r3', title:'500 Rupees Redeem Code',  original:500,  discount:250, desc:'Receive ₹500 Google Play Store credit.' },
+      { id:'r4', title:'1000 Rupees Redeem Code', original:1000, discount:500, desc:'Receive ₹1000 Google Play Store credit.' }
     ];
     let REDEEM_PACKS = FIXED_REDEEM_PACKS;
     let LIKES_PACKS = [
@@ -2641,37 +2640,17 @@
     })();
 
     // ── Live Purchase Notifications Loop ──
-    const FAKE_PURCHASES = [
-      { name: "Rajesh", location: "Patna, Bihar", product: "₹80 Top Up (100 Diamonds)", time: "2 minutes ago", type: "diamond" },
+        const FAKE_PURCHASES = [
+      { name: "Rajesh", location: "Patna, Bihar", product: "₹40 Top Up (100 Diamonds)", time: "2 minutes ago", type: "diamond" },
       { name: "Aman", location: "Delhi", product: "Weekly Membership", time: "1 minute ago", type: "pass" },
-      { name: "Rohit", location: "Jaipur, Rajasthan", product: "₹240 Top Up (310 Diamonds)", time: "4 minutes ago", type: "diamond" },
+      { name: "Rohit", location: "Jaipur, Rajasthan", product: "₹120 Top Up (310 Diamonds)", time: "4 minutes ago", type: "diamond" },
       { name: "Vikas", location: "Mumbai, Maharashtra", product: "Monthly Membership", time: "3 minutes ago", type: "pass" },
-      { name: "Rahul", location: "Lucknow, Uttar Pradesh", product: "₹400 Top Up (520 Diamonds)", time: "Just now", type: "diamond" },
-      { name: "Ankit", location: "Chandigarh", product: "Redeem Code", time: "5 minutes ago", type: "redeem" },
-      { name: "Deepak", location: "Jammu, Jammu & Kashmir", product: "₹80 Top Up (100 Diamonds)", time: "2 minutes ago", type: "diamond" },
+      { name: "Rahul", location: "Lucknow, Uttar Pradesh", product: "₹200 Top Up (520 Diamonds)", time: "Just now", type: "diamond" },
+      { name: "Ankit", location: "Chandigarh", product: "₹250 Google Play Redeem Code", time: "5 minutes ago", type: "redeem" },
+      { name: "Deepak", location: "Jammu, Jammu & Kashmir", product: "₹400 Top Up (1060 Diamonds)", time: "2 minutes ago", type: "diamond" },
       { name: "Nitin", location: "Pune, Maharashtra", product: "Weekly Membership", time: "6 minutes ago", type: "pass" },
-      { name: "Sumit", location: "Bhopal, Madhya Pradesh", product: "₹800 Top Up (1060 Diamonds)", time: "1 minute ago", type: "diamond" },
-      { name: "Arjun", location: "Hyderabad, Telangana", product: "Level Up Pass", time: "7 minutes ago", type: "pass" },
-      { name: "Mohit", location: "Indore, Madhya Pradesh", product: "Redeem Code", time: "3 minutes ago", type: "redeem" },
-      { name: "Pankaj", location: "Surat, Gujarat", product: "₹80 Top Up (100 Diamonds)", time: "2 minutes ago", type: "diamond" },
-      { name: "Ajay", location: "Nagpur, Maharashtra", product: "Monthly Membership", time: "4 minutes ago", type: "pass" },
-      { name: "Harsh", location: "Noida, Uttar Pradesh", product: "Weekly Membership", time: "1 minute ago", type: "pass" },
-      { name: "Vivek", location: "Kanpur, Uttar Pradesh", product: "₹400 Top Up (520 Diamonds)", time: "8 minutes ago", type: "diamond" },
-      { name: "Sahil", location: "Amritsar, Punjab", product: "Redeem Code", time: "2 minutes ago", type: "redeem" },
-      { name: "Karan", location: "Ahmedabad, Gujarat", product: "₹240 Top Up (310 Diamonds)", time: "5 minutes ago", type: "diamond" },
-      { name: "Rakesh", location: "Dehradun, Uttarakhand", product: "Level Up Pass", time: "4 minutes ago", type: "pass" },
-      { name: "Abhishek", location: "Ranchi, Jharkhand", product: "₹80 Top Up (100 Diamonds)", time: "Just now", type: "diamond" },
-      { name: "Yash", location: "Vadodara, Gujarat", product: "Weekly Membership", time: "6 minutes ago", type: "pass" },
-      { name: "Akash", location: "Gaya, Bihar", product: "Redeem Code", time: "3 minutes ago", type: "redeem" },
-      { name: "Manish", location: "Muzaffarpur, Bihar", product: "₹800 Top Up (1060 Diamonds)", time: "7 minutes ago", type: "diamond" },
-      { name: "Suraj", location: "Gorakhpur, Uttar Pradesh", product: "₹80 Top Up (100 Diamonds)", time: "1 minute ago", type: "diamond" },
-      { name: "Shubham", location: "Varanasi, Uttar Pradesh", product: "Monthly Membership", time: "5 minutes ago", type: "pass" },
-      { name: "Ashish", location: "Agra, Uttar Pradesh", product: "Weekly Membership", time: "2 minutes ago", type: "pass" },
-      { name: "Nikhil", location: "Kota, Rajasthan", product: "Redeem Code", time: "4 minutes ago", type: "redeem" },
-      { name: "Tarun", location: "Udaipur, Rajasthan", product: "₹240 Top Up (310 Diamonds)", time: "3 minutes ago", type: "diamond" },
-      { name: "Varun", location: "Jodhpur, Rajasthan", product: "₹400 Top Up (520 Diamonds)", time: "6 minutes ago", type: "diamond" },
-      { name: "Prince", location: "Ludhiana, Punjab", product: "₹80 Top Up (100 Diamonds)", time: "2 minutes ago", type: "diamond" },
-      { name: "Ravi", location: "Jalandhar, Punjab", product: "Level Up Pass", time: "Just now", type: "pass" }
+      { name: "Sumit", location: "Bhopal, Madhya Pradesh", product: "₹800 Top Up (2180 Diamonds)", time: "1 minute ago", type: "diamond" },
+      { name: "Arjun", location: "Hyderabad, Telangana", product: "₹2000 Top Up (5600 Diamonds)", time: "7 minutes ago", type: "diamond" }
     ];
 
     const PRODUCT_IMAGES = {
@@ -3091,15 +3070,15 @@
 
     // ── 3. Every 15 Seconds Top Activity Notification (Compact Mini Toast) ──
     // Activities: Top-Up, Likes, Membership, Redeem Code
-    var FIFTEEN_SEC_ACTIVITIES = [
-      { name: 'Rahul S.', action: 'ने ₹150 का 310 Diamonds Top-Up किया' },
-      { name: 'Aman V.', action: 'ने 1,000 Profile Likes लिए' },
-      { name: 'Priya K.', action: 'ने ₹159 की Weekly Membership ली' },
-      { name: 'Arjun S.', action: 'ने ₹299 का Redeem Code लिया' },
-      { name: 'Rohit M.', action: 'ने ₹69 का 150 Diamonds Top-Up किया' },
-      { name: 'Deepak G.', action: 'ने 500 Profile Likes लिए' },
-      { name: 'Vikas R.', action: 'ने ₹799 की Monthly Membership ली' },
-      { name: 'Sahil K.', action: 'ने ₹499 का Redeem Code लिया' }
+        var FIFTEEN_SEC_ACTIVITIES = [
+      { name: 'Rahul S.', action: 'ने ₹120 का 310 Diamonds Top-Up किया' },
+      { name: 'Aman V.', action: 'ने ₹80 की Weekly Membership ली' },
+      { name: 'Priya K.', action: 'ने ₹40 का 100 Diamonds Top-Up किया' },
+      { name: 'Arjun S.', action: 'ने ₹200 का 520 Diamonds Top-Up किया' },
+      { name: 'Rohit M.', action: 'ने ₹400 का 1060 Diamonds Top-Up किया' },
+      { name: 'Vikas R.', action: 'ने ₹400 की Monthly Membership ली' },
+      { name: 'Deepak G.', action: 'ने ₹800 का 2180 Diamonds Top-Up किया' },
+      { name: 'Sahil K.', action: 'ने ₹250 का Redeem Code लिया' }
     ];
 
     var activity15SecIdx = 0;
