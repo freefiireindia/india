@@ -9,7 +9,7 @@
       "bonus": "+10 Bonus",
       "category": "diamonds",
       "originalPrice": 80,
-      "discountPrice": 40,
+      "discountPrice": 50,
       "badge": "",
       "displayOrder": 1
     },
@@ -94,7 +94,9 @@
       "image": "pass_w_lite.png",
       "originalPrice": 50,
       "discountPrice": 25,
-      "displayOrder": 9
+      "displayOrder": 9,
+      "outOfStock": true,
+      "badge": "OUT OF STOCK"
     },
     {
       "id": "prod_r1",
@@ -131,42 +133,6 @@
       "originalPrice": 1000,
       "discountPrice": 500,
       "displayOrder": 13
-    },
-    {
-      "id": "prod_l1",
-      "name": "500 Profile Likes",
-      "category": "likes",
-      "originalPrice": 400,
-      "discountPrice": 200,
-      "badge": "50% OFF",
-      "displayOrder": 14
-    },
-    {
-      "id": "prod_l2",
-      "name": "1000 Profile Likes",
-      "category": "likes",
-      "originalPrice": 800,
-      "discountPrice": 400,
-      "badge": "POPULAR",
-      "displayOrder": 15
-    },
-    {
-      "id": "prod_l3",
-      "name": "1500 Profile Likes",
-      "category": "likes",
-      "originalPrice": 1200,
-      "discountPrice": 600,
-      "badge": "HOT",
-      "displayOrder": 16
-    },
-    {
-      "id": "prod_l4",
-      "name": "2000 Profile Likes",
-      "category": "likes",
-      "originalPrice": 1600,
-      "discountPrice": 800,
-      "badge": "BEST VALUE",
-      "displayOrder": 17
     }
   ],
   "banners": [

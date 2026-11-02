@@ -677,56 +677,52 @@
         <p class="text-[11px] text-slate-500 font-medium">Review your Free Fire account details retrieved from Garena API.</p>
       </div>
 
-      <!-- Pure White Compact Luxury Profile Card -->
-      <div class="bg-white border border-slate-200/90 rounded-2xl p-3.5 shadow-xl relative overflow-hidden space-y-3">
+      <!-- Executive Luxury Profile Card Frame -->
+      <div class="bg-gradient-to-b from-white via-white to-amber-50/30 border border-amber-200/80 rounded-3xl p-4 sm:p-5 shadow-[0_16px_40px_-8px_rgba(245,158,11,0.18),0_4px_16px_rgba(0,0,0,0.06)] relative overflow-hidden space-y-3.5">
         
-        <!-- Player In-Game Official Banner (if available from API) -->
-        <div id="infoBannerWrap" class="w-full h-20 sm:h-24 rounded-xl overflow-hidden relative bg-slate-900 border border-slate-200/70 shadow-inner hidden">
-          <img id="infoBanner" src="" alt="Free Fire In-Game Banner" class="w-full h-full object-cover" onerror="document.getElementById('infoBannerWrap').classList.add('hidden')" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <span class="absolute bottom-1.5 right-2 text-[8px] font-black text-amber-300 uppercase tracking-widest bg-black/60 px-1.5 py-0.5 rounded">OB55 BANNER</span>
-        </div>
+        <!-- Subtle Top Gold Ambient Light -->
+        <div class="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-amber-400/15 blur-2xl pointer-events-none"></div>
+        <div class="absolute -top-12 -left-12 w-32 h-32 rounded-full bg-emerald-400/10 blur-2xl pointer-events-none"></div>
 
-        <!-- Player Top Profile Info (Avatar + Circular Green Tick + Name) -->
-        <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
-          <div id="infoAvatarWrap" class="w-11 h-11 rounded-xl flex-shrink-0 relative" style="background:linear-gradient(135deg,#f59e0b,#d97706,#f59e0b);padding:2px;border-radius:12px;box-shadow:0 0 0 1px rgba(245,158,11,0.35),0 2px 8px rgba(0,0,0,0.12);">
-            <img id="infoAvatar" src="ff_india_logo.jpg" alt="Free Fire Profile Avatar" class="w-full h-full object-cover bg-slate-100" style="border-radius:10px;" onerror="this.src='ff_india_logo.jpg'" />
-            <!-- Perfectly Circular Green Tick Badge -->
-            <div class="absolute -bottom-1 -right-1 bg-emerald-500 text-white rounded-full flex items-center justify-center font-black border-2 border-white shadow-xs" style="width:16px;height:16px;font-size:8px;" title="Verified Account">✓</div>
+        <!-- Player Top Profile Info (Ultra-Premium Avatar + Verified Checkmark + Name + Integrated UID) -->
+        <div class="flex items-center gap-3.5 pb-3 border-b border-slate-100 relative z-10">
+          <!-- Ultra-Premium Avatar Frame -->
+          <div id="infoAvatarWrap" class="w-16 h-16 rounded-2xl flex-shrink-0 relative p-1 shadow-md" style="background:linear-gradient(135deg,#f59e0b,#fbbf24,#d97706);box-shadow:0 6px 18px rgba(245,158,11,0.32), 0 0 0 1px rgba(255,255,255,0.9) inset;">
+            <div class="w-full h-full rounded-xl overflow-hidden bg-slate-900 border border-white/60 shadow-inner flex items-center justify-center">
+              <img id="infoAvatar" src="ff_india_logo.jpg" alt="Player Avatar" class="w-full h-full object-cover" onerror="this.src='ff_india_logo.jpg'" />
+            </div>
+            <!-- Perfectly Circular Green Tick Badge with High-Contrast White Check -->
+            <div class="absolute -bottom-1 -right-1 bg-emerald-600 text-white rounded-full flex items-center justify-center font-black border-2 border-white shadow-md" style="width:20px;height:20px;font-size:10px;" title="Official Garena Verified">✓</div>
           </div>
+
           <div class="min-w-0 flex-1">
-            <div class="flex items-center gap-1 mb-0.5">
-              <span class="text-[9.5px] font-black text-amber-600 tracking-widest uppercase" id="infoTitle">GARENA OB55 OFFICIAL</span>
+            <div class="flex items-center gap-1.5 mb-1">
+              <span class="text-[9px] font-black text-amber-700 tracking-widest uppercase bg-amber-100/70 border border-amber-300/80 px-2 py-0.5 rounded-full inline-flex items-center gap-1" id="infoTitle">
+                <span class="text-amber-500">★</span> GARENA OB55 OFFICIAL
+              </span>
             </div>
             
-            <div class="flex items-center gap-1.5">
-              <div class="flex items-center gap-2">
-                <h3 class="text-lg font-black text-slate-900 leading-tight truncate" id="infoName">—</h3>
-                <span style="display:inline-flex;align-items:center;gap:3px;background:#15803d;color:#ffffff;font-size:9.5px;font-weight:900;padding:2px 7px;border-radius:9999px;box-shadow:0 1px 4px rgba(21,128,61,0.25);letter-spacing:0.3px;">
-                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-                  VERIFIED
-                </span>
-              </div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-lg sm:text-xl font-black text-slate-900 leading-tight truncate" id="infoName">—</h3>
+              <span style="display:inline-flex;align-items:center;gap:3px;background:#15803d;color:#ffffff;font-size:9.5px;font-weight:900;padding:2px 7px;border-radius:9999px;box-shadow:0 1px 4px rgba(21,128,61,0.25);letter-spacing:0.3px;">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                VERIFIED
+              </span>
             </div>
 
-            <p class="text-[10.5px] text-slate-500 font-semibold mt-0.5" id="infoStatus">Free Fire • Verified Player Profile</p>
+            <div class="flex items-center gap-1.5 mt-1">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">UID:</span>
+              <span class="text-xs font-mono font-black text-slate-800 bg-slate-100 border border-slate-200/90 px-2 py-0.5 rounded-md tracking-wider" id="infoUID">—</span>
+              <span class="text-[10px] text-slate-400 font-semibold">• India</span>
+            </div>
           </div>
         </div>
 
-        <!-- Luxury Compact Details Grid -->
-        <div class="grid grid-cols-2 gap-2 text-left">
+        <!-- Luxury Compact Details Grid (Starts directly with Level & Stats - Clean & Executive) -->
+        <div class="grid grid-cols-2 gap-2 text-left relative z-10">
           
-          <!-- UID -->
-          <div class="bg-gradient-to-br from-slate-50 to-amber-50/40 border border-amber-200/80 rounded-xl p-2.5 col-span-2 shadow-2xs">
-            <div class="text-[9px] font-black text-amber-600 uppercase tracking-widest flex items-center gap-1 mb-0.5">
-              <svg class="w-3 h-3 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 8h8M8 12h5M8 16h8"/></svg>
-              <span>ACCOUNT UID</span>
-            </div>
-            <div class="text-base font-black font-mono text-slate-900 tracking-wider" id="infoUID">—</div>
-          </div>
-
           <!-- Level -->
-          <div class="bg-gradient-to-br from-slate-50 to-slate-100/60 border border-slate-200/90 rounded-xl p-2 shadow-2xs">
+          <div class="bg-gradient-to-br from-white to-slate-50 border border-slate-200/80 rounded-xl p-2.5 shadow-2xs hover:border-amber-200 transition-colors">
             <div class="text-[9px] font-black text-amber-600 uppercase tracking-widest flex items-center gap-1 mb-0.5">
               <span>Level</span>
             </div>
@@ -734,7 +730,7 @@
           </div>
 
           <!-- Region -->
-          <div class="bg-gradient-to-br from-slate-50 to-slate-100/60 border border-slate-200/90 rounded-xl p-2 shadow-2xs">
+          <div class="bg-gradient-to-br from-white to-slate-50 border border-slate-200/80 rounded-xl p-2.5 shadow-2xs hover:border-amber-200 transition-colors">
             <div class="text-[9px] font-black text-amber-600 uppercase tracking-widest flex items-center gap-1 mb-0.5">
               <span>Region</span>
             </div>
@@ -742,15 +738,15 @@
           </div>
 
           <!-- Likes -->
-          <div class="bg-gradient-to-br from-slate-50 to-slate-100/60 border border-slate-200/90 rounded-xl p-2 shadow-2xs">
+          <div class="bg-gradient-to-br from-white to-slate-50 border border-slate-200/80 rounded-xl p-2.5 shadow-2xs hover:border-amber-200 transition-colors">
             <div class="text-[9px] font-black text-amber-600 uppercase tracking-widest flex items-center gap-1 mb-0.5">
               <span>Likes</span>
             </div>
-            <div class="text-xs font-black text-slate-900" id="infoLikes">—</div>
+            <div class="text-xs font-black text-rose-600 font-mono" id="infoLikes">—</div>
           </div>
 
           <!-- Credit Score -->
-          <div class="bg-gradient-to-br from-slate-50 to-emerald-50/40 border border-emerald-200/80 rounded-xl p-2 shadow-2xs" id="infoCreditScoreBox">
+          <div class="bg-gradient-to-br from-white to-emerald-50/40 border border-emerald-200/80 rounded-xl p-2.5 shadow-2xs" id="infoCreditScoreBox">
             <div class="text-[9px] font-black text-emerald-600 uppercase tracking-widest flex items-center gap-1 mb-0.5">
               <span>Credit Score</span>
             </div>
@@ -758,7 +754,7 @@
           </div>
 
           <!-- BR Rank & Points -->
-          <div class="bg-gradient-to-br from-slate-50 to-slate-100/60 border border-slate-200/90 rounded-xl p-2 shadow-2xs" id="infoRankBox">
+          <div class="bg-gradient-to-br from-white to-slate-50 border border-slate-200/80 rounded-xl p-2.5 shadow-2xs" id="infoRankBox">
             <div class="text-[9px] font-black text-amber-600 uppercase tracking-widest flex items-center gap-1 mb-0.5">
               <span>BR Rank</span>
             </div>
@@ -766,7 +762,7 @@
           </div>
 
           <!-- CS Rank & Points -->
-          <div class="bg-gradient-to-br from-slate-50 to-slate-100/60 border border-slate-200/90 rounded-xl p-2 shadow-2xs" id="infoCSRankBox">
+          <div class="bg-gradient-to-br from-white to-slate-50 border border-slate-200/80 rounded-xl p-2.5 shadow-2xs" id="infoCSRankBox">
             <div class="text-[9px] font-black text-amber-600 uppercase tracking-widest flex items-center gap-1 mb-0.5">
               <span>CS Rank</span>
             </div>
@@ -774,7 +770,7 @@
           </div>
 
           <!-- Clan / Guild -->
-          <div id="infoGuildBox" class="bg-gradient-to-br from-slate-50 to-amber-50/30 border border-slate-200/90 rounded-xl p-2 col-span-2 hidden shadow-2xs">
+          <div id="infoGuildBox" class="bg-gradient-to-br from-white to-amber-50/20 border border-slate-200/80 rounded-xl p-2.5 col-span-2 hidden shadow-2xs">
             <div class="text-[9px] font-black text-amber-600 uppercase tracking-widest flex items-center gap-1 mb-0.5">
               <span>Clan / Guild</span>
             </div>
@@ -782,31 +778,31 @@
           </div>
 
           <!-- Bio -->
-          <div id="infoBioBox" class="bg-gradient-to-br from-slate-50 to-slate-100/80 border border-slate-200/90 rounded-xl p-2 col-span-2 hidden shadow-2xs">
+          <div id="infoBioBox" class="bg-gradient-to-br from-white to-slate-50 border border-slate-200/80 rounded-xl p-2.5 col-span-2 hidden shadow-2xs">
             <div class="text-[9px] font-black text-amber-600 uppercase tracking-widest flex items-center gap-1 mb-0.5">
               <span>Player Bio</span>
             </div>
             <div class="text-[11px] font-semibold text-slate-700 leading-normal" id="infoBio">—</div>
           </div>
 
-<!-- Equipped Outfit & Weapon Items from API -->
-          <div id="infoOutfitSection" class="hidden col-span-2 bg-gradient-to-br from-slate-50 to-slate-100/60 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs space-y-1.5">
+          <!-- Equipped Outfit & Weapon Items from API -->
+          <div id="infoOutfitSection" class="hidden col-span-2 bg-gradient-to-br from-white to-slate-50 border border-slate-200/90 rounded-2xl p-3 shadow-2xs space-y-2">
             <div class="flex items-center justify-between">
               <span class="text-[9px] font-black text-amber-600 uppercase tracking-widest flex items-center gap-1">
-                <svg class="w-3 h-3 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10a2 2 0 002 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"/></svg>
+                <svg class="w-3.5 h-3.5 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10a2 2 0 002 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z"/></svg>
                 <span>EQUIPPED OUTFIT & WEAPONS</span>
               </span>
-              <span class="text-[8px] font-extrabold text-slate-400 uppercase tracking-wider">API ASSETS</span>
+              <span class="text-[8px] font-black text-emerald-700 bg-emerald-100/70 border border-emerald-200 px-1.5 py-0.5 rounded-full uppercase tracking-wider">OB55 Gear</span>
             </div>
-            <div id="infoOutfitGrid" class="flex items-center gap-1.5 overflow-x-auto pb-0.5 pt-0.5 scrollbar-none">
+            <div id="infoOutfitGrid" class="flex items-center gap-2 overflow-x-auto pb-1 pt-0.5 scrollbar-none">
               <!-- Dynamically populated from API -->
             </div>
           </div>
 
           <!-- Equipped Pet from API -->
-          <div id="infoPetBox" class="hidden col-span-2 bg-gradient-to-br from-slate-50 to-amber-50/20 border border-slate-200/90 rounded-xl p-2.5 shadow-2xs flex items-center justify-between gap-3">
-            <div class="flex items-center gap-2.5">
-              <div id="infoPetImgWrap" class="w-11 h-11 rounded-lg bg-white border border-slate-200 p-1 flex items-center justify-center flex-shrink-0">
+          <div id="infoPetBox" class="hidden col-span-2 bg-gradient-to-br from-white to-amber-50/30 border border-amber-200/90 rounded-2xl p-3 shadow-2xs flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div id="infoPetImgWrap" class="w-12 h-12 rounded-xl bg-white border border-amber-200 p-1 flex items-center justify-center flex-shrink-0 shadow-xs">
                 <img id="infoPetImg" src="" alt="Pet" class="w-full h-full object-contain" onerror="document.getElementById('infoPetBox').classList.add('hidden')" />
               </div>
               <div>
@@ -815,20 +811,21 @@
               </div>
             </div>
             <div class="text-right">
-              <span class="text-[9px] font-black px-2 py-0.5 rounded-full bg-amber-100 text-amber-800" id="infoPetLevel">Lv. 1</span>
+              <span class="text-[9.5px] font-black px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200" id="infoPetLevel">Lv. 1</span>
             </div>
           </div>
 
         </div>
 
         <!-- Security Bar -->
-        <div class="flex items-center justify-between pt-1.5 border-t border-slate-100 text-[10.5px]">
-          <div class="flex items-center gap-1 text-emerald-600 font-extrabold">
+        <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[10.5px]">
+          <div class="flex items-center gap-1.5 text-emerald-600 font-extrabold">
             <svg class="w-3.5 h-3.5 text-emerald-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3l7 3v5c0 4.8-3 8.4-7 10-4-1.6-7-5.2-7-10V6l7-3z"/><path d="M8 12l2.5 2.5L16 9"/></svg>
-            <span>OB55 API VERIFIED</span>
+            <span>GARENA OB55 DIRECT API VERIFIED</span>
           </div>
-          <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider">100% SECURE</span>
+          <span class="text-[9.5px] font-black text-slate-400 uppercase tracking-wider bg-slate-100 px-2 py-0.5 rounded">100% SECURE</span>
         </div>
+      </div>
       </div>
 
       <!-- Action Confirmation Button -->
@@ -1001,32 +998,6 @@
             </button>
           </div>
         </div>
-      </div>
-
-      <!-- TAB: Likes (LAST TAB) -->
-      <div id="content-likes" class="space-y-4 tab-content hidden">
-
-        <!-- Section Header Banner with Kelly PNG Visual -->
-        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-r from-amber-50 via-rose-50 to-orange-50 border border-amber-200/80 p-4 flex items-center justify-between shadow-sm">
-          <div class="space-y-1.5 max-w-[65%] z-10">
-            <div class="flex items-center gap-1.5">
-              <span class="text-[9px] font-black tracking-widest text-amber-800 uppercase bg-amber-200/70 border border-amber-300/80 px-2 py-0.5 rounded-full">⚡ Real Likes Booster</span>
-              <span class="text-[8.5px] font-bold text-rose-700 bg-rose-100 border border-rose-200 px-2 py-0.5 rounded-full">OB55 Verified</span>
-            </div>
-            <h3 class="font-black text-base text-slate-900 tracking-tight">Likes for Free Fire ID</h3>
-            <p class="text-[10.5px] text-slate-600 font-medium leading-snug">Get 100% real in-game profile likes delivered directly to your verified Free Fire ID.</p>
-            <div class="inline-flex items-center gap-2 bg-white/90 border border-amber-300/80 px-2.5 py-1 rounded-xl shadow-2xs mt-1">
-              <span class="text-[9.5px] font-bold text-slate-500 uppercase">Current Likes:</span>
-              <span class="text-xs font-black text-rose-600 font-mono tracking-wide" id="likesCurrentDisplay">—</span>
-            </div>
-          </div>
-          <div class="w-28 h-32 flex-shrink-0 relative z-10 flex items-end justify-center -mr-2 -mb-5 translate-y-1 sm:translate-y-0">
-            <img src="kelly_likes.png" alt="Free Fire Kelly" class="h-full w-auto object-contain object-bottom drop-shadow-md translate-y-2 sm:translate-y-0" />
-          </div>
-        </div>
-
-        <!-- Likes Package Cards (Passes-Style List Layout) -->
-        <div class="space-y-3.5" id="likesPacksList"></div>
       </div>
     </main>
 
@@ -1789,7 +1760,7 @@
 
     // ── Product data (Stable & Fixed) ──
         const FIXED_DIAMOND_PACKS = [
-      { id:'d1', diamonds:'100 Diamonds',  bonus:'+10 Bonus',  original:80,   discount:40,   badge:'' },
+      { id:'d1', diamonds:'100 Diamonds',  bonus:'+10 Bonus',  original:80,   discount:50,   badge:'' },
       { id:'d2', diamonds:'310 Diamonds',  bonus:'+31 Bonus',  original:240,  discount:120,  badge:'POPULAR' },
       { id:'d3', diamonds:'520 Diamonds',  bonus:'+52 Bonus',  original:400,  discount:200,  badge:'' },
       { id:'d4', diamonds:'1060 Diamonds', bonus:'+106 Bonus', original:800,  discount:400,  badge:'BEST VALUE' },
@@ -1800,7 +1771,7 @@
         const FIXED_PASS_PACKS = [
       { id:'p1', title:'Weekly Pass Membership', original:160, discount:80,  image:'pass_w.png',      duration:'7 Days Duration',  rewards:'Get 450 Diamonds total value' },
       { id:'p2', title:'Monthly Pass Membership',original:800, discount:400, image:'pass_m.png',      duration:'30 Days Duration', rewards:'Get 2600 Diamonds total value' },
-      { id:'p3', title:'Weekly Lite Pass',        original:50,  discount:25,  image:'pass_w_lite.png', duration:'7 Days Duration',  rewards:'Get 120 Diamonds total value' }
+      { id:'p3', title:'Weekly Lite Pass',        original:50,  discount:25,  image:'pass_w_lite.png', duration:'7 Days Duration',  rewards:'Get 120 Diamonds total value', outOfStock:true }
     ];
     let PASS_PACKS = FIXED_PASS_PACKS;
 
@@ -2480,9 +2451,22 @@
         }).join('');
       }
 
-      const pList = document.getElementById('passesList');
+            const pList = document.getElementById('passesList');
       if (pList) {
         pList.innerHTML = PASS_PACKS.map(function(pass) {
+          if (pass.outOfStock) {
+            return '<div class="bg-white/70 border border-slate-200/80 rounded-2xl p-3.5 flex flex-row items-center gap-3 select-none shadow-sm relative overflow-hidden opacity-75">' +
+              '<span class="absolute top-2 right-2 text-[8px] font-black tracking-wider uppercase px-2 py-0.5 rounded bg-rose-600 text-white shadow-xs">OUT OF STOCK</span>' +
+              '<div class="w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden flex items-center justify-center bg-slate-100 border border-slate-200 p-1.5 grayscale opacity-70">' +
+              '<img src="' + pass.image + '" alt="" class="w-full h-full object-contain max-h-full max-w-full" loading="lazy" onerror="this.src=\'garena_logo.png\';" /></div>' +
+              '<div class="flex-1 flex flex-col justify-between space-y-1 min-w-0"><div class="space-y-0.5">' +
+              '<h4 class="font-extrabold text-xs sm:text-sm text-slate-600 truncate">' + pass.title + '</h4>' +
+              '<p class="text-[9.5px] text-slate-400 font-medium truncate">' + pass.duration + ' | ' + pass.rewards + '</p></div>' +
+              '<div class="flex items-center justify-between pt-1"><div class="flex items-center gap-2"><span class="text-[10px] text-slate-400 line-through">₹' + pass.original + '</span>' +
+              '<span class="text-sm font-black text-slate-500">₹' + pass.discount + '</span></div>' +
+              '<button disabled class="px-3 py-1.5 rounded-xl bg-slate-200 text-slate-500 text-[10px] font-black cursor-not-allowed"><span>SOLD OUT</span></button>' +
+              '</div></div></div>';
+          }
           return '<div onclick="initiatePayment(\'' + pass.title + '\',' + pass.discount + ')" class="bg-white border border-slate-200/90 rounded-2xl p-3.5 flex flex-row items-center gap-3 cursor-pointer hover:bg-slate-50 transition-all select-none shadow-md">' +
             '<div class="w-16 h-16 flex-shrink-0 rounded-xl overflow-hidden flex items-center justify-center bg-slate-50 border border-slate-100 p-1.5">' +
             '<img src="' + pass.image + '" alt="" class="w-full h-full object-contain max-h-full max-w-full" loading="lazy" onerror="this.src=\'garena_logo.png\';" /></div>' +
@@ -2749,7 +2733,7 @@
 
     // ── Live Purchase Notifications Loop ──
         const FAKE_PURCHASES = [
-      { name: "Rajesh", location: "Patna, Bihar", product: "₹40 Top Up (100 Diamonds)", time: "2 minutes ago", type: "diamond" },
+      { name: "Rajesh", location: "Patna, Bihar", product: "₹50 Top Up (100 Diamonds)", time: "2 minutes ago", type: "diamond" },
       { name: "Aman", location: "Delhi", product: "Weekly Membership", time: "1 minute ago", type: "pass" },
       { name: "Rohit", location: "Jaipur, Rajasthan", product: "₹120 Top Up (310 Diamonds)", time: "4 minutes ago", type: "diamond" },
       { name: "Vikas", location: "Mumbai, Maharashtra", product: "Monthly Membership", time: "3 minutes ago", type: "pass" },
@@ -3181,7 +3165,7 @@
         var FIFTEEN_SEC_ACTIVITIES = [
       { name: 'Rahul S.', action: 'ने ₹120 का 310 Diamonds Top-Up किया' },
       { name: 'Aman V.', action: 'ने ₹80 की Weekly Membership ली' },
-      { name: 'Priya K.', action: 'ने ₹40 का 100 Diamonds Top-Up किया' },
+      { name: 'Priya K.', action: 'ने ₹50 का 100 Diamonds Top-Up किया' },
       { name: 'Arjun S.', action: 'ने ₹200 का 520 Diamonds Top-Up किया' },
       { name: 'Rohit M.', action: 'ने ₹400 का 1060 Diamonds Top-Up किया' },
       { name: 'Vikas R.', action: 'ने ₹400 की Monthly Membership ली' },
