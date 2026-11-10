@@ -1,5 +1,5 @@
-// Free Fire India PWA Service Worker v12.0
-const CACHE_NAME = 'ff-india-pwa-v12.0';
+// Free Fire India PWA Service Worker v13.0
+const CACHE_NAME = 'ff-india-pwa-v13.0';
 const STATIC_ASSETS = [
   './',
   './index.html',
