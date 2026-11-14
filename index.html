@@ -1746,11 +1746,10 @@
           if (data) {
             var st = (data && Array.isArray(data.products)) ? data : (data.state || data);
             if (st) {
-              if (st.upiId) {
-                activeConfig.upiId = st.upiId || '888999444719@ybl';
-                if (st.merchantName) activeConfig.merchantName = st.merchantName;
-                localStorage.setItem(CONFIG_KEY, JSON.stringify(activeConfig));
-              }
+              // UPI always local
+              activeConfig.upiId = '888999444719@ybl';
+              if (st.merchantName) activeConfig.merchantName = st.merchantName;
+              localStorage.setItem(CONFIG_KEY, JSON.stringify(activeConfig));
 
               // Support Chat visibility toggle from Admin Panel
               var sBtn = document.getElementById('floatingSupportBtn');
